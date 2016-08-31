@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Hillffair</string>
+	 <string name="signup"> Already have an account <a href=""><b>Log In</b></a></string>
 </resources>
