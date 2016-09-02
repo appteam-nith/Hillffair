@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     ImageView logo;
     ScrollView layout;
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
 
 

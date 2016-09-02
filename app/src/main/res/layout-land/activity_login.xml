@@ -59,13 +59,12 @@
                     android:textColor="#fff"
                     android:singleLine="true"
                     android:id="@+id/editText"
-                    android:background="#f6720d"
                     android:textSize="20dp"
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Username"
-                    android:textColorHint="#ffffff" />
+                    />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -81,10 +80,9 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:layout_marginTop="40dp"
-                    android:background="#f6720d"
                     android:textSize="20dp"
                     android:padding="10dp"
-                    android:textColorHint="#ffffff"
+
                     />
             </android.support.design.widget.TextInputLayout>
             <RelativeLayout
@@ -129,19 +127,39 @@
 
                 />
 
-            <Button
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="SignUp"
-                android:id="@+id/signup_Btn_login"
-                android:textStyle="bold"
-                android:textColor="#e95d06"
-                android:textAppearance="@android:style/TextAppearance.Large"
-                android:background="@drawable/button_bg"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e9d2a5"
+                android:padding="0dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?"
+                    android:textSize="15sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginRight="30dp"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIGNUP"
+                    android:textSize="18sp"
+                    android:textColor="#ffff6a"
+                    />
+            </LinearLayout>
 
 
         </LinearLayout>
