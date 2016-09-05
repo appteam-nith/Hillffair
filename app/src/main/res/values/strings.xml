@@ -14,4 +14,7 @@
     <string name="screen2_body">Thousands of events</string>
     <string name="screen3_body">abcd efgh ijhl mnop qrst</string>
     <string name="screen4_body">great great great</string>
+
+
+	 <string name="signup"> Already have an account <a href=""><b>Log In</b></a></string>
 </resources>
