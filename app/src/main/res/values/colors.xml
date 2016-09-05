@@ -34,4 +34,5 @@
     <color name="colorPrimary">#e54e2c</color>
     <color name="colorPrimaryDark">#dd3914</color>
     <color name="colorAccent">#98f708</color>
+    <color name="white">#FFF</color>
 </resources>
