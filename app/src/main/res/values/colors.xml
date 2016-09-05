@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
     <color name="screen1">#52c6d7</color>
     <color name="screen2">#00ff7f</color>
     <color name="screen3">#ffb90f</color>
@@ -34,4 +30,8 @@
         <item>@color/dlscreen3</item>
         <item>@color/dlscreen4</item>
     </array>
+
+    <color name="colorPrimary">#e54e2c</color>
+    <color name="colorPrimaryDark">#dd3914</color>
+    <color name="colorAccent">#98f708</color>
 </resources>
