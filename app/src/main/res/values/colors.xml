@@ -32,7 +32,7 @@
     </array>
 
     <color name="colorPrimary">#e54e2c</color>
-    <color name="colorPrimaryDark">#</color>
+    <color name="colorPrimaryDark">#e54e2c</color>
     <color name="colorAccent">#98f708</color>
     <color name="white">#FFF</color>
 </resources>

@@ -90,17 +90,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 >
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Remember Me"
-
-                    android:id="@+id/checkBox"
-
-
-
-                    android:layout_marginTop="22dp" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,6 +142,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/signup_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SIGNUP"

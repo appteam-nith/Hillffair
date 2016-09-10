@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final long TIME_SPLASH =4000 ;
+    private static final long TIME_SPLASH =5000 ;
     private ImageView image_splash;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(SplashActivity.this,WelcomeActivity.class));
+                  finish();
             }
         },TIME_SPLASH);
     }

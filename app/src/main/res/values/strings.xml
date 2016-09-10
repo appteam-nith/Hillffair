@@ -16,5 +16,11 @@
     <string name="screen4_body">great great great</string>
 
 
-	 <string name="signup"> Already have an account <a href=""><b>Log In</b></a></string>
+    <string name="signup"> Already have an account <a href=""><b>Log In</b></a></string>
+    <string name="title_activity_home">homeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
