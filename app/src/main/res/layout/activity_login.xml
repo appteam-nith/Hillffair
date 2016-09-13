@@ -6,7 +6,13 @@
     android:background="@drawable/login_background"
     >
 
-
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:gravity="center|top"
@@ -61,7 +67,7 @@
                     <EditText
                         android:textColor="#fff"
                         android:singleLine="true"
-                        android:id="@+id/editText"
+                        android:id="@+id/email"
                         android:textSize="20dp"
                         android:padding="10dp"
                         android:layout_width="match_parent"
@@ -79,7 +85,7 @@
 
                     <EditText
                         android:inputType="textPassword"
-                        android:id="@+id/editText2"
+                        android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Password"
