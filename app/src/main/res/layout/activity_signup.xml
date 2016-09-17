@@ -17,6 +17,8 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         >
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +42,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="15dp"
+
+                    >
 
                     <EditText
                         android:id="@+id/name"
@@ -55,7 +59,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_roll"
+                    >
 
                     <EditText
                         android:id="@+id/rollno"
@@ -70,7 +76,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_email"
+                    >
 
                     <EditText
                         android:id="@+id/email"
@@ -85,7 +93,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_phone"
+                    >
 
                     <EditText
                         android:id="@+id/phone"
@@ -100,13 +110,16 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_pwd"
+                    >
 
                     <EditText
                         android:id="@+id/pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Password"
+                        android:textColorHint="#fff"
                         android:textColor="@color/white"
                         android:inputType="textPassword"
                         android:textSize="18sp" />
@@ -115,7 +128,9 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_repwd"
+                    >
 
                     <EditText
                         android:id="@+id/repwd"
@@ -133,6 +148,7 @@
                     android:layout_marginTop="30dp"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
+                    android:id="@+id/signup_button"
                     android:background="@drawable/round_button"
                     android:text=" Sign Up "
                     android:textColor="#e95d06"
