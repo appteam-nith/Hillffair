@@ -2,16 +2,14 @@ package com.appteamnith.hillffair;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.BoolRes;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,7 +18,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 
-public class ProfileActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
+public class ProfileActivity extends AppCompatActivity{
 
     private int PICK_IMAGE_REQUEST = 1;
     ImageView open_gallery;
@@ -32,19 +30,8 @@ public class ProfileActivity extends AppCompatActivity implements TabLayout.OnTa
     int i1 = android.R.drawable.ic_menu_edit;
     int i2 = android.R.drawable.ic_menu_save;
 
-
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
-    @Override
-    public void onTabSelected(TabLayout.Tab tab){
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-    public void onTabUnselected(TabLayout.Tab tab){}
-    public void onTabReselected(TabLayout.Tab tab){}
-
-
-
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -56,18 +43,10 @@ public class ProfileActivity extends AppCompatActivity implements TabLayout.OnTa
         //Start of Tab Layout in Profile Activity
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-
-        tabLayout.addTab(tabLayout.newTab().setText("Posts"));
-        tabLayout.addTab(tabLayout.newTab().setText("Basic Info"));
-        tabLayout.addTab(tabLayout.newTab().setText("Scorecard"));
-
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
         viewPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),3);
         viewPager.setAdapter(adapter);
-
-        tabLayout.setOnTabSelectedListener(this);
+        tabLayout.setupWithViewPager(viewPager);
 
         //End of Tab Layout in Profile Activity
 
@@ -85,10 +64,9 @@ public class ProfileActivity extends AppCompatActivity implements TabLayout.OnTa
 
     public void openGallery(View v){
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select Profile Picture"), PICK_IMAGE_REQUEST);
 
     }
 
@@ -102,10 +80,11 @@ public class ProfileActivity extends AppCompatActivity implements TabLayout.OnTa
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                // Log.d(TAG, String.valueOf(bitmap));
                 ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
-                profile_pic.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                profile_pic.setImageBitmap(bitmap);
+                RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+                roundedBitmapDrawable.setCornerRadius(2.0f);
+                roundedBitmapDrawable.setCircular(true);
+                profile_pic.setImageDrawable(roundedBitmapDrawable);
             } catch (IOException e) {
                 e.printStackTrace();
             }

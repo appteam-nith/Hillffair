@@ -11,6 +11,11 @@ import android.util.DisplayMetrics;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * Created by Jatin on 9/13/2016.
  */
@@ -68,6 +73,19 @@ public class Utils {
         }
     }
 
+
+
+    // Created A Static Retrofit Service Method For Getting reference to the retrofit service method
+
+    public  static  APIINTERFACE getRetrofitService(){
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        OkHttpClient.Builder oBuilder = new OkHttpClient.Builder();
+        oBuilder.addNetworkInterceptor(loggingInterceptor);
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://it-ebooks-api.info/v1/").addConverterFactory(GsonConverterFactory.create()).client(oBuilder.build()).build();
+        APIINTERFACE service = retrofit.create(APIINTERFACE.class);
+        return service;
+    }
 }
 
 

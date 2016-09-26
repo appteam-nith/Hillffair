@@ -40,4 +40,17 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         return tabCount;
     }
 
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position){
+            case 0:
+                return "News Feed";
+            case 1:
+                return "Basic Info";
+            case 2:
+                return "Score Board";
+            default:
+                return super.getPageTitle(position);
+        }
+    }
 }
