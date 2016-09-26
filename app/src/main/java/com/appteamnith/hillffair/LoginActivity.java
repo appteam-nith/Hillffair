@@ -1,13 +1,10 @@
 package com.appteamnith.hillffair;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.util.SortedList;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,17 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ProgressBar;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import android.widget.Toast;
 
 import net.steamcrafted.loadtoast.LoadToast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -145,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginProcessWithRetrofit(final String email, String password){
 
-        APIINTERFACE mApiService = this.getInterfaceService();
+        APIINTERFACE mApiService = Utils.getRetrofitService();
         Toast.makeText(LoginActivity.this, "Please check your network jjjj", Toast.LENGTH_LONG).show();
 
        progress.setProgressStyle(android.R.attr.progressBarStyleSmall);
@@ -189,16 +182,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    private APIINTERFACE getInterfaceService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final APIINTERFACE mInterfaceService = retrofit.create(APIINTERFACE.class);
-        return mInterfaceService;
-    }
-
 
 
     private boolean isEmailValid(String email) {

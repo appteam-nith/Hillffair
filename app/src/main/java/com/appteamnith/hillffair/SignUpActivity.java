@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.KeyEvent;
@@ -15,19 +14,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.util.*;
 
 import net.steamcrafted.loadtoast.LoadToast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -254,14 +249,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-    private APIINTERFACE getInterfaceService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final APIINTERFACE mInterfaceService = retrofit.create(APIINTERFACE.class);
-        return mInterfaceService;
-    }
+
 
 
 
@@ -277,7 +265,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void registrationProcessWithRetrofit(final String email, String password,final String rollno,final String phoneno,final String name){
-        APIINTERFACE mApiService = this.getInterfaceService();
+        APIINTERFACE mApiService =Utils.getRetrofitService();
 
         Call<Login> mService = mApiService.registration(email, password,rollno,name);
         mService.enqueue(new Callback<Login>() {
