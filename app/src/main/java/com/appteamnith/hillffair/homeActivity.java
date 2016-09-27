@@ -9,8 +9,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,8 +41,29 @@ public class homeActivity extends AppCompatActivity
         recyclerView= (RecyclerView) findViewById(R.id.list);
         Integer photo[]={R.drawable.comic1,R.drawable.comic2,R.drawable.comic3,R.drawable.comic4,R.drawable.comic5};
         adapter=new homeAdapter( Arrays.asList(photo),this);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        GridLayoutManager staggeredGridLayoutManager=new GridLayoutManager(this,3);
+        recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        // code that vary the size of each column in the row of grid layout
+
+        staggeredGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+               if(position==0)
+                   return 2;
+                if (position==1)
+                    return 1;
+                if (position==2)
+                    return 1;
+                if (position==3)
+                    return 2;
+                if (position==4)
+                    return 1;
+                return 1;
+            }
+        });
+
     }
 
     @Override
