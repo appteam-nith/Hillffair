@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity{
 
@@ -39,12 +41,24 @@ public class ProfileActivity extends AppCompatActivity{
         setContentView(R.layout.activity_profile);
 
 
+        // List of All The Fragment for the Profile Tabs and Their Title
+
+        ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
+        fragmentArrayList.add(new ProfileTab1());
+        fragmentArrayList.add(new ProfileTab2());
+        fragmentArrayList.add(new ProfileTab3());
+
+
+        ArrayList<String> titleArrayList=new ArrayList<>();
+        titleArrayList.add("ScoreBoard");
+        titleArrayList.add("Basic info");
+        titleArrayList.add("News Feed");
 
         //Start of Tab Layout in Profile Activity
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),3);
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),fragmentArrayList,titleArrayList);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
