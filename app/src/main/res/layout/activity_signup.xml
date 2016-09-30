@@ -17,8 +17,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         >
 
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,6 +38,7 @@
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textinputlayoutname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -55,12 +54,23 @@
                         android:inputType="textPersonName"
                         android:textSize="18sp" />
                 </android.support.design.widget.TextInputLayout>
+                <CheckBox
+                    android:backgroundTint="#fff"
+                    android:buttonTint="@color/colorAccent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Student of NIT Hamirpur"
+                    android:textColor="@color/colorAccent"
+                    android:id="@+id/choice_register"
+                    android:layout_marginTop="5dp"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:id="@+id/input_roll"
+                    android:visibility="gone"
                     >
 
                     <EditText
@@ -154,23 +164,6 @@
                     android:textColor="#e95d06"
                     android:textSize="25dp"
                     android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="20dp"
-                    android:background="#ffffff" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@string/signup"
-                    android:textColor="#ffffff"
-                    android:textSize="15sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

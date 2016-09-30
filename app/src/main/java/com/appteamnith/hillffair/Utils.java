@@ -82,7 +82,7 @@ public class Utils {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         OkHttpClient.Builder oBuilder = new OkHttpClient.Builder();
         oBuilder.addNetworkInterceptor(loggingInterceptor);
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://it-ebooks-api.info/v1/").addConverterFactory(GsonConverterFactory.create()).client(oBuilder.build()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api-hillfair-2k16.herokuapp.com/api/app/").addConverterFactory(GsonConverterFactory.create()).client(oBuilder.build()).build();
         APIINTERFACE service = retrofit.create(APIINTERFACE.class);
         return service;
     }
