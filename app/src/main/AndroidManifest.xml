@@ -20,6 +20,13 @@
             android:name=".homeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".newsfeed"
+            android:label="NewsFeed"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

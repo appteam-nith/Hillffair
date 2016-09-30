@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hillffair</string>
     <string name="main">Home Page</string>
-
+    <string name="user_name">ABCDEF</string>
     <string name="skip">SKIP</string>
     <string name="gotit">GOT IT</string>
 
