@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/menu/home.xml",
+        "source": "/root/git_work/Hillffair/app/src/main/res/menu/home.xml"
+    },
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/menu/activity_home_drawer.xml",
+        "source": "/root/git_work/Hillffair/app/src/main/res/menu/activity_home_drawer.xml"
+    }
+]

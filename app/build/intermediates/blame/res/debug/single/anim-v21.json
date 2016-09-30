@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/root/git_work/Hillffair/app/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/root/git_work/Hillffair/app/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/anim-v21/design_appbar_state_list_animator.xml",
+        "source": "/root/git_work/Hillffair/app/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/anim-v21/design_appbar_state_list_animator.xml"
+    }
+]

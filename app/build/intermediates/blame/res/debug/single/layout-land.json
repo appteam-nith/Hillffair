@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/layout-land/activity_login.xml",
+        "source": "/root/git_work/Hillffair/app/src/main/res/layout-land/activity_login.xml"
+    },
+    {
+        "merged": "/root/git_work/Hillffair/app/build/intermediates/res/merged/debug/layout-land/activity_theme_selection.xml",
+        "source": "/root/git_work/Hillffair/app/src/main/res/layout-land/activity_theme_selection.xml"
+    }
+]

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/root/git_work/Hillffair/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="a5c452cfbb8e8c0be701df62ddce75afe3e924de">
+        <dex dex="/root/git_work/Hillffair/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_35d813a57d3cc221b5062934add72b160d9ab3c3/classes.dex" />
+    </item>
+
+</items>
