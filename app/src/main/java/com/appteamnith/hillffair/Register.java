@@ -3,19 +3,28 @@ package com.appteamnith.hillffair;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Jatin on 9/11/2016.
+ * Created by lenovo on 9/30/2016.
  */
-public class Login {
-
+public class Register {
+    @SerializedName("id")
+    private String id;
     @SerializedName("success")
-    public boolean success;
-
+    private boolean success;
     @SerializedName("error")
-    public  String error;
+    private String error;
 
-    public Login(boolean success, String error) {
+    public Register(String id, boolean success, String error) {
+        this.id = id;
         this.success = success;
         this.error = error;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean isSuccess() {

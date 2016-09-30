@@ -1,24 +1,23 @@
 package com.appteamnith.hillffair;
 
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+
 /**
  * Created by Jatin on 9/11/2016.
  */
 
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
 public interface APIINTERFACE {
 
-    @GET("api/{email}/{password}")
+    @FormUrlEncoded
+    @POST("login")
+    Call<Login> login(@Field("email") String email,@Field("pwd") String pwd);
 
-    Call<Login> authenticate(@Path("email") String email, @Path("password") String password);
-
-    @POST("api/{email}/{password}/{rollno}/{name}")
-
-    Call<Login> registration(@Path("email") String email, @Path("password") String password,@Path("rollno") String Rollno,@Path("name") String name );
+    @FormUrlEncoded
+    @POST("register")
+    Call<Register> register (@Field("name")String name,@Field("email")String email,@Field("pwd")String pwd,@Field("nitian")boolean nitian,@Field("rollno")String rollno,@Field("phone")String phone);
 
 
 

@@ -14,17 +14,19 @@
         <activity android:name=".SplashActivity">
 
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity
-            android:name=".homeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".SignUpActivity" />
+        <activity
+            android:name=".homeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme">
+
         </activity>
         <activity android:name=".ProfileActivity">
 
