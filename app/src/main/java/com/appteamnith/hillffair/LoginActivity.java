@@ -1,6 +1,5 @@
 package com.appteamnith.hillffair;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,35 +28,28 @@ public class LoginActivity extends AppCompatActivity {
     ScrollView layout;
     private Button login;
     private LoadToast loadToast;
-
-    private final String TAG = "LoginActivity";
-
-    public static final String BASE_URL = "http://nigerianstudentshop.com/";
-
     private EditText mEmailView;
     private EditText mPasswordView;
     View focusView = null;
     String email;
     String password;
 
-    private ProgressDialog progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        progress = new ProgressDialog(this);
-             mEmailView = (EditText)findViewById(R.id.email);
-        mPasswordView = (EditText)findViewById(R.id.password);
-        login= (Button) findViewById(R.id.registar_Btn_login);
+        mEmailView = (EditText) findViewById(R.id.email);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        login = (Button) findViewById(R.id.registar_Btn_login);
 
         logo = (ImageView) findViewById(R.id.logo);
         layout = (ScrollView) findViewById(R.id.layout);
         layout.setVisibility(View.INVISIBLE);
-        final Animation bounceLogo = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.loginlogo_anim);
-        final Animation layoutFade = AnimationUtils.loadAnimation(getApplicationContext(),android.R.anim.fade_in);
-        loadToast=new LoadToast(this);
+        final Animation bounceLogo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.loginlogo_anim);
+        final Animation layoutFade = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
+        loadToast = new LoadToast(this);
 
         logo.startAnimation(bounceLogo);
         bounceLogo.setAnimationListener(new Animation.AnimationListener() {
@@ -78,25 +70,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-      login.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              loadToast.setText("LOADING");
-              loadToast.show();
-              attemptLogin();
-          }
-      });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadToast.setText("LOADING");
+                loadToast.show();
+                attemptLogin();
+            }
+        });
         findViewById(R.id.signup_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
 
     }
 
 
-    private void attemptLogin(){
+    private void attemptLogin() {
         boolean mCancel = this.loginValidation();
         if (mCancel) {
             focusView.requestFocus();
@@ -135,50 +127,37 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-    private void loginProcessWithRetrofit(final String email, String password){
+    private void loginProcessWithRetrofit(final String email, String password) {
 
         APIINTERFACE mApiService = Utils.getRetrofitService();
-        Toast.makeText(LoginActivity.this, "Please check your network jjjj", Toast.LENGTH_LONG).show();
-
-       progress.setProgressStyle(android.R.attr.progressBarStyleSmall);
-        Call<Login> mService = mApiService.authenticate(email, password);
+        Call<Login> mService = mApiService.login(email, password);
         mService.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-
-
+                loadToast.success();
                 Login mLoginObject = response.body();
-
-
-                String returnedResponse = response.toString();
-           //     Toast.makeText(LoginActivity.this, "Returned " + returnedResponse, Toast.LENGTH_LONG).show();
-
-
-                if(returnedResponse.trim().equals("1")){
-                    // redirect to Main Activity page
-                    Intent loginIntent = new Intent(LoginActivity.this, SignUpActivity.class);
-                    loginIntent.putExtra("EMAIL", email);
-                    startActivity(loginIntent);
-                    loadToast.success();
-                    finish();
-                    Toast.makeText(LoginActivity.this, "Succesfull ", Toast.LENGTH_LONG).show();
+                boolean returnedResponse = mLoginObject.success;
+                if(returnedResponse){
+                    startActivity(new Intent(LoginActivity.this,homeActivity.class));
                 }
-                else{
-                    // use the registration button to register
-
-
-                    progress.dismiss();
-                    Toast.makeText(LoginActivity.this, "Invalid Useraname Pass word", Toast.LENGTH_LONG).show();
-                    mPasswordView.requestFocus();
+                else {
+                    String error = mLoginObject.getError();
+                    if (error != null && !error.isEmpty()) {
+                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                    }
                     loadToast.error();
                 }
+
+
+
+
             }
+
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
-                call.cancel();
+                t.printStackTrace();
+                loadToast.error();
                 Toast.makeText(LoginActivity.this, "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
-                progress.dismiss();
             }
         });
     }
@@ -188,12 +167,11 @@ public class LoginActivity extends AppCompatActivity {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
+
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 8;
     }
-
-
 
 
 }
