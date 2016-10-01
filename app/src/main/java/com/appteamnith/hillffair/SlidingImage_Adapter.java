@@ -43,7 +43,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        View imageLayout = inflater.inflate(R.layout.fragment_back_drop, view, false);
+        View imageLayout = inflater.inflate(R.layout.layout_backdrop, view, false);
 
         assert imageLayout != null;
         final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.image_backdrop);
