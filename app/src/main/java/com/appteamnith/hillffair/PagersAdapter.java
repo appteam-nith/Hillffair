@@ -9,19 +9,19 @@ import java.util.ArrayList;
 /**
  * Created by Aditya on 9/13/2016.
  */
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagersAdapter extends FragmentStatePagerAdapter {
 
     private ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
     private ArrayList<String>   titleArrayList=new ArrayList<>();
     int tabCount;
 
-    public PagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList, ArrayList<String> titleArrayList) {
+    public PagersAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList, ArrayList<String> titleArrayList) {
         super(fm);
         this.fragmentArrayList = fragmentArrayList;
         this.titleArrayList = titleArrayList;
     }
 
-    public PagerAdapter(FragmentManager fm, int tabCount){
+    public PagersAdapter(FragmentManager fm, int tabCount){
         super(fm);
         this.tabCount=tabCount;
     }

@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity{
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),fragmentArrayList,titleArrayList);
+        PagersAdapter adapter = new PagersAdapter(getSupportFragmentManager(),fragmentArrayList,titleArrayList);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
