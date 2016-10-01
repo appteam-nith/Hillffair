@@ -34,5 +34,11 @@
     <color name="colorPrimary">#e54e2c</color>
     <color name="colorPrimaryDark">#e54e2c</color>
     <color name="colorAccent">#98f708</color>
-    <color name="white">#FFF</color>
+
+    <color name="back_batman">#c6000000</color>
+    <color name="back_superman">#d4fc0e0e</color>
+    <color name="back_wonderwoman">#cebaa820</color>
+    <color name="back_greenlantern">#c03ccf3c</color>
+    <color name="back_captainamerica">#caec1f34</color>
+    <color name="white">#ffffff</color>
 </resources>
