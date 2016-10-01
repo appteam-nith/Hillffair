@@ -23,6 +23,9 @@
             android:layout_marginBottom="15dp"
             android:elevation="6dp"
             />
-    <include layout="@layout/card_content_main" />
+    <include layout="@layout/card_content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/my_toolbar" />
 
 </RelativeLayout>
