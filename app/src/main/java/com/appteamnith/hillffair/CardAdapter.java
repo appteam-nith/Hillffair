@@ -49,7 +49,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         if(card.getPost_img()!=null&&!card.getUser_name().isEmpty())
         Glide.with(mContext).load(card.getPost_img()).into(holder.post_img);
         else
-        holder.post_img.setImageResource(R.drawable.photo);
+        holder.post_img.setImageResource(R.drawable.photo1);
 
         holder.lyk_status.setLiked(card.getLyk_status());
     }

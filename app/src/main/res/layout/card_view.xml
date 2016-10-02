@@ -32,11 +32,11 @@
                 android:layout_height="1dp"
                 android:background="#a9a9a9"/>
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/post_img"
-                android:src="@drawable/photo"
-                android:scaleType="fitStart"
+                android:src="@drawable/photo1"
+                android:scaleType="fitXY"
                 android:adjustViewBounds="true"/>
             <View
                 android:layout_width="match_parent"
