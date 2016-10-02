@@ -4,12 +4,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+
 /**
  * Created by Aditya on 9/13/2016.
  */
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
+    private ArrayList<Fragment> fragmentArrayList=new ArrayList<>();
+    private ArrayList<String>   titleArrayList=new ArrayList<>();
     int tabCount;
+
+    public PagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList, ArrayList<String> titleArrayList) {
+        super(fm);
+        this.fragmentArrayList = fragmentArrayList;
+        this.titleArrayList = titleArrayList;
+    }
 
     public PagerAdapter(FragmentManager fm, int tabCount){
         super(fm);
@@ -18,39 +28,16 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position){
-
-        switch (position){
-            case 0:
-                ProfileTab1 tab1 = new ProfileTab1();
-                return  tab1;
-            case 1:
-                ProfileTab2 tab2 = new ProfileTab2();
-                return tab2;
-            case 2:
-                ProfileTab3 tab3 = new ProfileTab3();
-                return tab3;
-            default:
-                return null;
-        }
-
+        return fragmentArrayList.get(position);
     }
 
     @Override
     public int getCount(){
-        return tabCount;
+        return fragmentArrayList==null?tabCount:fragmentArrayList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
-            case 0:
-                return "News Feed";
-            case 1:
-                return "Basic Info";
-            case 2:
-                return "Score Board";
-            default:
-                return super.getPageTitle(position);
-        }
+        return titleArrayList.get(position);
     }
 }
