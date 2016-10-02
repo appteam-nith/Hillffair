@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="20dp"
+    android:background="@drawable/login_background"
+    tools:context="com.appteamnith.hillffair.ThemeSelection">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:textColor="#49F8CE"
+                    android:text="Select your favourite comic theme!"
+                    android:layout_height="match_parent"
+                    android:textSize="25sp"/>
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/comic1"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic8" />
+
+                    <ImageButton
+                        android:id="@+id/comic2"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic9" />
+
+                    <ImageButton
+                        android:id="@+id/comic3"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic1" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/comic4"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic6" />
+
+                    <ImageButton
+                        android:id="@+id/comic5"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic2" />
+
+                    <ImageButton
+                        android:id="@+id/comic6"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/comic7"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic7" />
+
+                    <ImageButton
+                        android:id="@+id/comic8"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic5" />
+
+                    <ImageButton
+                        android:id="@+id/comic9"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/comic4" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>
