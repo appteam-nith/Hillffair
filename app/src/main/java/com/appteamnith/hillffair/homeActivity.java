@@ -6,6 +6,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class homeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
     private RecyclerView recyclerView;
     private homeAdapter adapter;
+    private static ViewPager mPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private static final Integer[] IMAGES_BACKDROP= {R.drawable.movies1,R.drawable.movies2,R.drawable.movies3,R.drawable.movies4,R.drawable.movies5};
+    private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +38,13 @@ public class homeActivity extends AppCompatActivity
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        for(int i=0;i<IMAGES_BACKDROP.length;i++)
+            ImagesArray.add(IMAGES_BACKDROP[i]);
+
+        mPager = (ViewPager) findViewById(R.id.backdrop);
+
+
+        mPager.setAdapter(new SlidingImage_Adapter(this,ImagesArray));
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,0,0);
@@ -44,6 +60,25 @@ public class homeActivity extends AppCompatActivity
         GridLayoutManager staggeredGridLayoutManager=new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        NUM_PAGES =IMAGES_BACKDROP.length;
+
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                mPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                mPager.post(Update);
+            }
+        }, 6000, 6000);
+
 
         // code that vary the size of each column in the row of grid layout
 
