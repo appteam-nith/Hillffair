@@ -1,10 +1,14 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+
+import com.appteamnith.hillffair.modals.CoreTeamItem;
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.adapters.CoreTeamAdapter;
 
 import java.util.ArrayList;
 

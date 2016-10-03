@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class ThemeSelection extends AppCompatActivity implements View.OnClickListener{
+import com.appteamnith.hillffair.R;
+
+public class ThemeSelectionActivity extends AppCompatActivity implements View.OnClickListener{
     // TODO: 9/13/2016 replace the icons with the comic characters
     // TODO: 9/13/2016 connect activity to prev and next activities
     
@@ -73,7 +75,7 @@ public class ThemeSelection extends AppCompatActivity implements View.OnClickLis
 
     void openNextActivity(){
         finish();
-       // Intent intent = new Intent(ThemeSelection.this,ACT_NEXT.class);
+       // Intent intent = new Intent(ThemeSelectionActivity.this,ACT_NEXT.class);
         //startActivity(intent);
     }
 

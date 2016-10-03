@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,17 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.appteamnith.hillffair.R;
+
 import java.util.List;
 
 /**
  * Created by lenovo on 9/25/2016.
  */
-public class homeAdapter extends RecyclerView.Adapter<homeAdapter.viewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
 
     private List<Integer> arrayList;
     private Context context;
 
-    public homeAdapter(List<Integer> arrayList, Context context) {
+    public HomeAdapter(List<Integer> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
