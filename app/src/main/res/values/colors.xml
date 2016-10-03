@@ -31,9 +31,6 @@
         <item>@color/dlscreen4</item>
     </array>
 
-    <color name="colorPrimary">#e54e2c</color>
-    <color name="colorPrimaryDark">#e54e2c</color>
-    <color name="colorAccent">#98f708</color>
 
     <color name="back_batman">#c6000000</color>
     <color name="back_superman">#d4fc0e0e</color>
@@ -41,4 +38,8 @@
     <color name="back_greenlantern">#c03ccf3c</color>
     <color name="back_captainamerica">#caec1f34</color>
     <color name="white">#ffffff</color>
+
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#2979FF</color>
 </resources>

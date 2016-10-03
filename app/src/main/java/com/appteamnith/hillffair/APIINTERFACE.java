@@ -20,6 +20,9 @@ public interface APIINTERFACE {
     Call<Register> register (@Field("name")String name,@Field("email")String email,@Field("pwd")String pwd,@Field("nitian")boolean nitian,@Field("rollno")String rollno,@Field("phone")String phone);
 
 
+    @FormUrlEncoded
+    @POST("newsfeed/post")
+    Call<UploadNewsFeed.UploadResponse> uploadNews(@Field("title") String title,@Field("description") String description,@Field("uId") String userId,@Field("uName") String userName);
 
 
 }

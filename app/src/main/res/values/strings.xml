@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hillffair</string>
     <string name="main">Home Page</string>
-
+    <string name="user_name">ABCDEF</string>
     <string name="skip">SKIP</string>
     <string name="gotit">GOT IT</string>
 
@@ -23,8 +23,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
-
 
 
     <!-- Strings related to login -->

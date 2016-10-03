@@ -14,13 +14,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Arrays;
 
 public class homeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private homeAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPref pref= new SharedPref(this);
@@ -28,22 +30,22 @@ public class homeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initCollapsingToolbar();
-        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this,drawer,toolbar,0,0);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         actionBarDrawerToggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        recyclerView= (RecyclerView) findViewById(R.id.list);
-        Integer photo[]={R.drawable.comic1,R.drawable.comic2,R.drawable.comic3,R.drawable.comic4,R.drawable.comic5};
-        adapter=new homeAdapter( Arrays.asList(photo),this);
-        GridLayoutManager staggeredGridLayoutManager=new GridLayoutManager(this,3);
+        recyclerView = (RecyclerView) findViewById(R.id.list);
+        Integer photo[] = {R.drawable.comic1, R.drawable.comic2, R.drawable.comic3, R.drawable.comic4, R.drawable.comic5};
+        adapter = new homeAdapter(Arrays.asList(photo), this);
+        GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -52,20 +54,27 @@ public class homeActivity extends AppCompatActivity
         staggeredGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-               if(position==0)
-                   return 2;
-                if (position==1)
-                    return 1;
-                if (position==2)
-                    return 1;
-                if (position==3)
+                if (position == 0)
                     return 2;
-                if (position==4)
+                if (position == 1)
+                    return 1;
+                if (position == 2)
+                    return 1;
+                if (position == 3)
+                    return 2;
+                if (position == 4)
                     return 1;
                 return 1;
             }
         });
-
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                if (position == 0) {
+                    startActivity(new Intent(homeActivity.this, newsfeed.class));
+                }
+            }
+        }));
     }
 
     @Override
@@ -107,7 +116,7 @@ public class homeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.profile) {
-            startActivity(new Intent(homeActivity.this,ProfileActivity.class));
+            startActivity(new Intent(homeActivity.this, ProfileActivity.class));
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -125,6 +134,7 @@ public class homeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
