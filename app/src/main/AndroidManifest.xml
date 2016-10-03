@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".Myapplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,9 +17,11 @@
         <activity android:name=".activities.SplashActivity" >
 
         </activity>
+
         <activity android:name=".activities.LoginActivity">
         </activity>
         <activity android:name=".activities.SignUpActivity" />
+
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
