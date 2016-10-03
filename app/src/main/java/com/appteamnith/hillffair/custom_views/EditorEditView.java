@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.custom_views;
 
 import android.content.Context;
 import android.util.AttributeSet;

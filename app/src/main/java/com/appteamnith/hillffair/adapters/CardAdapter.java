@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.adapters;
 
 
 import android.content.Context;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.modals.CardsData;
 import com.bumptech.glide.Glide;
 import java.util.List;
 
@@ -20,9 +23,9 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<cards_data> list_card;
+    private List<CardsData> list_card;
 
-    public CardAdapter(Context mContext, List<cards_data> list_card) {
+    public CardAdapter(Context mContext, List<CardsData> list_card) {
         this.mContext = mContext;
         this.list_card = list_card;
     }
@@ -37,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        cards_data card = list_card.get(position);
+        CardsData card = list_card.get(position);
         if(card.getUser_name()!=null&&!card.getUser_name().isEmpty())
         holder.user_name.setText(card.getUser_name());
         if(card.getUser_msg()!=null&&!card.getUser_msg().isEmpty())

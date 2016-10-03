@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.utilities.Utils;
+import com.appteamnith.hillffair.modals.Register;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -301,8 +306,6 @@ public class SignUpActivity extends AppCompatActivity {
 
                     }
                 }
-
-
             }
 
             @Override

@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.activities.LoginActivity;
+import com.appteamnith.hillffair.utilities.StartupShow;
 
 
 public class WelcomeActivity extends AppCompatActivity {

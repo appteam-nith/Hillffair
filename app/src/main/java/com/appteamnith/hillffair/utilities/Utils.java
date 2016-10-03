@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.utilities;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -77,7 +77,7 @@ public class Utils {
 
     // Created A Static Retrofit Service Method For Getting reference to the retrofit service method
 
-    public  static  APIINTERFACE getRetrofitService(){
+    public  static APIINTERFACE getRetrofitService(){
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         OkHttpClient.Builder oBuilder = new OkHttpClient.Builder();
