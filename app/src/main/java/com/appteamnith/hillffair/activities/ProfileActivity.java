@@ -127,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity{
 
 
 
-    public class ProfileBasicDetailModel{
+    class ProfileBasicDetailModel{
 
         @SerializedName("_id")
         private String _id;
