@@ -3,7 +3,7 @@
     package="com.appteamnith.hillffair">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ThemeSelection" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".SplashActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,15 +25,17 @@
         <activity
             android:name=".homeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".newsfeed"
             android:label="NewsFeed"
             android:parentActivityName=".homeActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".UploadNewsFeed"
-            android:windowSoftInputMode="stateVisible|adjustResize"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".UploadNewsFeed"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".CoreTeamActivity"></activity>
     </application>
 
 </manifest>
