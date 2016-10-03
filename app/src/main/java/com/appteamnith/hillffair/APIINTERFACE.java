@@ -3,7 +3,9 @@ package com.appteamnith.hillffair;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by Jatin on 9/11/2016.
@@ -20,7 +22,8 @@ public interface APIINTERFACE {
     Call<Register> register (@Field("name")String name,@Field("email")String email,@Field("pwd")String pwd,@Field("nitian")boolean nitian,@Field("rollno")String rollno,@Field("phone")String phone);
 
 
-
+    @GET("newsfedd/all")
+    Call<newsfeed_model> cards_data (@Query("from") String from);
 
 }
 

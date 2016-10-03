@@ -1,10 +1,12 @@
 package com.appteamnith.hillffair;
 
+import com.google.gson.annotations.SerializedName;
 /**
  * Created by parvesh_dhull on 30/9/16.
  */
 
 public class cards_data {
+
 
     private String user_name ;
     private String user_msg;

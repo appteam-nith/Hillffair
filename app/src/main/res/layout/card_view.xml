@@ -50,7 +50,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="dgsdgsdggdafgdfaggaggaggaggggdagaggdfgfgfggdgdagdaggdgfgadgdgsgsdgsfgsfggsgsg"
+                android:id="@+id/post_title"
+
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:hint="Title"
+
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Description"
                 android:textColor="#000"
                 android:paddingTop="13dp"
                 android:id="@+id/user_msg"
