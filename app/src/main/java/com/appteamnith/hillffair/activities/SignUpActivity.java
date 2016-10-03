@@ -47,6 +47,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
@@ -113,9 +115,8 @@ public class SignUpActivity extends AppCompatActivity {
                                                  isemail = true;
                                              } else {
 
-                                                 //      emailTextInputLayout.setError("PLEASE ENTER THE EMAIL");
+                                                      emailTextInputLayout.setError("PLEASE ENTER THE EMAIL");
 
-                                                 Email.setError("PLEASE ENTER THE EMAIL");
                                                  isemail = false;
                                              }
                                          }
@@ -140,9 +141,9 @@ public class SignUpActivity extends AppCompatActivity {
                     confirmTextInputLayout.setErrorEnabled(false);
                     ispassword = true;
                 } else {
-                    //    confirmTextInputLayout.setError("PASSWORD DOES NOT MATCH");
+                    confirmTextInputLayout.setError("PASSWORD DOES NOT MATCH");
                     ispassword = false;
-                    ConfirmPassword.setError("PASSWORD DOES NOT MATCH");
+
                 }
             }
         });
@@ -166,9 +167,8 @@ public class SignUpActivity extends AppCompatActivity {
                     passwordTextInputLayout.setErrorEnabled(false);
                 } else {
                     passwordTextInputLayout.setErrorEnabled(true);
-                    //    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
+                    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
 
-                    Password.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
                 }
             }
         });
@@ -191,9 +191,8 @@ public class SignUpActivity extends AppCompatActivity {
                     phonenoTextInputLayout.setErrorEnabled(false);
                     isphone = true;
                 } else {
-                    //phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+                    phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
                     isphone = false;
-                    Phoneno.setError("NOT VALID PHONE NUMBER");
                 }
             }
         });
@@ -223,11 +222,10 @@ public class SignUpActivity extends AppCompatActivity {
                     rollnoTextInputLayout.setErrorEnabled(false);
                     isValidRollNo = true;
                 } else {
-                    //  rollnoTextInputLayout.setErrorEnabled(true);
+                    rollnoTextInputLayout.setErrorEnabled(true);
                     isValidRollNo = false;
-                    //  rollnoTextInputLayout.setError("Enter Valid RollNo");
+                    rollnoTextInputLayout.setError("Enter Valid RollNo");
 
-                    Rollno.setError("Enter Valid RollNo");
                 }
 
             }

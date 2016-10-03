@@ -29,6 +29,8 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initCollapsingToolbar();
