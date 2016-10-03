@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.appteamnith.hillffair.activities.NewsfeedActivity;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 import com.appteamnith.hillffair.adapters.HomeAdapter;

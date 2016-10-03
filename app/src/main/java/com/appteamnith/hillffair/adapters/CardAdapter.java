@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.modals.CardsData;
+import com.appteamnith.hillffair.modals.newsfeed_model2;
 import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,11 +26,21 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<CardsData> list_card;
 
-    public CardAdapter(Context mContext, List<CardsData> list_card) {
+    private ArrayList<newsfeed_model2> list_card=new ArrayList<>();
+
+
+
+
+    public CardAdapter(Context mContext) {
+
         this.mContext = mContext;
-        this.list_card = list_card;
+    }
+
+
+    public  void  refresh(ArrayList<newsfeed_model2> list){
+        list_card=list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -40,21 +53,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        CardsData card = list_card.get(position);
-        if(card.getUser_name()!=null&&!card.getUser_name().isEmpty())
-        holder.user_name.setText(card.getUser_name());
-        if(card.getUser_msg()!=null&&!card.getUser_msg().isEmpty())
-        holder.user_msg.setText(card.getUser_msg());
-        if(card.getNo_of_likes()!=0)
-        holder.no_of_likes.setText(""+card.getNo_of_likes());
+
+        newsfeed_model2 card = list_card.get(position);
+        if(card.getUsername()!=null&&!card.getUsername().isEmpty())
+        holder.user_name.setText(card.getUsername());
+        if(card.getDescription()!=null&&!card.getDescription().isEmpty())
+        holder.user_msg.setText(card.getDescription());
+        if(card.getTitle()!=null&&!card.getTitle().isEmpty())
+            holder.title.setText(card.getTitle());
+ /*       if(card.getNo_of_likes()!=0)
+        holder.no_of_likes.setText(""+card.getNo_of_likes());*/
+        /*
+
         if(card.getPost_date()!=null&&!card.getPost_date().isEmpty())
         holder.post_date.setText(card.getPost_date());
-        if(card.getPost_img()!=null&&!card.getUser_name().isEmpty())
-        Glide.with(mContext).load(card.getPost_img()).into(holder.post_img);
+        */
+        if(card.getPhoto()!=null&&!card.getPhoto().isEmpty())
+        Glide.with(mContext).load(card.getPhoto()).into(holder.post_img);
         else
         holder.post_img.setImageResource(R.drawable.photo1);
 
-        holder.lyk_status.setLiked(card.getLyk_status());
+       /* holder.lyk_status.setLiked(card.getLyk_status());*/
     }
 
     @Override
@@ -63,7 +82,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView user_name, no_of_likes, user_msg, post_date;
+        public TextView user_name, no_of_likes, user_msg, post_date ,title;
         public ImageView post_img;
         public com.like.LikeButton lyk_status;
 
@@ -75,6 +94,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             post_date = (TextView) view.findViewById(R.id.post_date);
             user_msg = (TextView) view.findViewById(R.id.user_msg);
             lyk_status = (com.like.LikeButton) view.findViewById(R.id.lyk_status);
+            title = (TextView)view.findViewById(R.id.post_title);
+
         }
     }
 }
