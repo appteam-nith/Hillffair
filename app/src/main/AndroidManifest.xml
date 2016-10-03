@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
+        <activity  android:theme="@style/AppTheme" android:name=".SignUpActivity" />
         <activity
             android:name=".homeActivity"
             android:label="@string/title_activity_home"
