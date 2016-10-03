@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,13 +14,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.custom_views.EditorView;
+import com.appteamnith.hillffair.utilities.Utils;
 import com.google.gson.annotations.SerializedName;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UploadNewsFeed extends AppCompatActivity {
+public class UploadNewsFeedActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final String TAG = "Upload News Feed";
     private EditorView editorView;
@@ -81,7 +84,7 @@ public class UploadNewsFeed extends AppCompatActivity {
 
     // class for the Uploading News Respons
 
-    class UploadResponse {
+    public class UploadResponse {
 
         @SerializedName("id")
         private String id;
@@ -133,10 +136,10 @@ public class UploadNewsFeed extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 UploadResponse result = response.body();
                 if (result.getSuccess()) {
-                    Toast.makeText(UploadNewsFeed.this, "Post Successfully Uploaded", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UploadNewsFeedActivity.this, "Post Successfully Uploaded", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Toast.makeText(UploadNewsFeed.this, "Error While Uploading Please Retry", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UploadNewsFeedActivity.this, "Error While Uploading Please Retry", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

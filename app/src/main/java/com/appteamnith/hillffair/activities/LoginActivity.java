@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.modals.Login;
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.utilities.Utils;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -138,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                 Login mLoginObject = response.body();
                 boolean returnedResponse = mLoginObject.success;
                 if(returnedResponse){
-                    startActivity(new Intent(LoginActivity.this,homeActivity.class));
+                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                 }
                 else {
                     String error = mLoginObject.getError();
@@ -147,9 +152,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     loadToast.error();
                 }
-
-
-
 
             }
 

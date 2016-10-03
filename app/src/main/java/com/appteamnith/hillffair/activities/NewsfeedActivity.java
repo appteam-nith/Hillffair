@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 
 import android.content.Intent;
@@ -11,14 +11,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.adapters.CardAdapter;
+import com.appteamnith.hillffair.modals.CardsData;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class newsfeed extends AppCompatActivity {
+public class NewsfeedActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CardAdapter adapter;
-    private List<cards_data> card_data;
+    private List<CardsData> card_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class newsfeed extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(newsfeed.this,UploadNewsFeed.class));
+                startActivity(new Intent(NewsfeedActivity.this,UploadNewsFeedActivity.class));
             }
         });
 
@@ -61,23 +65,23 @@ public class newsfeed extends AppCompatActivity {
     private void prepareCards() {
 
 
-        cards_data a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+        CardsData a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-        a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+        a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd",null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd",null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
-         a = new cards_data("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
+         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
         card_data.add(a);
 
 
