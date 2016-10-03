@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.modals;
 /**
  * Created by Akatsuki on 3/23/2016.
  */
