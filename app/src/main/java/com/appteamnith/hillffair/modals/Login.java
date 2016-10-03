@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.modals;
 
 import com.google.gson.annotations.SerializedName;
 

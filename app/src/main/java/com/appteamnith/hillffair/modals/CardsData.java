@@ -1,10 +1,10 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.modals;
 
 /**
  * Created by parvesh_dhull on 30/9/16.
  */
 
-public class cards_data {
+public class CardsData {
 
     private String user_name ;
     private String user_msg;
@@ -13,10 +13,10 @@ public class cards_data {
     private int no_of_likes;
     private String post_img;
 
-    public cards_data() {
+    public CardsData() {
     }
 
-    public cards_data(String user_name, String post_img,String user_msg,boolean lyk_status, int no_of_likes,String post_date) {
+    public CardsData(String user_name, String post_img, String user_msg, boolean lyk_status, int no_of_likes, String post_date) {
         this.user_name = user_name;
         this.post_img = post_img;
         this.user_msg = user_msg;

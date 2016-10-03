@@ -8,7 +8,7 @@
     android:paddingRight="10dp"
     android:paddingTop="20dp"
     android:background="@drawable/login_background"
-    tools:context="com.appteamnith.hillffair.ThemeSelection">
+    tools:context="com.appteamnith.hillffair.activities.ThemeSelectionActivity">
 
     <ScrollView
         android:layout_width="match_parent"

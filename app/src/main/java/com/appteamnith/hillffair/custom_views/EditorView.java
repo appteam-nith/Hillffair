@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.custom_views;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import com.appteamnith.hillffair.R;
 
 public class EditorView extends ScrollView {
 
@@ -199,10 +201,8 @@ public class EditorView extends ScrollView {
         return itemData;
     }
 
-    class AddTopic{
-        String title;
-        String detail;
-        String imageUrl;
+    public class AddTopic{
+        public String title,detail,imageUrl;
 
         public AddTopic(String title, String detail) {
             this.title = title;
