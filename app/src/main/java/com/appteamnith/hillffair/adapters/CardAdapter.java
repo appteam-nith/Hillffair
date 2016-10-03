@@ -13,6 +13,8 @@ import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.modals.CardsData;
 import com.appteamnith.hillffair.modals.newsfeed_model2;
 import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,12 +27,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     private Context mContext;
 
-    private List<newsfeed_model2> list_card;
+    private ArrayList<newsfeed_model2> list_card=new ArrayList<>();
 
-    public CardAdapter(Context mContext, List<newsfeed_model2> list_card) {
+
+
+
+    public CardAdapter(Context mContext) {
 
         this.mContext = mContext;
-        this.list_card = list_card;
+    }
+
+
+    public  void  refresh(ArrayList<newsfeed_model2> list){
+        list_card=list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -45,12 +55,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
         newsfeed_model2 card = list_card.get(position);
-        if(card.user.getName()!=null&&!card.user.getName().isEmpty())
-        holder.user_name.setText(card.user.getName());
+        if(card.getUsername()!=null&&!card.getUsername().isEmpty())
+        holder.user_name.setText(card.getUsername());
         if(card.getDescription()!=null&&!card.getDescription().isEmpty())
         holder.user_msg.setText(card.getDescription());
         if(card.getTitle()!=null&&!card.getTitle().isEmpty())
-            holder.user_msg.setText(card.getTitle());
+            holder.title.setText(card.getTitle());
  /*       if(card.getNo_of_likes()!=0)
         holder.no_of_likes.setText(""+card.getNo_of_likes());*/
         /*

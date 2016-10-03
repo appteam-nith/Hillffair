@@ -18,7 +18,8 @@ public class CardsData {
     public CardsData() {
     }
 
-    public CardsData(String user_name, String post_img, String user_msg, boolean lyk_status, int no_of_likes, String post_date) {
+    public CardsData(String user_name, String post_img, String user_msg,
+                     boolean lyk_status, int no_of_likes, String post_date) {
         this.user_name = user_name;
         this.post_img = post_img;
         this.user_msg = user_msg;

@@ -15,15 +15,21 @@ public class newsfeed_model2 {
     private String photo;
     @SerializedName("description")
     private String description;
-    @SerializedName("user")
-    public user_model user;
 
-    public newsfeed_model2(String _id, String title, String photo, String description, user_model user) {
+    @SerializedName("uId")
+    private String userid;
+
+    @SerializedName("uName")
+    private String username;
+
+
+    public newsfeed_model2(String _id, String title, String photo, String description, String userid, String username) {
         this._id = _id;
         this.title = title;
         this.photo = photo;
         this.description = description;
-        this.user = user;
+        this.userid = userid;
+        this.username = username;
     }
 
     public String get_id() {
@@ -58,11 +64,19 @@ public class newsfeed_model2 {
         this.description = description;
     }
 
-    public user_model getUser() {
-        return user;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUser(user_model user) {
-        this.user = user;
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
