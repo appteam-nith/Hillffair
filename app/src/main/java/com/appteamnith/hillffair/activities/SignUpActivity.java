@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.appteamnith.hillffair.SharedPref;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.utilities.Utils;

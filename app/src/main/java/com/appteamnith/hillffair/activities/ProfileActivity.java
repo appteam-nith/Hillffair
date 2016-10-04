@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appteamnith.hillffair.SharedPref;
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
@@ -43,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        SharedPref pref= new SharedPref(this);
+       SharedPref pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);

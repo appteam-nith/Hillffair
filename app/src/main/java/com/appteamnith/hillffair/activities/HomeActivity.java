@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.appteamnith.hillffair.SharedPref;
 import com.appteamnith.hillffair.activities.NewsfeedActivity;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
@@ -30,7 +31,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPref pref= new SharedPref(this);
+       SharedPref pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
