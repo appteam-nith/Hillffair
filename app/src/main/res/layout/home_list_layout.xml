@@ -6,6 +6,7 @@
     android:layout_margin="5dp"
     android:elevation="8dp"
     card_view:cardCornerRadius="3dp"
+    android:background="@drawable/selector"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <ImageView
     android:id="@+id/home_list_image"
