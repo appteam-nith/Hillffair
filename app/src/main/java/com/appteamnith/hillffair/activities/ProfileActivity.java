@@ -17,11 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.SharedPref;
+import com.appteamnith.hillffair.adapters.PagerAdapter;
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
-import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.adapters.PagerAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;

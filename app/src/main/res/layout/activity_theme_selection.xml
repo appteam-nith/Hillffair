@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="20dp"
-    android:background="@drawable/login_background"
-    tools:context="com.appteamnith.hillffair.activities.ThemeSelectionActivity">
-
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp">
     <ScrollView
         android:layout_width="match_parent"
         android:scrollbars="none"
@@ -26,26 +21,22 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:textColor="#49F8CE"
+                    android:textColor="#124d3e"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Select your favourite comic theme!"
                     android:layout_height="match_parent"
-                    android:textSize="25sp"/>
+                    android:textSize="30sp"/>
                 <LinearLayout
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/comic1"
-                        android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/comic8" />
+
 
                     <ImageButton
-                        android:id="@+id/comic2"
+                        android:id="@+id/batman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
@@ -53,7 +44,7 @@
                         android:src="@drawable/comic9" />
 
                     <ImageButton
-                        android:id="@+id/comic3"
+                        android:id="@+id/flash"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
@@ -65,19 +56,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="25dp"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/comic4"
-                        android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/comic6" />
 
                     <ImageButton
-                        android:id="@+id/comic5"
+                        android:id="@+id/superman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
@@ -85,7 +69,7 @@
                         android:src="@drawable/comic2" />
 
                     <ImageButton
-                        android:id="@+id/comic6"
+                        android:id="@+id/captain"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
@@ -97,27 +81,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="25dp"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/comic7"
-                        android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/comic7" />
+
 
                     <ImageButton
-                        android:id="@+id/comic8"
+                        android:id="@+id/wonderwoman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/comic5" />
 
+
                     <ImageButton
-                        android:id="@+id/comic9"
+                        android:id="@+id/hulk"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
@@ -130,5 +109,4 @@
 
 
     </ScrollView>
-
-</RelativeLayout>
+</LinearLayout>

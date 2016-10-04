@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.activities.LoginActivity;
+import com.appteamnith.hillffair.SharedPref;
 import com.appteamnith.hillffair.utilities.StartupShow;
 
 
@@ -33,12 +33,15 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip;
     private StartupShow prefManager;
 
+    private SharedPref sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sharedPref=new SharedPref(this);
         prefManager = new StartupShow(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (!sharedPref.launchStartUpShow()) {
             launchHomeScreen();
             finish();
         }
@@ -101,8 +104,20 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(this, LoginActivity.class));
+        sharedPref.setStartUpShow(false);
+        if(sharedPref.getUserId()!=null){
+            startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
+        }
+        else{
+            if(sharedPref.getThemeId()==0){
+                startActivity(new Intent(this,ThemeSelectionActivity.class));
+            }
+            else {
+                startActivity(new Intent(this,LoginActivity.class));
+            }
+
+        }
+
         finish();
     }
 

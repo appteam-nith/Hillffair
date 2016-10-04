@@ -17,8 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
+import com.appteamnith.hillffair.SharedPref;
 import com.appteamnith.hillffair.adapters.HomeAdapter;
+import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 
 import java.util.Arrays;
 
