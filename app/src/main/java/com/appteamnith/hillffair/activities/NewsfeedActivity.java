@@ -10,25 +10,36 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 import com.appteamnith.hillffair.adapters.CardAdapter;
 import com.appteamnith.hillffair.modals.CardsData;
+import com.appteamnith.hillffair.modals.newsfeed_model;
+import com.appteamnith.hillffair.modals.newsfeed_model2;
+import com.appteamnith.hillffair.utilities.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NewsfeedActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CardAdapter adapter;
-    private List<CardsData> card_data;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.newsfeed);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        progressBar= (ProgressBar) findViewById(R.id.progress);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
 
@@ -36,15 +47,13 @@ public class NewsfeedActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        card_data = new ArrayList<>();
-        adapter = new CardAdapter(this, card_data);
+        adapter = new CardAdapter(this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
 
-        prepareCards();
-
+  showData("1");
         // Button to upload the NewsFeed
 
         FloatingActionButton upload= (FloatingActionButton) findViewById(R.id.upload_btn);
@@ -62,30 +71,26 @@ public class NewsfeedActivity extends AppCompatActivity {
     /**
      * Adding few albums for testing
      */
-    private void prepareCards() {
 
+    private void  showData(String from){
 
-        CardsData a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-        a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd",null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
-         a = new CardsData("abcd", null,"fdsfsdfasdfSDffsdfsdfsdfsdfsadfsadfsdfsdfsadfsadfsdfsadfsagdafgdfagdfagdafgadfg",true, 100,"29/09/2016");
-        card_data.add(a);
+        Call<newsfeed_model> newsfeedResponse= Utils.getRetrofitService().getAllNews(from);
+        newsfeedResponse.enqueue(new Callback<newsfeed_model>() {
+            @Override
+            public void onResponse(Call<newsfeed_model> call, Response<newsfeed_model> response) {
+                recyclerView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+                if(response!=null){
+                    adapter.refresh(response.body().getFeed());
+                }
+            }
 
-
-
-        adapter.notifyDataSetChanged();
+            @Override
+            public void onFailure(Call<newsfeed_model> call, Throwable t) {
+                   t.printStackTrace();
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
+
 }

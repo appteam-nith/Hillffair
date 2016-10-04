@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.modals.ClubEvent;
 
 import java.util.ArrayList;
 

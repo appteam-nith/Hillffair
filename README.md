@@ -26,6 +26,8 @@ This is the official Android Application of the Cultural Fest of NIT Hamirpur **
 
 3. **IMPORTANT** :- Before sending a **Pull Request** make sure that your forked repository is in sync with the base repository [Click Here](https://github.com/appteam-nith/festnimbus/wiki/Stay-in-Sync-with-Base-Repository) .
 
+Note: Also while sending Pull Request make sure all naming conventions are followed, files must be present in corresponding package.
+
 ### Libraries used
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit](https://github.com/square/retrofit)
