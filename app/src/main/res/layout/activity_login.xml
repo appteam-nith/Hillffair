@@ -50,13 +50,16 @@
             android:orientation="vertical"
             android:paddingRight="20dp"
             android:paddingTop="30dp"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+
+
+            >
 
 
 
             <EditText
-                android:hint="email"
                 android:textColor="#000"
+                android:hint="email"
                 android:singleLine="true"
                 android:id="@+id/email"
                 android:textSize="20dp"
@@ -76,6 +79,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:padding="10dp"
+                android:textColor="#000"
                 android:background="@drawable/loginbox"
                 />
 
