@@ -34,6 +34,8 @@
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" >
+
+
         </activity>
 
         <activity

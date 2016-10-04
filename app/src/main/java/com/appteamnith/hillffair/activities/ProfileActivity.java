@@ -20,8 +20,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD
+import com.appteamnith.hillffair.SharedPref;
+=======
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.PagerAdapter;
+>>>>>>> 3393835656416675a70f50b1c31366701f0ec334
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
@@ -49,6 +53,8 @@ public class ProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
