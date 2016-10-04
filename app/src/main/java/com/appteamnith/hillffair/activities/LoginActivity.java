@@ -12,13 +12,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.modals.Login;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.modals.Login;
+import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.utilities.Utils;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -31,7 +31,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     ImageView logo;
-    ScrollView layout;
+    LinearLayout layout;
     private Button login;
     private LoadToast loadToast;
     private EditText mEmailView;
@@ -42,8 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPref pref= new SharedPref(this);
-        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -53,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.registar_Btn_login);
 
         logo = (ImageView) findViewById(R.id.logo);
-        layout = (ScrollView) findViewById(R.id.layout);
+        layout = (LinearLayout) findViewById(R.id.login_login);
         layout.setVisibility(View.INVISIBLE);
         final Animation bounceLogo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.loginlogo_anim);
         final Animation layoutFade = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
