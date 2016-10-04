@@ -16,9 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.appteamnith.hillffair.utilities.APIINTERFACE;
-import com.appteamnith.hillffair.modals.Login;
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
+import com.appteamnith.hillffair.modals.Login;
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -39,9 +40,12 @@ public class LoginActivity extends AppCompatActivity {
     View focusView = null;
     String email;
     String password;
-
+    SharedPref pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -143,7 +147,9 @@ public class LoginActivity extends AppCompatActivity {
                 loadToast.success();
                 Login mLoginObject = response.body();
                 boolean returnedResponse = mLoginObject.success;
+
                 if(returnedResponse){
+              //      pref.setUserId(mLoginObject.getUserId());
                     startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                 }
                 else {
