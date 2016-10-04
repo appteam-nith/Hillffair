@@ -33,7 +33,7 @@ public class SharedPref {
     }//if true launch ==> its first time
 
     public boolean launchStartUpShow(){
-        return prefs.getBoolean("startupshow", false);
+        return prefs.getBoolean("startupshow", true);
     }//if true ==>its first time
 
 
@@ -52,5 +52,15 @@ public class SharedPref {
         editor.putBoolean("startupshow", val);
         editor.commit();
     }//set true if its first time for next time set it false
+
+    public String getUserId() {
+        return prefs.getString("userid",null);
+    }
+
+    public void setUserId(String userId) {
+        editor.putString("userid", userId);
+        editor.commit();
+    }
+
 
 }
