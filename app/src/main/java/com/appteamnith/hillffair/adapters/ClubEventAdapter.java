@@ -1,100 +1,71 @@
 package com.appteamnith.hillffair.adapters;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.modals.ClubEvent;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
 /**
- * Created by Akatsuki on 3/23/2016.
+ * Created by Sahil on 3/23/2016.
  */
 public class ClubEventAdapter extends RecyclerView.Adapter<ClubEventAdapter.EventViewHolder> {
 
-    ArrayList<ClubEvent> clubEventArrayList = new ArrayList<ClubEvent>();
-    Context context;
+    private ArrayList<ClubEvent> clubEventArrayList = new ArrayList<ClubEvent>();
+    private Context context;
 
-    public ClubEventAdapter(ArrayList<ClubEvent> clubEventArrayList, Context context) {
+    public ClubEventAdapter(Context context) {
         this.context = context;
+    }
+
+    public void refresh(ArrayList<ClubEvent> clubEventArrayList) {
         this.clubEventArrayList = clubEventArrayList;
+        notifyDataSetChanged();
+
     }
 
     @Override
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventcard_view_layout, parent, false);
-        EventViewHolder eventViewHolder = new EventViewHolder(view, clubEventArrayList, context);
+        EventViewHolder eventViewHolder = new EventViewHolder(view);
         return eventViewHolder;
     }
 
     @Override
     public void onBindViewHolder(EventViewHolder holder, int position) {
+        ClubEvent clubEvent=clubEventArrayList.get(position);
+        if(clubEvent.getName()!=null&&!clubEvent.getName().isEmpty()){
+            holder.club_name.setText(clubEvent.getName());
+        }
+        if(clubEvent.getImage_id()!=null&&!clubEvent.getImage_id().isEmpty()){
+            Glide.with(context).load(clubEvent.getImage_id()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person).into(holder.club_image);
+        }
 
-        int index=2*position;
-        ClubEvent clubEvent;
-        Log.e("index: "+index,"position: "+position);
-        if(index>=clubEventArrayList.size())return;
-        clubEvent = clubEventArrayList.get(index);
-        holder.clubImage1.setImageResource(clubEvent.getImage_id());
-        holder.clubName1.setText(clubEvent.getName());
-
-        Log.e("index: "+(1+index),"position: "+position);
-        if(index+1>=clubEventArrayList.size())return;
-        clubEvent = clubEventArrayList.get(index+1);
-        holder.clubImage2.setImageResource(clubEvent.getImage_id());
-        holder.clubName2.setText(clubEvent.getName());
     }
 
     @Override
     public int getItemCount() {
-        return clubEventArrayList.size()/2;
+        return clubEventArrayList.size();
     }
 
-    public static class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView clubImage1, clubImage2;
-        TextView clubName1, clubName2;
-        CardView card1,card2;
-        Context context;
-        ArrayList<ClubEvent> clubEventArrayList;
+    public static class EventViewHolder extends RecyclerView.ViewHolder {
 
-        public EventViewHolder(View view, ArrayList<ClubEvent> clubEventArrayList, Context context) {
+        ImageView club_image;
+        TextView club_name;
+
+        public EventViewHolder(View view) {
             super(view);
-
-            this.clubEventArrayList = clubEventArrayList;
-            this.context = context;
-            clubImage1 = (ImageView) view.findViewById(R.id.club_image1);
-            clubName1 = (TextView) view.findViewById(R.id.club_name1);
-            clubImage2 = (ImageView) view.findViewById(R.id.club_image2);
-            clubName2 = (TextView) view.findViewById(R.id.club_name2);
-            card1=(CardView)view.findViewById(R.id.card1);
-            card2=(CardView)view.findViewById(R.id.card2);
-            //view.setOnClickListener(this);
-            card1.setOnClickListener(this);
-            card2.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-           //open next act
-            if(v.getId()== R.id.card1){
-            ClubEvent clubEvent= clubEventArrayList.get(2*getAdapterPosition());
-                Toast.makeText(context,"CARD1",Toast.LENGTH_SHORT).show();
-                //next act
-            }
-            if(v.getId()== R.id.card2){
-                ClubEvent clubEvent= clubEventArrayList.get(2*getAdapterPosition()+1);
-                Toast.makeText(context,"CARD2",Toast.LENGTH_SHORT).show();
-                //next act
-            }
+         club_image= (ImageView) view.findViewById(R.id.club_image);
+            club_name= (TextView) view.findViewById(R.id.club_name);
         }
     }
 }

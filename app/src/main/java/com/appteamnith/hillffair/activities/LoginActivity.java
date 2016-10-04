@@ -13,9 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
-
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
@@ -151,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (mLoginObject != null && response.isSuccess()) {
                     boolean returnedResponse = mLoginObject.success;
                     if (returnedResponse) {
+                        pref.setUserId(mLoginObject.getId());
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         String error = mLoginObject.getError();

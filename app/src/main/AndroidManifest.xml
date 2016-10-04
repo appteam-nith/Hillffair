@@ -49,6 +49,10 @@
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <activity android:name=".activities.CoreTeamActivity"></activity>
+        <activity android:name=".activities.EventActivity"
+            android:label="Clubs"
+            android:parentActivityName=".activities.HomeActivity"
+            />
 
     </application>
 
