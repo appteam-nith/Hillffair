@@ -6,7 +6,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -290,21 +289,28 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
                 Register register = response.body();
-                if(register.getId()!=null&&!register.getId().isEmpty()){
-                    Log.d(TAG,""+register.getId());
-                }
-                if (register.isSuccess()){
-                    Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
-                    loadToast.success();
-                    startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
-                }
-                else {
-                    loadToast.error();
-                    if(register.getError()!=null&&!register.getError().isEmpty()){
-                        Toast.makeText(SignUpActivity.this,register.getError(),Toast.LENGTH_SHORT).show();
+                int status_code=response.code();
+               if(register!=null&&response.isSuccess()){
+                   if (register.isSuccess()){
+                       Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
+                       loadToast.success();
+                       startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                   }
+                   else {
+                       loadToast.error();
+                       if(register.getError()!=null&&!register.getError().isEmpty()){
+                           Toast.makeText(SignUpActivity.this,register.getError(),Toast.LENGTH_SHORT).show();
 
-                    }
-                }
+                       }
+                   }
+               }
+                else  {
+                   loadToast.error();
+                  if(status_code==503){
+                      Toast.makeText(SignUpActivity.this,"Server Down",Toast.LENGTH_SHORT).show();
+                  }
+
+               }
             }
 
             @Override

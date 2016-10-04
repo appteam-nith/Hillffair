@@ -135,12 +135,20 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
             public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {
                 progressBar.setVisibility(View.GONE);
                 UploadResponse result = response.body();
-                if (result.getSuccess()) {
-                    Toast.makeText(UploadNewsFeedActivity.this, "Post Successfully Uploaded", Toast.LENGTH_LONG).show();
-                    finish();
-                } else {
-                    Toast.makeText(UploadNewsFeedActivity.this, "Error While Uploading Please Retry", Toast.LENGTH_LONG).show();
+                int status_code=response.code();
+                if(result!=null){
+                    if (result.getSuccess()) {
+                        Toast.makeText(UploadNewsFeedActivity.this, "Post Successfully Uploaded", Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        Toast.makeText(UploadNewsFeedActivity.this, "Error While Uploading Please Retry", Toast.LENGTH_LONG).show();
+                    }}
+                else {
+                    if(status_code==503){
+                        Toast.makeText(UploadNewsFeedActivity.this,"Server Done",Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
 
             @Override

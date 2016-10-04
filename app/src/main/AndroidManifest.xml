@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <activity android:name=".activities.ThemeSelectionActivity" />
 
         <activity android:name=".activities.WelcomeActivity" />
@@ -20,11 +21,8 @@
         <activity android:name=".activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </intent-filter>
         </activity>
-
         <activity android:name=".activities.LoginActivity">
         </activity>
 
@@ -35,7 +33,6 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" >
         </activity>
-
         <activity
             android:name=".activities.NewsfeedActivity"
             android:label="NewsFeed"

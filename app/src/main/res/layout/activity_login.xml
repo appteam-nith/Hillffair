@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/login_background"
+    android:background=""
     >
 
     <ProgressBar
@@ -116,9 +116,9 @@
                     android:text="Login"
                     android:id="@+id/registar_Btn_login"
                     android:textStyle="bold"
-                    android:textColor="#e95d06"
+                    android:textColor="#FFF"
                     android:textAppearance="@android:style/TextAppearance.Large"
-                    android:background="@drawable/button_bg"
+                    android:background="#ff00ff"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     />

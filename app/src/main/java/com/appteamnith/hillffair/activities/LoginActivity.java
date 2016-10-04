@@ -144,16 +144,23 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Login> call, Response<Login> response) {
                 loadToast.success();
                 Login mLoginObject = response.body();
-                boolean returnedResponse = mLoginObject.success;
-                if(returnedResponse){
-                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
-                }
-                else {
-                    String error = mLoginObject.getError();
-                    if (error != null && !error.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                int status_code = response.code();
+                if (mLoginObject != null && response.isSuccess()) {
+                    boolean returnedResponse = mLoginObject.success;
+                    if (returnedResponse) {
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    } else {
+                        String error = mLoginObject.getError();
+                        if (error != null && !error.isEmpty()) {
+                            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                        }
+                        loadToast.error();
                     }
+                } else {
                     loadToast.error();
+                    if (status_code == 503) {
+                        Toast.makeText(LoginActivity.this, "Server Down", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
