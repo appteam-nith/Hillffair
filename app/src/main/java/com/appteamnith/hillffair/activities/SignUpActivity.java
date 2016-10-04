@@ -296,7 +296,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (register.isSuccess()){
                     Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
                     loadToast.success();
-                    startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                    startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
                 }
                 else {
                     loadToast.error();
