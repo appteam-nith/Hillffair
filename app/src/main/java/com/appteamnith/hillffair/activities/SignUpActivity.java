@@ -17,11 +17,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.appteamnith.hillffair.SharedPref;
+
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
+
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.utilities.Utils;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.modals.Register;
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.utilities.Utils;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -296,7 +299,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (register.isSuccess()){
                     Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
                     loadToast.success();
-                    startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                    startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
                 }
                 else {
                     loadToast.error();

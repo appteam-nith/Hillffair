@@ -46,9 +46,15 @@
         <item name="colorAccent">#ffdd00</item>
         <item name="android:windowBackground">@color/back_wonderwoman</item>
     </style>
-    <style name="greenlantern" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="hulk" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#51744b</item>
         <item name="colorPrimaryDark">#187b25</item>
+        <item name="colorAccent">#96b909</item>
+        <item name="android:windowBackground">@color/back_greenlantern</item>
+    </style>
+    <style name="flash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#4f1751</item>
+        <item name="colorPrimaryDark">#7b182d</item>
         <item name="colorAccent">#96b909</item>
         <item name="android:windowBackground">@color/back_greenlantern</item>
     </style>

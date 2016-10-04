@@ -1,15 +1,18 @@
 package com.appteamnith.hillffair.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -17,19 +20,25 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import com.appteamnith.hillffair.SharedPref;
+=======
+import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.adapters.PagerAdapter;
+>>>>>>> 3393835656416675a70f50b1c31366701f0ec334
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
-import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.adapters.PagerAdapter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity{
 
     private int PICK_IMAGE_REQUEST = 1;
+    Uri uri;
+    private static final int CAMERA_REQUEST_CODE=1;
     ImageView open_gallery;
     ImageButton profile_pic;
     ImageButton edit_btn;
@@ -44,8 +53,8 @@ public class ProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-       SharedPref pref= new SharedPref(this);
-        setTheme(pref.getThemeId());
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
@@ -86,10 +95,28 @@ public class ProfileActivity extends AppCompatActivity{
 
 
     public void openGallery(View v){
+        new AlertDialog.Builder(this)
+                .setTitle("Complete using...")
+                .setPositiveButton("Camera", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        File imageFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "profile_pic.jpg");
+                        uri = Uri.fromFile(imageFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+                    }
+                })
+                .setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        intent.setType("image/*");
+                        startActivityForResult(Intent.createChooser(intent, "Select Profile Picture"), PICK_IMAGE_REQUEST);    }
+                })
+                .show();
 
-        Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent, "Select Profile Picture"), PICK_IMAGE_REQUEST);
+
 
     }
 
@@ -97,12 +124,12 @@ public class ProfileActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
-            Uri uri = data.getData();
+        if ( resultCode == RESULT_OK && data != null && data.getData() != null) {
+if(requestCode==PICK_IMAGE_REQUEST){
+            Uri uri2 = data.getData();
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri2);
                 ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
                 RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
                 roundedBitmapDrawable.setCornerRadius(2.0f);
@@ -112,6 +139,23 @@ public class ProfileActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
         }
+            else if(requestCode==CAMERA_REQUEST_CODE){
+
+    try {
+      Bitmap  bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+        ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
+        RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+        roundedBitmapDrawable.setCornerRadius(2.0f);
+        roundedBitmapDrawable.setCircular(true);
+        profile_pic.setImageDrawable(roundedBitmapDrawable);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
 
-}
+            }
+        }
+            }
+
+    }
+
+
