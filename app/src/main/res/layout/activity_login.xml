@@ -56,7 +56,7 @@
 
             <EditText
                 android:hint="email"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:singleLine="true"
                 android:id="@+id/email"
                 android:textSize="20dp"

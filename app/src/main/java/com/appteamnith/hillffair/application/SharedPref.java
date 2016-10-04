@@ -62,5 +62,14 @@ public class SharedPref {
         editor.commit();
     }
 
+    public String getUserName(){
+        return prefs.getString("name",null);
+    }
+
+    public void setUserName(String userName){
+        editor.putString("name", userName);
+        editor.commit();
+    }
+
 
 }
