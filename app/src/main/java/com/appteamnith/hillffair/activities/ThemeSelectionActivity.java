@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.SharedPref;
+import com.appteamnith.hillffair.application.SharedPref;
 
 public class ThemeSelectionActivity extends AppCompatActivity implements View.OnClickListener {
 

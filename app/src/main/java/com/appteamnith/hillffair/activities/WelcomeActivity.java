@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.SharedPref;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.utilities.StartupShow;
 
 

@@ -18,11 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-<<<<<<< HEAD
-import com.appteamnith.hillffair.SharedPref;
-=======
 import com.appteamnith.hillffair.application.SharedPref;
->>>>>>> 907143566cc272e5ae9afcea7f80a9d3d0b7bed8
 import com.appteamnith.hillffair.modals.Register;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
