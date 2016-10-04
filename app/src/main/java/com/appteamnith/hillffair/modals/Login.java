@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Login {
 
+    @SerializedName("id")
+    String id;
+
     @SerializedName("success")
     public boolean success;
 
@@ -32,5 +35,13 @@ public class Login {
 
     public void setError(String error) {
         this.error = error;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
