@@ -16,8 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.appteamnith.hillffair.SharedPref;
-import com.appteamnith.hillffair.activities.NewsfeedActivity;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.HomeAdapter;
 import com.appteamnith.hillffair.application.SharedPref;
@@ -50,8 +48,9 @@ public class HomeActivity extends AppCompatActivity
 
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
-        Integer photo[] = {R.drawable.comic1, R.drawable.comic2, R.drawable.comic3, R.drawable.comic4, R.drawable.comic5};
-        adapter = new HomeAdapter(Arrays.asList(photo), this);
+
+        Integer photo[] = {R.drawable.img_1611, R.drawable.img_1610, R.drawable.img_1612,R.drawable.img_1613};
+        adapter = new HomeAdapter(Arrays.asList(photo),this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);

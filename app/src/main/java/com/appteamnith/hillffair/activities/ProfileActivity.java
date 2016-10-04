@@ -19,12 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-import com.appteamnith.hillffair.SharedPref;
-=======
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.PagerAdapter;
->>>>>>> 3393835656416675a70f50b1c31366701f0ec334
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
@@ -133,7 +129,7 @@ public class ProfileActivity extends AppCompatActivity{
 
 
 
-    class ProfileBasicDetailModel{
+    public class ProfileBasicDetailModel{
 
         @SerializedName("_id")
         private String _id;
