@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.ClubEventAdapter;
-import com.appteamnith.hillffair.modals.ClubEvent;
+import com.appteamnith.hillffair.models.ClubEvent;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.google.gson.annotations.SerializedName;

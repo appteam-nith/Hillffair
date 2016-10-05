@@ -1,6 +1,5 @@
-package com.appteamnith.hillffair.modals;
+package com.appteamnith.hillffair.models;
 
-import com.google.gson.annotations.SerializedName;
 /**
  * Created by parvesh_dhull on 30/9/16.
  */

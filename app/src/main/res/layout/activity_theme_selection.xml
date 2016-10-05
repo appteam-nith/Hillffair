@@ -35,20 +35,20 @@
 
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/batman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic9" />
+                        android:src="@drawable/batman" />
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/flash"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic1" />
+                        android:src="@drawable/flash" />
 
                 </LinearLayout>
 
@@ -60,21 +60,21 @@
                     android:orientation="horizontal">
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/superman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic2" />
+                        android:src="@drawable/superman" />
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/captain"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic3" />
+                        android:src="@drawable/captain" />
 
                 </LinearLayout>
 
@@ -86,21 +86,21 @@
 
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/wonderwoman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic5" />
+                        android:src="@drawable/wonderwoman" />
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/hulk"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic4" />
+                        android:src="@drawable/hulk" />
 
                 </LinearLayout>
 

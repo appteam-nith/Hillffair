@@ -52,8 +52,9 @@ public class HomeActivity extends AppCompatActivity
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
-        Integer photo[] = {R.drawable.img_1611, R.drawable.img_1610, R.drawable.img_1612,R.drawable.img_1613};
-        adapter = new HomeAdapter(Arrays.asList(photo),this);
+        Integer photo[] = {R.drawable.batman, R.drawable.superman, R.drawable.flash, R.drawable.captain, R.drawable.wonderwoman};
+        adapter = new HomeAdapter(Arrays.asList(photo), this);
+
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);

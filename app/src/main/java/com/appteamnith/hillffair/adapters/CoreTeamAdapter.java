@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appteamnith.hillffair.models.CoreTeamItem;
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.modals.CoreTeamItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.ImageViewTarget;
