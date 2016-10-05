@@ -54,7 +54,8 @@
             android:label="Clubs"
             android:parentActivityName=".activities.HomeActivity"
             />
-
+<activity android:name=".activities.club_Activity"
+    android:parentActivityName=".activities.EventActivity"/>
     </application>
 
 </manifest>

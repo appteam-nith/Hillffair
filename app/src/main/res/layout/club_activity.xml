@@ -1,5 +1,4 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,19 +8,19 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
 
-            android:fitsSystemWindows="true">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/image_View"
@@ -35,8 +34,8 @@
                 android:id="@+id/toolbar_Detail"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -49,44 +48,61 @@
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.CardView
+            <FrameLayout
+                android:id="@+id/layout_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                app:cardElevation="8dp"
-                app:cardUseCompatPadding="true">
+                android:visibility="gone">
 
-                <LinearLayout
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="3dp"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:hint="Group Name"
-                        android:id="@+id/grup_name"
-                        android:textColor="#000"
-                        android:textSize="40dp"/>
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/grup_name"
-                        android:paddingTop="5dp"
-                        android:hint="Description Of Club"
-                        android:id="@+id/desc_club"
-                        android:textSize="25dp"/>
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:textAlignment="center"
+                            android:id="@+id/grup_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Group Name"
+                            android:textColor="#000"
+                            android:textAppearance="@android:style/TextAppearance.Large" />
 
-            </android.support.v7.widget.CardView>
+                        <TextView
+                            android:id="@+id/desc_club"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/grup_name"
+                            android:hint="Description Of Club"
+                            android:padding="5dp"
+                            android:textAppearance="@android:style/TextAppearance.Medium" />
 
-        </FrameLayout>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </FrameLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
 
     </android.support.v4.widget.NestedScrollView>
 

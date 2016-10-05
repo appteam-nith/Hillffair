@@ -43,14 +43,10 @@
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/batman" />
+                        android:src="@drawable/batman_btn" />
 
-<<<<<<< HEAD
-                    <ImageButton
 
-=======
                     <ImageView
->>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/flash"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
@@ -67,25 +63,17 @@
                     android:orientation="horizontal">
 
 
-<<<<<<< HEAD
-                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
-                        tools:ignore="ContentDescription"
-=======
+
                     <ImageView
->>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/superman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/superman" />
+                        android:src="@drawable/superman_btn" />
 
-<<<<<<< HEAD
-                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
-                        tools:ignore="ContentDescription"
-=======
+
                     <ImageView
->>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/captain"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
@@ -109,7 +97,7 @@
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/wonderwoman" />
+                        android:src="@drawable/wonderwoman_btn" />
 
 
                     <ImageView

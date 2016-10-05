@@ -1,17 +1,11 @@
 package com.appteamnith.hillffair.utilities;
 
 import com.appteamnith.hillffair.activities.EventActivity;
-import com.appteamnith.hillffair.activities.ProfileActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
-import com.appteamnith.hillffair.fragments.ProfileTab2;
-import com.appteamnith.hillffair.modals.club_model2;
+import com.appteamnith.hillffair.models.club_model2;
 import com.appteamnith.hillffair.models.Login;
-import com.appteamnith.hillffair.modals.ProfileDataModel;
-import com.appteamnith.hillffair.models.Register;
-import com.appteamnith.hillffair.models.newsfeed_model;
-
-import com.appteamnith.hillffair.models.Login;
+import com.appteamnith.hillffair.models.ProfileDataModel;
 import com.appteamnith.hillffair.models.Register;
 import com.appteamnith.hillffair.models.newsfeed_model;
 
@@ -56,7 +50,7 @@ public interface APIINTERFACE {
     Call<EventActivity.ClubResponse> getAllClub();
 
     @GET("club/{club_name}")
-    Call<club_model2> getClubInfo(@Path("id") String club_name);
+    Call<club_model2> getClubInfo(@Path("club_name") String club_name);
 }
 
 
