@@ -3,24 +3,36 @@ package com.appteamnith.hillffair.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
+import com.appteamnith.hillffair.modals.ProfileDataModel;
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.utilities.Utils;
+import com.google.gson.annotations.SerializedName;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Aditya on 9/13/2016.
  */
-public class ProfileTab2 extends Fragment implements View.OnClickListener {
+public class ProfileTab2 extends Fragment {
 
-    EditText et1,et2,et3,et4,et5;
-    ImageButton edit_btn;
-    int i=1;
-    int i1 = android.R.drawable.ic_menu_edit;
-    int i2 = android.R.drawable.ic_menu_save;
+    EditText et1,et2,et4,et5;
+    private ProgressBar progress;
+    SharedPref sharedPref;
+    private ScrollView scroll_layout;
 
 
 
@@ -28,16 +40,19 @@ public class ProfileTab2 extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.profile_tab2_fragment, container, false);
-
-        edit_btn = (ImageButton) view.findViewById(R.id.edit_btn);
+        sharedPref=new SharedPref(getContext());
         et1 = (EditText) view.findViewById(R.id.et1);
         et2 = (EditText) view.findViewById(R.id.et2);
-        et3 = (EditText) view.findViewById(R.id.et3);
         et4 = (EditText) view.findViewById(R.id.et4);
         et5 = (EditText) view.findViewById(R.id.et5);
+        progress = (ProgressBar) view.findViewById(R.id.progress);
+        scroll_layout = (ScrollView) view.findViewById(R.id.scroll_layout);
 
+        progress.setVisibility(view.VISIBLE);
 
-    edit_btn.setOnClickListener(this);
+        profileBasicInfo(sharedPref.getUserId());
+        Log.d("data",""+sharedPref.getUserId());
+
 
 
     return view;
@@ -47,59 +62,205 @@ public class ProfileTab2 extends Fragment implements View.OnClickListener {
 
 
 
-    @Override
-    public void onClick(View v) {
 
-        if (i % 2 == 0) {
-            edit_btn.setImageDrawable(getResources().getDrawable(i2));
+    public class ProfileBasicDetailModel{
 
-            et1.setCursorVisible(true);
-            et1.setFocusable(true);
-            et1.setFocusableInTouchMode(true);
+        @SerializedName("_id")
+        private String _id;
 
-            et2.setCursorVisible(true);
-            et2.setFocusable(true);
-            et2.setFocusableInTouchMode(true);
+        @SerializedName("name")
+        private String name;
 
-            et3.setCursorVisible(true);
-            et3.setFocusable(true);
-            et3.setFocusableInTouchMode(true);
+        @SerializedName("email")
+        private String email;
 
-            et4.setCursorVisible(true);
-            et4.setFocusable(true);
-            et4.setFocusableInTouchMode(true);
+        @SerializedName("pwd")
+        private String pwd;
 
-            et5.setCursorVisible(true);
-            et5.setFocusable(true);
-            et5.setFocusableInTouchMode(true);
+        @SerializedName("nitian")
+        private boolean nitian;
+
+        @SerializedName("photo")
+        private String photo = null;
+
+        @SerializedName("rollno")
+        private String rollno;
+
+        @SerializedName("phone")
+        private String phone;
+
+        @SerializedName("date")
+        private String date;
+
+
+
+        public ProfileBasicDetailModel(String _id, String name, String email, String pwd, boolean nitian, String photo, String rollno, String phone, String date) {
+            this._id = _id;
+            this.name = name;
+            this.email = email;
+            this.pwd = pwd;
+            this.nitian = nitian;
+            this.photo = photo;
+            this.rollno = rollno;
+            this.phone = phone;
+            this.date = date;
         }
-        else {
 
-            edit_btn.setImageDrawable(getResources().getDrawable(i1));
 
-            et1.setCursorVisible(false);
-            et1.setFocusable(false);
-            et1.setFocusableInTouchMode(false);
-
-            et2.setCursorVisible(false);
-            et2.setFocusable(false);
-            et2.setFocusableInTouchMode(false);
-
-            et3.setCursorVisible(false);
-            et3.setFocusable(false);
-            et3.setFocusableInTouchMode(false);
-
-            et4.setCursorVisible(false);
-            et4.setFocusable(false);
-            et4.setFocusableInTouchMode(false);
-
-            et5.setCursorVisible(false);
-            et5.setFocusable(false);
-            et5.setFocusableInTouchMode(false);
-
+        public String get_id() {
+            return _id;
         }
-        i++;
+
+        public void set_id(String _id) {
+            this._id = _id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPwd() {
+            return pwd;
+        }
+
+        public void setPwd(String pwd) {
+            this.pwd = pwd;
+        }
+
+        public boolean isNitian() {
+            return nitian;
+        }
+
+        public void setNitian(boolean nitian) {
+            this.nitian = nitian;
+        }
+
+        public String getPhoto() {
+            return photo;
+        }
+
+        public void setPhoto(String photo) {
+            this.photo = photo;
+        }
+
+        public String getRollno() {
+            return rollno;
+        }
+
+        public void setRollno(String rollno) {
+            this.rollno = rollno;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+
+        @SerializedName("success")
+        public boolean success;
+
+        @SerializedName("error")
+        public  String error;
+
+        public ProfileBasicDetailModel(boolean success, String error) {
+            this.success = success;
+            this.error = error;
+        }
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public void setSuccess(boolean success) {
+            this.success = success;
+        }
+
+        public String getError() {
+            return error;
+        }
+
+        public void setError(String error) {
+            this.error = error;
+        }
+
+
     }
+
+    private void profileBasicInfo(String id){
+
+        APIINTERFACE mAPI = Utils.getRetrofitService();
+        Call<ProfileDataModel> mService = mAPI.profileBasicInfo(id);
+        mService.enqueue(new Callback<ProfileDataModel>() {
+            @Override
+            public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
+                ProfileBasicDetailModel model = response.body().getProfileInfo();
+                sharedPref.setUserName(model.getName());
+                int status_code = response.code();
+                boolean returnedResponse = response.body().isSuccess();
+                progress.setVisibility(View.GONE);
+                scroll_layout.setVisibility(View.VISIBLE);
+                if(returnedResponse){
+                    Log.d("as","come");
+                    Log.d("abc",""+model.getName());
+                    Log.d("abc",""+model.getRollno());
+                    Log.d("abc",""+model.getEmail());
+                    Log.d("abc",""+model.getPhone());
+                    if(model.getRollno().isEmpty()){
+                        et2.setVisibility(View.GONE);
+                    }
+                    et1.setText(model.getName());
+                    et2.setText(model.getRollno());
+                    et4.setText(model.getEmail());
+                    et5.setText(model.getPhone());
+
+                }
+                else {
+                    if(status_code==503){
+                        Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
+                    }
+                    String error = model.getError();
+                    if (error != null && !error.isEmpty()) {
+                        Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ProfileDataModel> call, Throwable t) {
+                progress.setVisibility(View.GONE);
+                t.printStackTrace();
+                Toast.makeText(getActivity(), "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
 }
 
 

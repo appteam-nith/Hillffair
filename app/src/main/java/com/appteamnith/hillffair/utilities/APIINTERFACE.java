@@ -3,9 +3,17 @@ package com.appteamnith.hillffair.utilities;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.ProfileActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
+
+import com.appteamnith.hillffair.fragments.ProfileTab2;
+import com.appteamnith.hillffair.models.Login;
+import com.appteamnith.hillffair.modals.ProfileDataModel;
+import com.appteamnith.hillffair.models.Register;
+import com.appteamnith.hillffair.models.newsfeed_model;
+
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.models.Register;
 import com.appteamnith.hillffair.models.newsfeed_model;
+
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -39,7 +47,7 @@ public interface APIINTERFACE {
 
     @FormUrlEncoded
     @POST("profile")
-    Call<ProfileActivity.ProfileBasicDetailModel> profileBasicInfo(@Field("id") String id);
+    Call<ProfileDataModel> profileBasicInfo(@Field("id") String id);
 
 
     @GET("club")
