@@ -86,6 +86,9 @@ public class HomeActivity extends AppCompatActivity
                 else if(position==1){
                     startActivity(new Intent(HomeActivity.this, EventActivity.class));
                 }
+                else if (position==2){
+                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                }
             }
         }));
     }
