@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
-import com.appteamnith.hillffair.modals.newsfeed_model;
+
+import com.appteamnith.hillffair.models.newsfeed_model;
+
 import com.appteamnith.hillffair.utilities.Utils;
 
 import retrofit2.Call;

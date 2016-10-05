@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
@@ -35,20 +37,25 @@
 
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/batman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic9" />
+                        android:src="@drawable/batman" />
 
+<<<<<<< HEAD
                     <ImageButton
+
+=======
+                    <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/flash"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic1" />
+                        android:src="@drawable/flash" />
 
                 </LinearLayout>
 
@@ -60,21 +67,31 @@
                     android:orientation="horizontal">
 
 
-                    <ImageButton
+<<<<<<< HEAD
+                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
+                        tools:ignore="ContentDescription"
+=======
+                    <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/superman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic2" />
+                        android:src="@drawable/superman" />
 
-                    <ImageButton
+<<<<<<< HEAD
+                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
+                        tools:ignore="ContentDescription"
+=======
+                    <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/captain"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic3" />
+                        android:src="@drawable/captain" />
 
                 </LinearLayout>
 
@@ -86,21 +103,21 @@
 
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/wonderwoman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic5" />
+                        android:src="@drawable/wonderwoman" />
 
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/hulk"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic4" />
+                        android:src="@drawable/hulk" />
 
                 </LinearLayout>
 

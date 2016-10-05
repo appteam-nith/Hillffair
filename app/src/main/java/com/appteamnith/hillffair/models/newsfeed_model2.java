@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair.modals;
+package com.appteamnith.hillffair.models;
 
 /**
  * Created by parvesh_dhull on 3/10/16.

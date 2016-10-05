@@ -1,6 +1,9 @@
 package com.appteamnith.hillffair.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
+<<<<<<< HEAD
+import com.appteamnith.hillffair.models.ClubEvent;
+=======
 import com.appteamnith.hillffair.modals.ClubEvent;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.ImageViewTarget;
+>>>>>>> 58717665170e01979d80d6fc2d7860782608e324
 
 import java.util.ArrayList;
 
@@ -41,13 +49,20 @@ public class ClubEventAdapter extends RecyclerView.Adapter<ClubEventAdapter.Even
     }
 
     @Override
-    public void onBindViewHolder(EventViewHolder holder, int position) {
+    public void onBindViewHolder(final EventViewHolder holder, int position) {
         ClubEvent clubEvent=clubEventArrayList.get(position);
         if(clubEvent.getName()!=null&&!clubEvent.getName().isEmpty()){
             holder.club_name.setText(clubEvent.getName());
         }
         if(clubEvent.getImage_id()!=null&&!clubEvent.getImage_id().isEmpty()){
-            Glide.with(context).load(clubEvent.getImage_id()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person).into(holder.club_image);
+            Glide.with(context).load(clubEvent.getImage_id()).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(new ImageViewTarget<Bitmap>(holder.club_image) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable drawable= RoundedBitmapDrawableFactory.create(context.getResources(),resource);
+                    drawable.setCircular(true);
+                    holder.club_image.setImageDrawable(drawable);
+                }
+            });
         }
 
     }
