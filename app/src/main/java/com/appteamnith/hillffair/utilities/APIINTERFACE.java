@@ -5,6 +5,7 @@ import com.appteamnith.hillffair.activities.ProfileActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
 import com.appteamnith.hillffair.fragments.ProfileTab2;
+import com.appteamnith.hillffair.modals.club_model2;
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.modals.ProfileDataModel;
 import com.appteamnith.hillffair.models.Register;
@@ -20,6 +21,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -52,6 +54,9 @@ public interface APIINTERFACE {
 
     @GET("club")
     Call<EventActivity.ClubResponse> getAllClub();
+
+    @GET("club/{club_name}")
+    Call<club_model2> getClubInfo(@Path("id") String club_name);
 }
 
 

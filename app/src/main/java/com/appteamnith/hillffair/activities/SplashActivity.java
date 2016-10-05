@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final long TIME_SPLASH =5000 ;
+    private static final long TIME_SPLASH =2000 ;
     private ImageView image_splash;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
