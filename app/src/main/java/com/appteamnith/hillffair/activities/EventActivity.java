@@ -1,5 +1,6 @@
 package com.appteamnith.hillffair.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.ClubEventAdapter;
 import com.appteamnith.hillffair.modals.ClubEvent;
+import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.google.gson.annotations.SerializedName;
 
@@ -22,9 +24,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EventActivity extends AppCompatActivity {
+    public static final String CLUB_NAME ="CLUB_NAME" ;
     private RecyclerView recyclerView;
     private ClubEventAdapter adapter;
     private ProgressBar progressBar;
+    private ArrayList<ClubEvent> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,14 @@ public class EventActivity extends AppCompatActivity {
         adapter=new ClubEventAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent i=new Intent(EventActivity.this,HomeActivity.class);
+                i.putExtra(CLUB_NAME,list.get(position).getName());
+                startActivity(i);
+            }
+        }));
         showData();
     }
 
@@ -93,7 +105,8 @@ public class EventActivity extends AppCompatActivity {
                 ClubResponse clubResponse=response.body();
                 if(clubResponse!=null&&response.isSuccess()){
                     if(clubResponse.isSuccess()){
-                        adapter.refresh(clubResponse.getList());
+                        list=clubResponse.getList();
+                        adapter.refresh(list);
                     }
                 }
                 else {

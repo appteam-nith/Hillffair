@@ -4,6 +4,7 @@ package com.appteamnith.hillffair.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,33 +12,31 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 import com.appteamnith.hillffair.adapters.CardAdapter;
-import com.appteamnith.hillffair.modals.CardsData;
 import com.appteamnith.hillffair.modals.newsfeed_model;
-import com.appteamnith.hillffair.modals.newsfeed_model2;
 import com.appteamnith.hillffair.utilities.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsfeedActivity extends AppCompatActivity {
+public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.newsfeed);
+        swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         progressBar= (ProgressBar) findViewById(R.id.progress);
         setSupportActionBar(toolbar);
@@ -73,11 +72,13 @@ public class NewsfeedActivity extends AppCompatActivity {
      */
 
     private void  showData(String from){
-
         Call<newsfeed_model> newsfeedResponse= Utils.getRetrofitService().getAllNews(from);
         newsfeedResponse.enqueue(new Callback<newsfeed_model>() {
             @Override
             public void onResponse(Call<newsfeed_model> call, Response<newsfeed_model> response) {
+                if(swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 if(response!=null){
@@ -87,10 +88,19 @@ public class NewsfeedActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<newsfeed_model> call, Throwable t) {
+                if(swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                    t.printStackTrace();
+
                 progressBar.setVisibility(View.GONE);
+                Toast.makeText(NewsfeedActivity.this, "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    @Override
+    public void onRefresh() {
+        showData("1");
+    }
 }

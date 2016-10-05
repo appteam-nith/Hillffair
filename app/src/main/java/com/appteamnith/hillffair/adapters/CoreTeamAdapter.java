@@ -5,10 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.appteamnith.hillffair.modals.CoreTeamItem;
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.modals.CoreTeamItem;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
@@ -27,12 +30,16 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder view_Holder,int i){
-        if(!(array_list.get(i).name.isEmpty()) && array_list.get(i).name.length()!=0){
+        if(!(array_list.get(i).name.isEmpty())){
             view_Holder.name.setText(array_list.get(i).name);
         }
 
-        if(!(array_list.get(i).designation.isEmpty()) && array_list.get(i).designation.length()!=0){
+        if(!(array_list.get(i).designation.isEmpty())){
             view_Holder.designation.setText(array_list.get(i).designation);
+        }
+
+        if(!array_list.get(i).url.isEmpty()){
+           Glide.with(context).load(array_list.get(i).url).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person).into(view_Holder.imageView);
         }
     }
 
@@ -50,10 +57,12 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public final TextView name,designation;
+        ImageView imageView;
         public ViewHolder(View v){
             super(v);
             this.name=(TextView)v.findViewById(R.id.core_team_name);
             this.designation=(TextView)v.findViewById(R.id.core_team_designation);
+            imageView= (ImageView) v.findViewById(R.id.core_team_image_view);
         }
     }
 }
