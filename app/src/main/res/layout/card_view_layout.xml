@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:id="@+id/core_team_image_view"
-            android:src="@drawable/person"
+            android:src="@drawable/person_icon"
             android:scaleType="centerCrop"/>
 
         <TextView

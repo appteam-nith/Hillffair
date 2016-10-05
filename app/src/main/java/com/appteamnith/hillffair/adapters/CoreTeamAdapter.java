@@ -1,6 +1,9 @@
 package com.appteamnith.hillffair.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.modals.CoreTeamItem;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.ImageViewTarget;
 
 import java.util.ArrayList;
 
@@ -29,7 +33,7 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder view_Holder,int i){
+    public void onBindViewHolder(final ViewHolder view_Holder, int i){
         if(!(array_list.get(i).name.isEmpty())){
             view_Holder.name.setText(array_list.get(i).name);
         }
@@ -39,7 +43,14 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
         }
 
         if(!array_list.get(i).url.isEmpty()){
-           Glide.with(context).load(array_list.get(i).url).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person).into(view_Holder.imageView);
+            Glide.with(context).load(array_list.get(i).url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(new ImageViewTarget<Bitmap>(view_Holder.imageView) {
+                @Override
+                protected void setResource(Bitmap resource) {
+                    RoundedBitmapDrawable drawable= RoundedBitmapDrawableFactory.create(context.getResources(),resource);
+                    drawable.setCircular(true);
+                    view_Holder.imageView.setImageDrawable(drawable);
+                }
+            });
         }
     }
 
