@@ -13,12 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.modals.Login;
+import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
 

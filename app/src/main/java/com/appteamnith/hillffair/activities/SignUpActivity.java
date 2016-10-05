@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.modals.Register;
+import com.appteamnith.hillffair.models.Register;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
 

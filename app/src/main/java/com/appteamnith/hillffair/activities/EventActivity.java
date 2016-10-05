@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.ClubEventAdapter;
-import com.appteamnith.hillffair.modals.ClubEvent;
+import com.appteamnith.hillffair.models.ClubEvent;
 
 import java.util.ArrayList;
 

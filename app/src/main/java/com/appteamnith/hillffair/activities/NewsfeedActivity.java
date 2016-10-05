@@ -13,15 +13,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 import com.appteamnith.hillffair.adapters.CardAdapter;
-import com.appteamnith.hillffair.modals.CardsData;
-import com.appteamnith.hillffair.modals.newsfeed_model;
-import com.appteamnith.hillffair.modals.newsfeed_model2;
+import com.appteamnith.hillffair.models.newsfeed_model;
 import com.appteamnith.hillffair.utilities.Utils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

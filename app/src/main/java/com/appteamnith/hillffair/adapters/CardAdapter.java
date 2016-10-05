@@ -10,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.modals.CardsData;
-import com.appteamnith.hillffair.modals.newsfeed_model2;
+import com.appteamnith.hillffair.models.newsfeed_model2;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**

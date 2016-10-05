@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic1" />
+                        android:src="@drawable/flash" />
 
                 </LinearLayout>
 
@@ -66,7 +66,7 @@
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic2" />
+                        android:src="@drawable/superman" />
 
                     <ImageView
                         android:id="@+id/captain"
@@ -74,7 +74,7 @@
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic3" />
+                        android:src="@drawable/captain" />
 
                 </LinearLayout>
 
@@ -92,7 +92,7 @@
                         android:layout_height="110dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic5" />
+                        android:src="@drawable/wonderwoman" />
 
 
                     <ImageView
@@ -100,7 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/comic4" />
+                        android:src="@drawable/hulk" />
 
                 </LinearLayout>
 

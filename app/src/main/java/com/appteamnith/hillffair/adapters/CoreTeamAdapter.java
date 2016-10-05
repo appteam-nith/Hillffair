@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.appteamnith.hillffair.modals.CoreTeamItem;
+import com.appteamnith.hillffair.models.CoreTeamItem;
 import com.appteamnith.hillffair.R;
 
 import java.util.ArrayList;

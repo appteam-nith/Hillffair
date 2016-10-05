@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.modals.ClubEvent;
+import com.appteamnith.hillffair.models.ClubEvent;
 
 import java.util.ArrayList;
 
