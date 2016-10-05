@@ -52,8 +52,6 @@ public class CoreTeamActivity extends AppCompatActivity {
         array_list.add(new CoreTeamItem("Ashima Anand","Convener","url"));
         array_list.add(new CoreTeamItem("Praveen Kumar","Convener","url"));
         array_list.add(new CoreTeamItem("Shubham Dhiman","Convener","url"));
-        array_list.add(new CoreTeamItem("Puneet Kumar","Secretary(Sports)","url"));
-        array_list.add(new CoreTeamItem("Priya Vashishth","Chief Editor(Srijan)","url"));
         core_team_adapter=new CoreTeamAdapter(array_list,CoreTeamActivity.this);
         recycler_view.setAdapter(core_team_adapter);
         LinearLayoutManager liner_layout_manager=new LinearLayoutManager(this);

@@ -17,6 +17,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.Register;
@@ -290,21 +293,28 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
                 Register register = response.body();
-                if(register.getId()!=null&&!register.getId().isEmpty()){
-                    Log.d(TAG,""+register.getId());
-                }
-                if (register.isSuccess()){
-                    Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
-                    loadToast.success();
-                    startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
-                }
-                else {
-                    loadToast.error();
-                    if(register.getError()!=null&&!register.getError().isEmpty()){
-                        Toast.makeText(SignUpActivity.this,register.getError(),Toast.LENGTH_SHORT).show();
+                int status_code=response.code();
+               if(register!=null&&response.isSuccess()){
+                   if (register.isSuccess()){
+                       Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
+                       loadToast.success();
+                       startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                   }
+                   else {
+                       loadToast.error();
+                       if(register.getError()!=null&&!register.getError().isEmpty()){
+                           Toast.makeText(SignUpActivity.this,register.getError(),Toast.LENGTH_SHORT).show();
 
-                    }
-                }
+                       }
+                   }
+               }
+                else  {
+                   loadToast.error();
+                  if(status_code==503){
+                      Toast.makeText(SignUpActivity.this,"Server Down",Toast.LENGTH_SHORT).show();
+                  }
+
+               }
             }
 
             @Override

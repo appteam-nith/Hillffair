@@ -1,5 +1,7 @@
 package com.appteamnith.hillffair.utilities;
 
+import com.appteamnith.hillffair.activities.EventActivity;
+import com.appteamnith.hillffair.activities.ProfileActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.models.Register;
@@ -35,6 +37,13 @@ public interface APIINTERFACE {
     @GET("newsfeed/all")
     Call<newsfeed_model> getAllNews(@Query("from")String from);
 
+    @FormUrlEncoded
+    @POST("profile")
+    Call<ProfileActivity.ProfileBasicDetailModel> profileBasicInfo(@Field("id") String id);
+
+
+    @GET("club")
+    Call<EventActivity.ClubResponse> getAllClub();
 }
 
 

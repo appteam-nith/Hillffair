@@ -1,5 +1,7 @@
 # Hillffair
 
+[![Join the chat at https://gitter.im/appteam-nith/Hillffair](https://badges.gitter.im/appteam-nith/Hillffair.svg)](https://gitter.im/appteam-nith/Hillffair?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is the official Android Application of the Cultural Fest of NIT Hamirpur **Hillffair** made by YOU :smile:.
 
 ### How to setup this project in Android Studio :-

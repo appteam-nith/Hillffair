@@ -38,7 +38,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/post_img"
-                android:src="@drawable/img1"
+                android:src="@drawable/jimg1"
                 android:scaleType="fitStart"
                 android:adjustViewBounds="true"/>
             </RelativeLayout>

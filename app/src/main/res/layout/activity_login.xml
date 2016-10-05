@@ -39,7 +39,6 @@
         android:layout_marginTop="200dp"
         android:layout_alignParentBottom="true"
         android:id="@+id/login_login"
-
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,6 +59,7 @@
 
             <EditText
                 android:textColor="#000"
+                android:hint="email"
                 android:singleLine="true"
                 android:id="@+id/email"
                 android:textSize="20dp"
@@ -67,16 +67,9 @@
                 android:background="@drawable/loginbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-
-                />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"/>
-
-
-
-
+                android:orientation="vertical"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"/>
             <EditText
                 android:inputType="textPassword"
                 android:id="@+id/password"
