@@ -2,10 +2,14 @@ package com.appteamnith.hillffair.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
@@ -14,7 +18,7 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
 
 
     private int themeVal;
-    ImageButton batman, superman, hulk, wonderwoman, flash, captain;
+    ImageView batman, superman, hulk, wonderwoman, flash, captain;
 Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,23 +26,42 @@ Context context;
         setContentView(R.layout.activity_theme_selection);
         init();
         context=this;
+        setRoundImage(batman,R.drawable.batman);
+        setRoundImage(superman,R.drawable.superman);
+        setRoundImage(hulk,R.drawable.hulk);
+        setRoundImage(wonderwoman,R.drawable.wonderwoman);
+        setRoundImage(captain,R.drawable.captain);
+        setRoundImage(flash,R.drawable.flash);
+
     }
 
     void init() {
-        batman = (ImageButton) findViewById(R.id.batman);
-        superman = (ImageButton) findViewById(R.id.superman);
-        hulk = (ImageButton) findViewById(R.id.hulk);
-        wonderwoman = (ImageButton) findViewById(R.id.wonderwoman);
-        flash = (ImageButton) findViewById(R.id.flash);
-        captain = (ImageButton) findViewById(R.id.captain);
+        batman = (ImageView) findViewById(R.id.batman);
+        superman = (ImageView) findViewById(R.id.superman);
+        hulk = (ImageView) findViewById(R.id.hulk);
+        wonderwoman = (ImageView) findViewById(R.id.wonderwoman);
+        flash = (ImageView) findViewById(R.id.flash);
+        captain = (ImageView) findViewById(R.id.captain);
         batman.setOnClickListener(this);
         superman.setOnClickListener(this);
         hulk.setOnClickListener(this);
         wonderwoman.setOnClickListener(this);
         flash.setOnClickListener(this);
         captain.setOnClickListener(this);
+
     }
 
+    void setRoundImage(ImageView view,int id){
+
+        Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),id);
+        RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
+        roundedBitmapDrawable.setCornerRadius(2.0f);
+        roundedBitmapDrawable.setCircular(true);
+        view.setImageDrawable(roundedBitmapDrawable);
+
+
+
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
