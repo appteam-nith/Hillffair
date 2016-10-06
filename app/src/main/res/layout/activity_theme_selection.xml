@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
@@ -43,7 +45,12 @@
                         android:layout_weight="0.5"
                         android:src="@drawable/batman" />
 
+<<<<<<< HEAD
+                    <ImageButton
+
+=======
                     <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/flash"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
@@ -60,7 +67,12 @@
                     android:orientation="horizontal">
 
 
+<<<<<<< HEAD
+                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
+                        tools:ignore="ContentDescription"
+=======
                     <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/superman"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
@@ -68,7 +80,12 @@
                         android:layout_weight="0.5"
                         android:src="@drawable/superman" />
 
+<<<<<<< HEAD
+                    <ImageButton xmlns:tools="http://schemas.android.com/tools"
+                        tools:ignore="ContentDescription"
+=======
                     <ImageView
+>>>>>>> 4757555f5a595a6f51ada98f637fbc38f045a764
                         android:id="@+id/captain"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
