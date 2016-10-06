@@ -3,6 +3,7 @@ package com.appteamnith.hillffair.utilities;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
+import com.appteamnith.hillffair.models.UserScoreResponse;
 import com.appteamnith.hillffair.models.club_model2;
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.models.ProfileDataModel;
@@ -54,6 +55,10 @@ public interface APIINTERFACE {
 
     @GET("newsfeed/user")
     Call<newsfeed_model> getAllUserNews(@Query("from") String from,@Query("id") String id);
+
+    @FormUrlEncoded
+    @POST("profile/score")
+    Call<UserScoreResponse> getUserScore(@Field("id") String id);
 }
 
 
