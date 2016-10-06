@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.modals.ProfileDataModel;
+import com.appteamnith.hillffair.models.ProfileDataModel;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.google.gson.annotations.SerializedName;

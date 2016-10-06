@@ -43,7 +43,12 @@
             android:name=".activities.EventActivity"
             android:label="Clubs"
             android:parentActivityName=".activities.HomeActivity" />
+        <activity
+            android:name=".activities.club_Activity"
+            android:parentActivityName=".activities.EventActivity" />
+
         <activity android:name=".activities.ForgetPassword"></activity>
+
     </application>
 
 </manifest>

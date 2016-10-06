@@ -26,10 +26,10 @@ Context context;
         setContentView(R.layout.activity_theme_selection);
         init();
         context=this;
-        setRoundImage(batman,R.drawable.batman);
-        setRoundImage(superman,R.drawable.superman);
+        setRoundImage(batman,R.drawable.batman_btn);
+        setRoundImage(superman,R.drawable.superman_btn);
         setRoundImage(hulk,R.drawable.hulk);
-        setRoundImage(wonderwoman,R.drawable.wonderwoman);
+        setRoundImage(wonderwoman,R.drawable.wonderwoman_btn);
         setRoundImage(captain,R.drawable.captain);
         setRoundImage(flash,R.drawable.flash);
 

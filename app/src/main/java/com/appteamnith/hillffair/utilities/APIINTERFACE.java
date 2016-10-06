@@ -1,17 +1,12 @@
 package com.appteamnith.hillffair.utilities;
 
 import com.appteamnith.hillffair.activities.EventActivity;
-import com.appteamnith.hillffair.activities.ProfileActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
-import com.appteamnith.hillffair.fragments.ProfileTab2;
-import com.appteamnith.hillffair.modals.club_model2;
+import com.appteamnith.hillffair.models.UserScoreResponse;
+import com.appteamnith.hillffair.models.Club_model2;
 import com.appteamnith.hillffair.models.Login;
-import com.appteamnith.hillffair.modals.ProfileDataModel;
-import com.appteamnith.hillffair.models.Register;
-import com.appteamnith.hillffair.models.newsfeed_model;
-
-import com.appteamnith.hillffair.models.Login;
+import com.appteamnith.hillffair.models.ProfileDataModel;
 import com.appteamnith.hillffair.models.Register;
 import com.appteamnith.hillffair.models.newsfeed_model;
 
@@ -56,7 +51,14 @@ public interface APIINTERFACE {
     Call<EventActivity.ClubResponse> getAllClub();
 
     @GET("club/{club_name}")
-    Call<club_model2> getClubInfo(@Path("id") String club_name);
+    Call<Club_model2> getClubInfo(@Path("club_name") String club_name);
+
+    @GET("newsfeed/user")
+    Call<newsfeed_model> getAllUserNews(@Query("from") String from,@Query("id") String id);
+
+    @FormUrlEncoded
+    @POST("profile/score")
+    Call<UserScoreResponse> getUserScore(@Field("id") String id);
 }
 
 
