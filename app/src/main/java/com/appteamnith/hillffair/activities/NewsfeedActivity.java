@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
 
-import com.appteamnith.hillffair.models.newsfeed_model;
+import com.appteamnith.hillffair.models.NewsfeedModel;
 
 import com.appteamnith.hillffair.utilities.Utils;
 
@@ -74,10 +74,10 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
      */
 
     private void  showData(String from){
-        Call<newsfeed_model> newsfeedResponse= Utils.getRetrofitService().getAllNews(from);
-        newsfeedResponse.enqueue(new Callback<newsfeed_model>() {
+        Call<NewsfeedModel> newsfeedResponse= Utils.getRetrofitService().getAllNews(from);
+        newsfeedResponse.enqueue(new Callback<NewsfeedModel>() {
             @Override
-            public void onResponse(Call<newsfeed_model> call, Response<newsfeed_model> response) {
+            public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
                 if(swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(false);
                 }
@@ -89,7 +89,7 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
             }
 
             @Override
-            public void onFailure(Call<newsfeed_model> call, Throwable t) {
+            public void onFailure(Call<NewsfeedModel> call, Throwable t) {
                 if(swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(false);
                 }

@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.models.Club_model;
-import com.appteamnith.hillffair.models.Club_model2;
+import com.appteamnith.hillffair.models.ClubModel;
+import com.appteamnith.hillffair.models.ClubModel2;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -28,7 +28,7 @@ import retrofit2.Response;
  * Created by sahil ramola on 5/10/16.
  */
 
-public class club_Activity extends AppCompatActivity {
+public class ClubActivity extends AppCompatActivity {
     private String club_name;
     private CollapsingToolbarLayout ctl;
     private Toolbar toolbar;
@@ -66,34 +66,34 @@ public class club_Activity extends AppCompatActivity {
 
 
   private void showData(final String club_name){
-      Call<Club_model2> getClubData= Utils.getRetrofitService().getClubInfo(club_name);
-      getClubData.enqueue(new Callback<Club_model2>() {
+      Call<ClubModel2> getClubData= Utils.getRetrofitService().getClubInfo(club_name);
+      getClubData.enqueue(new Callback<ClubModel2>() {
           @Override
-          public void onResponse(Call<Club_model2> call, Response<Club_model2> response) {
+          public void onResponse(Call<ClubModel2> call, Response<ClubModel2> response) {
               progressBar.setVisibility(View.INVISIBLE);
               frameLayout.setVisibility(View.VISIBLE);
-              Club_model2 data=response.body();
+              ClubModel2 data=response.body();
               if(data!=null&&response.isSuccess()){
                   if(data.isSuccess()){
-                      Club_model clubdata=data.getProfile();
+                      ClubModel clubdata=data.getProfile();
                       clubName.setText(clubdata.getName());
                       description.setText(clubdata.getDescription());
-                      Glide.with(club_Activity.this).load(clubdata.getPhoto()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(grup_img);
+                      Glide.with(ClubActivity.this).load(clubdata.getPhoto()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(grup_img);
                   }
                   else {
                       progressBar.setVisibility(View.INVISIBLE);
                       frameLayout.setVisibility(View.INVISIBLE);
-                      Toast.makeText(club_Activity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
+                      Toast.makeText(ClubActivity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
                   }
               }
           }
 
           @Override
-          public void onFailure(Call<Club_model2> call, Throwable t) {
+          public void onFailure(Call<ClubModel2> call, Throwable t) {
               progressBar.setVisibility(View.INVISIBLE);
               frameLayout.setVisibility(View.INVISIBLE);
               t.printStackTrace();
-              Toast.makeText(club_Activity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
+              Toast.makeText(ClubActivity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
 
           }
       });

@@ -6,7 +6,7 @@ package com.appteamnith.hillffair.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class newsfeed_model2 {
+public class NewsfeedModel2 {
     @SerializedName("_id")
     private String _id;
     @SerializedName("title")
@@ -23,7 +23,7 @@ public class newsfeed_model2 {
     private String username;
 
 
-    public newsfeed_model2(String _id, String title, String photo, String description, String userid, String username) {
+    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username) {
         this._id = _id;
         this.title = title;
         this.photo = photo;

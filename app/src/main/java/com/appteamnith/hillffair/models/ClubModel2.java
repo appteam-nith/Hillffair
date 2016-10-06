@@ -6,25 +6,25 @@ import com.google.gson.annotations.SerializedName;
  * Created by parvesh_dhull on 5/10/16.
  */
 
-public class club_model2 {
+public class ClubModel2 {
         @SerializedName("profile")
-        private club_model profile;
+        private ClubModel profile;
         @SerializedName("success")
         private boolean success;
         @SerializedName("error")
         private String error;
 
-    public club_model2(club_model profile, boolean success, String error) {
+    public ClubModel2(ClubModel profile, boolean success, String error) {
         this.profile = profile;
         this.success = success;
         this.error = error;
     }
 
-    public club_model getProfile() {
+    public ClubModel getProfile() {
         return profile;
     }
 
-    public void setProfile(club_model profile) {
+    public void setProfile(ClubModel profile) {
         this.profile = profile;
     }
 

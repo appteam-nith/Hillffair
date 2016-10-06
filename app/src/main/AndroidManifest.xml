@@ -44,7 +44,7 @@
             android:label="Clubs"
             android:parentActivityName=".activities.HomeActivity" />
         <activity
-            android:name=".activities.club_Activity"
+            android:name=".activities.ClubActivity"
             android:parentActivityName=".activities.EventActivity" />
 
         <activity android:name=".activities.ForgetPassword"></activity>

@@ -45,7 +45,7 @@ public class EventActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent i=new Intent(EventActivity.this,club_Activity.class);
+                Intent i=new Intent(EventActivity.this,ClubActivity.class);
                 i.putExtra(CLUB_NAME,list.get(position).getName());
                 startActivity(i);
             }
