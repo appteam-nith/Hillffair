@@ -48,25 +48,22 @@
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:paddingTop="30dp"
-
-
-            >
-
+            android:paddingTop="30dp">
 
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/loginbox"
-                android:hint="email"
+                android:hint="Email"
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
                 android:textColor="#000"
-                android:textSize="20dp" />
+                android:textSize="16dp"
+                />
 
             <EditText
                 android:id="@+id/password"
@@ -78,7 +75,7 @@
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColor="#000"
-                android:textSize="20dp" />
+                android:textSize="16dp" />
 
 
             <RelativeLayout

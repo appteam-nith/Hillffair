@@ -26,8 +26,7 @@ import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 
 import java.util.Arrays;
 
-public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
 
@@ -41,7 +40,6 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         actionBarDrawerToggle.syncState();
@@ -49,11 +47,9 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
-
-        Integer photo[] = {R.drawable.jimg1, R.drawable.jimg2, R.drawable.jimg3, R.drawable.jimg4};
+        Integer photo[] = {R.drawable.jimg2, R.drawable.jimg4, R.drawable.jimg3, R.drawable.jimg1};
         adapter = new HomeAdapter(Arrays.asList(photo), this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
@@ -78,6 +74,7 @@ public class HomeActivity extends AppCompatActivity
                 return 1;
             }
         });
+
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

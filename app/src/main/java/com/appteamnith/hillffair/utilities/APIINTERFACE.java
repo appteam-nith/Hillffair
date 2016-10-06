@@ -4,11 +4,11 @@ import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
 import com.appteamnith.hillffair.models.UserScoreResponse;
-import com.appteamnith.hillffair.models.Club_model2;
+import com.appteamnith.hillffair.models.ClubModel2;
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.models.ProfileDataModel;
 import com.appteamnith.hillffair.models.Register;
-import com.appteamnith.hillffair.models.newsfeed_model;
+import com.appteamnith.hillffair.models.NewsfeedModel;
 
 
 import retrofit2.Call;
@@ -40,7 +40,7 @@ public interface APIINTERFACE {
 
 
     @GET("newsfeed/all")
-    Call<newsfeed_model> getAllNews(@Query("from")String from);
+    Call<NewsfeedModel> getAllNews(@Query("from")String from);
 
     @FormUrlEncoded
     @POST("profile")
@@ -51,10 +51,10 @@ public interface APIINTERFACE {
     Call<EventActivity.ClubResponse> getAllClub();
 
     @GET("club/{club_name}")
-    Call<Club_model2> getClubInfo(@Path("club_name") String club_name);
+    Call<ClubModel2> getClubInfo(@Path("club_name") String club_name);
 
     @GET("newsfeed/user")
-    Call<newsfeed_model> getAllUserNews(@Query("from") String from,@Query("id") String id);
+    Call<NewsfeedModel> getAllUserNews(@Query("from") String from, @Query("id") String id);
 
     @FormUrlEncoded
     @POST("profile/score")

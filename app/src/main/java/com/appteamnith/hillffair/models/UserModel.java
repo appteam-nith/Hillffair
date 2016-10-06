@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by parvesh_dhull on 3/10/16.
  */
 
-public class user_model {
+public class UserModel {
     @SerializedName("_id")
     private String _id;
     @SerializedName("name")
     private String name;
 
-    public user_model(String _id, String name) {
+    public UserModel(String _id, String name) {
         this._id = _id;
         this.name = name;
     }

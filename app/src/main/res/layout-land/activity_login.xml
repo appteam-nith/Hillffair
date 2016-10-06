@@ -20,13 +20,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hillffair" />
-
 
         </LinearLayout>
     </RelativeLayout>
@@ -60,19 +58,17 @@
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="Email"
                     android:padding="10dp"
                     android:singleLine="true"
                     android:textColor="#000"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
+
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                >
-
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/editText2"
@@ -83,7 +79,7 @@
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:textColor="#000"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </android.support.design.widget.TextInputLayout>
 
             <RelativeLayout
