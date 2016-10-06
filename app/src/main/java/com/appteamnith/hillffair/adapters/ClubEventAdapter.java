@@ -12,14 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-<<<<<<< HEAD
 import com.appteamnith.hillffair.models.ClubEvent;
-=======
-import com.appteamnith.hillffair.modals.ClubEvent;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.ImageViewTarget;
->>>>>>> 58717665170e01979d80d6fc2d7860782608e324
 
 import java.util.ArrayList;
 
