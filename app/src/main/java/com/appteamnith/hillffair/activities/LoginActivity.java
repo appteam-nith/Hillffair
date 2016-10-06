@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordView;
     View focusView = null;
     String email;
+    TextView forgot;
     String password;
     SharedPref pref;
     @Override
@@ -52,14 +54,19 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = (EditText) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.registar_Btn_login);
-
+        forgot = (TextView)findViewById(R.id.forgot);
         logo = (ImageView) findViewById(R.id.logo);
         layout = (LinearLayout) findViewById(R.id.login_login);
         layout.setVisibility(View.INVISIBLE);
         final Animation bounceLogo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.loginlogo_anim);
         final Animation layoutFade = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
         loadToast = new LoadToast(this);
-
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,ForgetPassword.class));
+            }
+        });
         logo.startAnimation(bounceLogo);
         bounceLogo.setAnimationListener(new Animation.AnimationListener() {
             @Override

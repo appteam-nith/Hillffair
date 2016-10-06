@@ -4,7 +4,7 @@ import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
 import com.appteamnith.hillffair.models.UserScoreResponse;
-import com.appteamnith.hillffair.models.club_model2;
+import com.appteamnith.hillffair.models.Club_model2;
 import com.appteamnith.hillffair.models.Login;
 import com.appteamnith.hillffair.models.ProfileDataModel;
 import com.appteamnith.hillffair.models.Register;
@@ -51,7 +51,7 @@ public interface APIINTERFACE {
     Call<EventActivity.ClubResponse> getAllClub();
 
     @GET("club/{club_name}")
-    Call<club_model2> getClubInfo(@Path("club_name") String club_name);
+    Call<Club_model2> getClubInfo(@Path("club_name") String club_name);
 
     @GET("newsfeed/user")
     Call<newsfeed_model> getAllUserNews(@Query("from") String from,@Query("id") String id);

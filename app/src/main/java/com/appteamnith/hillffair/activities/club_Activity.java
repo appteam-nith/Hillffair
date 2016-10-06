@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.models.club_model;
-import com.appteamnith.hillffair.models.club_model2;
+import com.appteamnith.hillffair.models.Club_model;
+import com.appteamnith.hillffair.models.Club_model2;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -66,16 +66,16 @@ public class club_Activity extends AppCompatActivity {
 
 
   private void showData(final String club_name){
-      Call<club_model2> getClubData= Utils.getRetrofitService().getClubInfo(club_name);
-      getClubData.enqueue(new Callback<club_model2>() {
+      Call<Club_model2> getClubData= Utils.getRetrofitService().getClubInfo(club_name);
+      getClubData.enqueue(new Callback<Club_model2>() {
           @Override
-          public void onResponse(Call<club_model2> call, Response<club_model2> response) {
+          public void onResponse(Call<Club_model2> call, Response<Club_model2> response) {
               progressBar.setVisibility(View.INVISIBLE);
               frameLayout.setVisibility(View.VISIBLE);
-              club_model2 data=response.body();
+              Club_model2 data=response.body();
               if(data!=null&&response.isSuccess()){
                   if(data.isSuccess()){
-                      club_model clubdata=data.getProfile();
+                      Club_model clubdata=data.getProfile();
                       clubName.setText(clubdata.getName());
                       description.setText(clubdata.getDescription());
                       Glide.with(club_Activity.this).load(clubdata.getPhoto()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(grup_img);
@@ -89,7 +89,7 @@ public class club_Activity extends AppCompatActivity {
           }
 
           @Override
-          public void onFailure(Call<club_model2> call, Throwable t) {
+          public void onFailure(Call<Club_model2> call, Throwable t) {
               progressBar.setVisibility(View.INVISIBLE);
               frameLayout.setVisibility(View.INVISIBLE);
               t.printStackTrace();

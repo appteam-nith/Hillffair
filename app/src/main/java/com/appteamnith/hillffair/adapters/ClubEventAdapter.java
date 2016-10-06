@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-
 import com.appteamnith.hillffair.models.ClubEvent;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
