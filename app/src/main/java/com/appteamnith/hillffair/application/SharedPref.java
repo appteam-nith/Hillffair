@@ -12,9 +12,6 @@ public class SharedPref {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
-   // public static boolean launchStartUpShow;
-    //public static int themeId;
-    //public static boolean launchThemeSelection;
 
     public SharedPref(Context context) {
         this.context = context;
@@ -24,7 +21,6 @@ public class SharedPref {
 
     public int getThemeId() {
         int id=prefs.getInt("themeid", 0);
-      //  if(id==0)id= R.style.superman;
         return id;
     }
 

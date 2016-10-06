@@ -1,14 +1,12 @@
-package com.appteamnith.hillffair.modals;
+package com.appteamnith.hillffair.models;
 
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
 
 /**
  * Created by parvesh_dhull on 5/10/16.
  */
 
-public class club_model2 {
+public class ClubModel2 {
         @SerializedName("profile")
         private club_model profile;
         @SerializedName("success")
@@ -16,7 +14,7 @@ public class club_model2 {
         @SerializedName("error")
         private String error;
 
-    public club_model2(club_model profile, boolean success, String error) {
+    public ClubModel2(club_model profile, boolean success, String error) {
         this.profile = profile;
         this.success = success;
         this.error = error;
