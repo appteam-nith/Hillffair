@@ -51,6 +51,9 @@ public interface APIINTERFACE {
 
     @GET("club/{club_name}")
     Call<club_model2> getClubInfo(@Path("club_name") String club_name);
+
+    @GET("newsfeed/user")
+    Call<newsfeed_model> getAllUserNews(@Query("from") String from,@Query("id") String id);
 }
 
 

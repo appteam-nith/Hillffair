@@ -82,8 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadToast.setText("LOADING");
-                loadToast.show();
+
                 attemptLogin();
             }
         });
@@ -102,6 +101,8 @@ public class LoginActivity extends AppCompatActivity {
         if (mCancel) {
             focusView.requestFocus();
         } else {
+            loadToast.setText("LOADING");
+            loadToast.show();
             loginProcessWithRetrofit(email, password);
         }
 
@@ -123,12 +124,8 @@ public class LoginActivity extends AppCompatActivity {
             cancel = true;
         }
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)||!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
         }
