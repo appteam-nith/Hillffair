@@ -39,6 +39,8 @@
     <string name="no_text"> </string>
     <string name="registration_message">You are not registered yet. Use the registration button to complete your registration.</string>
     <string name="registration_failed">Your email or password is already in use</string>
+    <string name="quiz_comment">*Make sure to complete your profile before Attempting Quiz</string>
+    <string name="sample_question">Number of original members in Justice league?</string>
     <string-array name="autocomplete">
         <item>johnpaul@yahoo.com</item>
         <item>marykate@yahoo.com</item>
