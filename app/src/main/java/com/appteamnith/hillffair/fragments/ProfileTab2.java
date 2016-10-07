@@ -2,8 +2,9 @@ package com.appteamnith.hillffair.fragments;
 
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,10 @@ import retrofit2.Response;
  */
 public class ProfileTab2 extends Fragment {
 
+    private static final String USER_NAME ="name" ;
+    private static final String USER_EMAIL = "email";
+    private static final String USER_ROLLNO ="rollno" ;
+    private static final String USER_PHONE ="phone" ;
     EditText et1,et2,et4,et5;
     private ProgressBar progress;
     SharedPref sharedPref;
@@ -47,10 +52,27 @@ public class ProfileTab2 extends Fragment {
         progress = (ProgressBar) view.findViewById(R.id.progress);
         scroll_layout = (ScrollView) view.findViewById(R.id.scroll_layout);
 
-        progress.setVisibility(view.VISIBLE);
+        if(savedInstanceState==null){
+            progress.setVisibility(view.VISIBLE);
+            profileBasicInfo(sharedPref.getUserId());
+        }
+        else{
+            scroll_layout.setVisibility(View.VISIBLE);
+            if(savedInstanceState.getString(USER_NAME)!=null&&!savedInstanceState.getString(USER_NAME).isEmpty()){
+                et1.setText(savedInstanceState.getString(USER_NAME));
+            }
+            if(savedInstanceState.getString(USER_EMAIL)!=null&&!savedInstanceState.getString(USER_EMAIL).isEmpty()){
+                et4.setText(savedInstanceState.getString(USER_EMAIL));
+            }
+            if(savedInstanceState.getString(USER_ROLLNO)!=null&&!savedInstanceState.getString(USER_ROLLNO).isEmpty()){
+                et2.setText(savedInstanceState.getString(USER_ROLLNO));
+            }
+            if(savedInstanceState.getString(USER_PHONE)!=null&&!savedInstanceState.getString(USER_PHONE).isEmpty()){
+                et5.setText(savedInstanceState.getString(USER_PHONE));
 
-        profileBasicInfo(sharedPref.getUserId());
-        Log.d("data",""+sharedPref.getUserId());
+            }
+        }
+
 
 
 
@@ -62,7 +84,7 @@ public class ProfileTab2 extends Fragment {
 
 
 
-    public class ProfileBasicDetailModel{
+    public class ProfileBasicDetailModel implements Parcelable{
 
         @SerializedName("_id")
         private String _id;
@@ -105,6 +127,52 @@ public class ProfileTab2 extends Fragment {
             this.date = date;
         }
 
+
+        protected ProfileBasicDetailModel(Parcel in) {
+            _id = in.readString();
+            name = in.readString();
+            email = in.readString();
+            pwd = in.readString();
+            nitian = in.readByte() != 0;
+            photo = in.readString();
+            rollno = in.readString();
+            phone = in.readString();
+            date = in.readString();
+            success = in.readByte() != 0;
+            error = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(_id);
+            dest.writeString(name);
+            dest.writeString(email);
+            dest.writeString(pwd);
+            dest.writeByte((byte) (nitian ? 1 : 0));
+            dest.writeString(photo);
+            dest.writeString(rollno);
+            dest.writeString(phone);
+            dest.writeString(date);
+            dest.writeByte((byte) (success ? 1 : 0));
+            dest.writeString(error);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public  final Creator<ProfileBasicDetailModel> CREATOR = new Creator<ProfileBasicDetailModel>() {
+            @Override
+            public ProfileBasicDetailModel createFromParcel(Parcel in) {
+                return new ProfileBasicDetailModel(in);
+            }
+
+            @Override
+            public ProfileBasicDetailModel[] newArray(int size) {
+                return new ProfileBasicDetailModel[size];
+            }
+        };
 
         public String get_id() {
             return _id;
@@ -223,11 +291,6 @@ public class ProfileTab2 extends Fragment {
                 progress.setVisibility(View.GONE);
                 scroll_layout.setVisibility(View.VISIBLE);
                 if(returnedResponse){
-                    Log.d("as","come");
-                    Log.d("abc",""+model.getName());
-                    Log.d("abc",""+model.getRollno());
-                    Log.d("abc",""+model.getEmail());
-                    Log.d("abc",""+model.getPhone());
                     if(model.getRollno().isEmpty()){
                         et2.setVisibility(View.GONE);
                     }
@@ -260,6 +323,15 @@ public class ProfileTab2 extends Fragment {
 
     }
 
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(USER_NAME,et1.getText().toString());
+        outState.putString(USER_EMAIL,et4.getText().toString());
+        outState.putString(USER_ROLLNO,et2.getText().toString());
+        outState.putString(USER_PHONE,et5.getText().toString());
+    }
 }
 
 

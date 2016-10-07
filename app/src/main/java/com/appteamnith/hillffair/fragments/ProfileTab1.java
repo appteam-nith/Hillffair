@@ -2,6 +2,8 @@ package com.appteamnith.hillffair.fragments;
 
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,8 @@ import retrofit2.Response;
  */
 public class ProfileTab1 extends Fragment {
 
+    private static final String USER_SCORE ="score" ;
+    private static final String USER_NO_QUESTION ="noOfQuestion" ;
     private LinearLayout data_layout;
     private ProgressBar progressBar;
     private TextView score,questionSolved,noOfQuestionSolved,noScore;
@@ -38,12 +42,28 @@ public class ProfileTab1 extends Fragment {
         //questionSolved= (TextView) v.findViewById(R.id.view_number_question_solved);
         noOfQuestionSolved= (TextView) v.findViewById(R.id.view_number_question_solved);
         noScore= (TextView) v.findViewById(R.id.no_data_textview);
-        getData(new SharedPref(getActivity()).getUserId());
+        if(savedInstanceState==null){
+            progressBar.setVisibility(View.VISIBLE);
+            getData(new SharedPref(getActivity()).getUserId());
+        }
+        else {
+            if((savedInstanceState.getString(USER_SCORE)!=null&&!savedInstanceState.getString(USER_SCORE).isEmpty())||(savedInstanceState.getString(USER_NO_QUESTION)!=null&&!savedInstanceState.getString(USER_NO_QUESTION).isEmpty())){
+                data_layout.setVisibility(View.VISIBLE);
+                score.setText(savedInstanceState.getString(USER_SCORE));
+                noOfQuestionSolved.setText(savedInstanceState.getString(USER_NO_QUESTION));
+            }
+            else {
+                noScore.setVisibility(View.VISIBLE);
+                noScore.setText("No Data Available");
+            }
+        }
+
+
         return v;
     }
 
 
-    public  class QuizResponse{
+    public  class QuizResponse implements Parcelable{
         @SerializedName("sets")
         private int qSolved;
 
@@ -54,6 +74,34 @@ public class ProfileTab1 extends Fragment {
             this.qSolved = qSolved;
             this.points = points;
         }
+
+        protected QuizResponse(Parcel in) {
+            qSolved = in.readInt();
+            points = in.readInt();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(qSolved);
+            dest.writeInt(points);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public  final Creator<QuizResponse> CREATOR = new Creator<QuizResponse>() {
+            @Override
+            public QuizResponse createFromParcel(Parcel in) {
+                return new QuizResponse(in);
+            }
+
+            @Override
+            public QuizResponse[] newArray(int size) {
+                return new QuizResponse[size];
+            }
+        };
 
         public int getqSolved() {
             return qSolved;
@@ -116,5 +164,12 @@ public class ProfileTab1 extends Fragment {
                 ProfileTab1.this.noScore.setText("Error While Getting Data");
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(USER_SCORE,score.getText().toString());
+        outState.putString(USER_NO_QUESTION,noOfQuestionSolved.getText().toString());
     }
 }

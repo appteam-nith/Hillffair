@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
@@ -29,15 +29,18 @@ import retrofit2.Response;
  */
 public class ProfileTab3 extends Fragment {
 
+    private static final String USER_POST ="post" ;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private CardAdapter adapter;
     private ArrayList<newsfeed_model2> list;
+    private TextView noData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.profile_tab3_fragment, container, false);
+        noData= (TextView) v.findViewById(R.id.no_data_textview);
         recyclerView = (RecyclerView) v.findViewById(R.id.list);
         progressBar = (ProgressBar) v.findViewById(R.id.progress);
         adapter = new CardAdapter(getActivity());
@@ -46,7 +49,24 @@ public class ProfileTab3 extends Fragment {
 
         SharedPref sharedPref=new SharedPref(getActivity());
         Log.d("id",sharedPref.getUserId());
-        getData("1",sharedPref.getUserId());
+        if(savedInstanceState==null){
+            getData("1",sharedPref.getUserId());
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        else {
+            if(savedInstanceState.getParcelableArrayList(USER_POST)!=null)
+            {
+                recyclerView.setVisibility(View.VISIBLE);
+                list=savedInstanceState.getParcelableArrayList(USER_POST);
+                adapter.refresh(list);
+            }
+            else {
+                noData.setVisibility(View.VISIBLE);
+                noData.setText("No Post Uploaded");
+            }
+
+        }
         return v;
     }
 
@@ -59,30 +79,46 @@ public class ProfileTab3 extends Fragment {
                 newsfeed_model data = response.body();
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
-                        recyclerView.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
+
                         list = data.getFeed();
-                        adapter.refresh(list);
+                        if(list.size()>0){
+                            recyclerView.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
+                            adapter.refresh(list);
+                        }
+                        else {
+                            noData.setVisibility(View.VISIBLE);
+                            noData.setText("No Post Uploaded");
+                        }
+
                     } else {
+                        noData.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getActivity(), data.getError(), Toast.LENGTH_SHORT).show();
+                        noData.setText(data.getError());
                     }
                 } else {
+                    noData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    noData.setText("Please Check Internet Connection");
                 }
             }
 
             @Override
             public void onFailure(Call<newsfeed_model> call, Throwable t) {
+                noData.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
-                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                noData.setText("Please Check Internet Connection");
             }
         });
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(USER_POST,list);
+    }
 }
