@@ -49,7 +49,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
 
-        Integer photo[] = {R.drawable.jimg2, R.drawable.jimg4, R.drawable.jimg3, R.drawable.jimg1};
+        Integer photo[] = {R.drawable.jimg2, R.drawable.jimg4, R.drawable.jimg3, R.drawable.jimg1,
+                R.drawable.jimg1, R.drawable.jimg3 , R.drawable.jimg4 };
         adapter = new HomeAdapter(Arrays.asList(photo), this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
@@ -61,17 +62,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         staggeredGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position == 0)
-                    return 2;
-                if (position == 1)
-                    return 1;
-                if (position == 2)
-                    return 1;
-                if (position == 3)
-                    return 2;
-                if (position == 4)
-                    return 1;
-                return 1;
+                int value=1;
+
+                switch (position){
+                    case 0: value=2;
+                        break;
+                    case 1: value=1;
+                        break;
+                    case 2: value=1;
+                        break;
+                    case 3: value=2;
+                        break;
+                    case 4: value=1;
+                        break;
+                    case 5: value=1;
+                        break;
+                    case 6: value=1;
+                        break;
+                    default: value=1;
+                    break;
+                }
+
+                return  value;
             }
         });
 
@@ -86,6 +98,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else if (position==2){
                     startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                }
+                else if (position==3){
+                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
                 }
             }
         }));
