@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
 import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.models.newsfeed_model;
-import com.appteamnith.hillffair.models.newsfeed_model2;
+import com.appteamnith.hillffair.models.NewsfeedModel;
+import com.appteamnith.hillffair.models.NewsfeedModel2;
 import com.appteamnith.hillffair.utilities.Utils;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ProfileTab3 extends Fragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private CardAdapter adapter;
-    private ArrayList<newsfeed_model2> list;
+    private ArrayList<NewsfeedModel2> list;
     private TextView noData;
 
     @Override
@@ -72,11 +72,11 @@ public class ProfileTab3 extends Fragment {
 
 
     private void getData(String from, String id) {
-        Call<newsfeed_model> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(from, id);
-        getUserNewsFeed.enqueue(new Callback<newsfeed_model>() {
+        Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(from, id);
+        getUserNewsFeed.enqueue(new Callback<NewsfeedModel>() {
             @Override
-            public void onResponse(Call<newsfeed_model> call, Response<newsfeed_model> response) {
-                newsfeed_model data = response.body();
+            public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
+                NewsfeedModel data = response.body();
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
 
@@ -106,8 +106,8 @@ public class ProfileTab3 extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<newsfeed_model> call, Throwable t) {
-                noData.setVisibility(View.VISIBLE);
+
+            public void onFailure(Call<NewsfeedModel> call, Throwable t) {
                 recyclerView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();

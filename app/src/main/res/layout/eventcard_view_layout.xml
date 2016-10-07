@@ -24,7 +24,7 @@
             android:layout_width="102dp"
             android:layout_height="105dp"
             android:layout_gravity="center"
-            android:src="@drawable/itachi_logo" />
+            />
 
         <TextView
             android:id="@+id/club_name"
@@ -32,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:text="Suraj Negi"
-            android:textSize="20dp" />
-
+            android:textSize="18dp"
+            android:layout_margin="10dp"/>
 
     </android.support.v7.widget.CardView>
 </LinearLayout>

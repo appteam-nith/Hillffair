@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/core_team_name"
             android:layout_marginTop="10dp"/>
@@ -40,7 +40,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:id="@+id/core_team_designation"/>
 
     </LinearLayout>

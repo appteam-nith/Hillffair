@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.models.newsfeed_model2;
+import com.appteamnith.hillffair.models.NewsfeedModel2;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     private Context mContext;
 
-    private ArrayList<newsfeed_model2> list_card=new ArrayList<>();
+    private ArrayList<NewsfeedModel2> list_card=new ArrayList<>();
 
 
 
@@ -36,7 +36,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     }
 
 
-    public  void  refresh(ArrayList<newsfeed_model2> list){
+    public  void  refresh(ArrayList<NewsfeedModel2> list){
         list_card=list;
         notifyDataSetChanged();
     }
@@ -52,7 +52,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
-        newsfeed_model2 card = list_card.get(position);
+        NewsfeedModel2 card = list_card.get(position);
         if(card.getUsername()!=null&&!card.getUsername().isEmpty())
         holder.user_name.setText(card.getUsername());
         if(card.getDescription()!=null&&!card.getDescription().isEmpty())

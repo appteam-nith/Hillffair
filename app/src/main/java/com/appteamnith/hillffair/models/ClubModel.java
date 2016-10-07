@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName;
  * Created by parvesh_dhull on 5/10/16.
  */
 
-public class Club_model {
+
+public class ClubModel {
     @SerializedName("_id")
     private String _id;
     @SerializedName("name")
@@ -16,7 +17,8 @@ public class Club_model {
     @SerializedName("description")
     private String description;
 
-    public Club_model(String photo, String _id, String name, String description) {
+
+    public ClubModel(String photo, String _id, String name, String description) {
         this.photo = photo;
         this._id = _id;
         this.name = name;

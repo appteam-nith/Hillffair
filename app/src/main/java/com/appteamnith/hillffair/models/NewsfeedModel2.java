@@ -9,7 +9,8 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class newsfeed_model2 implements Parcelable {
+
+public class NewsfeedModel2 implements  Parcelable{
     @SerializedName("_id")
     private String _id;
     @SerializedName("title")
@@ -26,7 +27,7 @@ public class newsfeed_model2 implements Parcelable {
     private String username;
 
 
-    public newsfeed_model2(String _id, String title, String photo, String description, String userid, String username) {
+    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username) {
         this._id = _id;
         this.title = title;
         this.photo = photo;
@@ -35,7 +36,7 @@ public class newsfeed_model2 implements Parcelable {
         this.username = username;
     }
 
-    protected newsfeed_model2(Parcel in) {
+    protected NewsfeedModel2(Parcel in) {
         _id = in.readString();
         title = in.readString();
         photo = in.readString();
@@ -44,30 +45,15 @@ public class newsfeed_model2 implements Parcelable {
         username = in.readString();
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(_id);
-        dest.writeString(title);
-        dest.writeString(photo);
-        dest.writeString(description);
-        dest.writeString(userid);
-        dest.writeString(username);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<newsfeed_model2> CREATOR = new Creator<newsfeed_model2>() {
+    public static final Creator<NewsfeedModel2> CREATOR = new Creator<NewsfeedModel2>() {
         @Override
-        public newsfeed_model2 createFromParcel(Parcel in) {
-            return new newsfeed_model2(in);
+        public NewsfeedModel2 createFromParcel(Parcel in) {
+            return new NewsfeedModel2(in);
         }
 
         @Override
-        public newsfeed_model2[] newArray(int size) {
-            return new newsfeed_model2[size];
+        public NewsfeedModel2[] newArray(int size) {
+            return new NewsfeedModel2[size];
         }
     };
 
@@ -117,5 +103,20 @@ public class newsfeed_model2 implements Parcelable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(title);
+        parcel.writeString(photo);
+        parcel.writeString(description);
+        parcel.writeString(userid);
+        parcel.writeString(username);
     }
 }

@@ -8,25 +8,25 @@ import java.util.ArrayList;
  * Created by parvesh_dhull on 2/10/16.
  */
 
-public class newsfeed_model {
+public class NewsfeedModel {
     @SerializedName("feed")
-    private ArrayList<newsfeed_model2> feed;
+    private ArrayList<NewsfeedModel2> feed;
     @SerializedName("success")
     private boolean success;
     @SerializedName("error")
     private String error;
 
-    public newsfeed_model(ArrayList<newsfeed_model2> feed, boolean success, String error) {
+    public NewsfeedModel(ArrayList<NewsfeedModel2> feed, boolean success, String error) {
         this.feed = feed;
         this.success = success;
         this.error = error;
     }
 
-    public ArrayList<newsfeed_model2> getFeed() {
+    public ArrayList<NewsfeedModel2> getFeed() {
         return feed;
     }
 
-    public void setFeed(ArrayList<newsfeed_model2> feed) {
+    public void setFeed(ArrayList<NewsfeedModel2> feed) {
         this.feed = feed;
     }
 
