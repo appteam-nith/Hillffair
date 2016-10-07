@@ -33,8 +33,6 @@ public class ProfileTab2 extends Fragment {
     SharedPref sharedPref;
     private ScrollView scroll_layout;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -52,15 +50,9 @@ public class ProfileTab2 extends Fragment {
         profileBasicInfo(sharedPref.getUserId());
         Log.d("data",""+sharedPref.getUserId());
 
-
-
-    return view;
-
+        return view;
 
     }
-
-
-
 
     public class ProfileBasicDetailModel{
 
@@ -239,10 +231,12 @@ public class ProfileTab2 extends Fragment {
                 }
                 else {
                     if(status_code==503){
+                        if(getActivity()!=null)
                         Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
                     }
                     String error = model.getError();
                     if (error != null && !error.isEmpty()) {
+                        if(getActivity()!=null)
                         Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
                     }
                 }
@@ -253,6 +247,7 @@ public class ProfileTab2 extends Fragment {
             public void onFailure(Call<ProfileDataModel> call, Throwable t) {
                 progress.setVisibility(View.GONE);
                 t.printStackTrace();
+                if(getActivity()!=null)
                 Toast.makeText(getActivity(), "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
             }
         });

@@ -66,11 +66,13 @@ public class ProfileTab3 extends Fragment {
                     } else {
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
+                        if(getActivity()!=null)
                         Toast.makeText(getActivity(), data.getError(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
+                    if(getActivity()!=null)
                     Toast.makeText(getActivity(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -80,6 +82,7 @@ public class ProfileTab3 extends Fragment {
                 recyclerView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
+                if(getActivity()!=null)
                 Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

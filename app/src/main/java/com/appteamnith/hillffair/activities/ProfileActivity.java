@@ -12,12 +12,9 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.PagerAdapter;
@@ -25,16 +22,9 @@ import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
-import com.appteamnith.hillffair.utilities.APIINTERFACE;
-import com.appteamnith.hillffair.utilities.Utils;
-import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Aditya on 10/3/2016.
@@ -80,15 +70,15 @@ public class ProfileActivity extends AppCompatActivity{
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        tabLayout.getTabAt(1).select();
+        viewPager.setOffscreenPageLimit(3);
+
         //End of Tab Layout in Profile Activity
-
-
 
         profile_name = (TextView) findViewById(R.id.profile_name);
         profile_name.setText(sharedPref.getUserName());
         open_gallery = (ImageView) findViewById(R.id.open_gallery);
         profile_pic = (ImageButton) findViewById(R.id.profile_pic);
-
 
     }
 
