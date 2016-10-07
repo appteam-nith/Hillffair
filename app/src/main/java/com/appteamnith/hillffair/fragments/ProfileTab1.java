@@ -92,13 +92,13 @@ public class ProfileTab1 extends Fragment {
                         else {
                             noScore.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
-                            ProfileTab1.this.noScore.setText("No Data Avialable");
+                            ProfileTab1.this.noScore.setText("No Data Available");
                         }
                     }
                     else {
                         noScore.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
-                        ProfileTab1.this.noScore.setText("No Data Avialable");
+                        ProfileTab1.this.noScore.setText("No Data Available");
                     }
 
                 }

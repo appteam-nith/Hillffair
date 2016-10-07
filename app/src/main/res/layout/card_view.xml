@@ -75,17 +75,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#a9a9a9"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.like.LikeButton
                     app:icon_type="heart"
-                    app:icon_size="100dp"
+                    app:icon_size="30dp"
                     android:id="@+id/lyk_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
-                    android:paddingLeft="15dp"/>
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,19 +96,18 @@
                     android:text="100"
                     android:id="@+id/no_of_likes"
                     android:textColor="#000"
-                    android:paddingTop="13dp"
-                    android:paddingLeft="15dp"
-                    android:textSize="20sp"
-                    android:paddingBottom="13dp"
+                    android:layout_centerVertical="true"
+                   android:layout_marginLeft="5dp"
+                    android:textSize="16sp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="29/09/2016"
+                    android:layout_centerVertical="true"
                     android:id="@+id/post_date"
-                    android:paddingRight="15dp"
-                    android:paddingTop="16dp"/>
+                    android:paddingRight="15dp"/>
 
             </RelativeLayout>
         </LinearLayout>
