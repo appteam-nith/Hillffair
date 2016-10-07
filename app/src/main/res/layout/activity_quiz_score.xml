@@ -33,7 +33,6 @@
             android:id="@+id/score_obtained"
             android:text="8"
             android:paddingRight="20dp"
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:textSize="55sp"
             android:layout_height="wrap_content" />
@@ -41,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/quiz_title"
             android:text="/ 10"
-            android:layout_marginTop="38dp"
+            android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:textSize="20sp"
             android:paddingLeft="80dp"
@@ -72,7 +71,9 @@
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <Button
+                android:layout_margin="5dp"
                 android:text="BACK TO HOME"
                 android:layout_width="230dp"
                 android:id="@+id/quiz_home_link"

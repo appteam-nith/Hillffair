@@ -53,10 +53,14 @@
             android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.QuizQuestionActivity"
-            android:label="Quiz"/>
+            android:label="Quiz" />
         <activity
             android:name=".activities.QuizScoreActivity"
-            android:label="Quiz Score"/>
+            android:label="Quiz Score"
+            android:parentActivityName=".activities.QuizActivity"/>
+        <activity android:name=".activities.InformationActivity"
+            android:label="Quiz Instructions"
+            android:parentActivityName=".activities.QuizActivity"></activity>
     </application>
 
 </manifest>

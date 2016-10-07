@@ -1,10 +1,12 @@
 package com.appteamnith.hillffair.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.support.v4.app.*;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.fragments.QuizFragment;

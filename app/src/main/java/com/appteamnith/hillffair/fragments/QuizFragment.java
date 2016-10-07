@@ -1,7 +1,9 @@
 package com.appteamnith.hillffair.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.activities.QuizScoreActivity;
 
 /**
  * Created by sukhbir on 8/10/16.
@@ -35,6 +38,15 @@ public class QuizFragment extends Fragment {
         if(qnumber==10){
             next_text.setVisibility(View.GONE);
             finish.setVisibility(View.VISIBLE);
+
+            finish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().finish();
+                    startActivity(new Intent(getActivity(),QuizScoreActivity.class));
+                }
+            });
+
         }else{
             next_text.setVisibility(View.VISIBLE);
             finish.setVisibility(View.GONE);

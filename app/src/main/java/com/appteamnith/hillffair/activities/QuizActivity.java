@@ -11,7 +11,7 @@ import com.appteamnith.hillffair.R;
 
 public class QuizActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private Button enter_quiz,leaderboard;
+    private Button enter_quiz,leaderboard,instructions_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,19 @@ public class QuizActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         enter_quiz=(Button)findViewById(R.id.enter_quiz);
+        instructions_button=(Button)findViewById(R.id.quiz_instructions_link);
 
         enter_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(QuizActivity.this,QuizQuestionActivity.class));
+            }
+        });
+
+        instructions_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QuizActivity.this,InformationActivity.class));
             }
         });
 
