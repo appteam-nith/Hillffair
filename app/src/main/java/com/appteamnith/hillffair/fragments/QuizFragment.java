@@ -10,12 +10,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.activities.QuizScoreActivity;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.SingleQuestionModel;
+import com.appteamnith.hillffair.models.UpdateScoreModel;
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.utilities.Utils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by sukhbir on 8/10/16.
@@ -27,6 +37,8 @@ public class QuizFragment extends Fragment {
     private boolean show_finish=false;
     private Button finish;
     private TextView next_text,question_number_text;
+
+    private ProgressBar progressBar;
 
     private TextView question_text;
     private CheckBox checkBoxA,checkBoxB,checkBoxC,checkBoxD;
@@ -52,6 +64,8 @@ public class QuizFragment extends Fragment {
         radioB=(RadioButton)view.findViewById(R.id.radioB);
         radioC=(RadioButton)view.findViewById(R.id.radioC);
         radioD=(RadioButton)view.findViewById(R.id.radioD);
+
+        progressBar=(ProgressBar)view.findViewById(R.id.progress);
 
         radio_questions=(LinearLayout)view.findViewById(R.id.radio_questions);
         checkbox_questions=(LinearLayout) view.findViewById(R.id.checkbox_questions);
@@ -91,8 +105,12 @@ public class QuizFragment extends Fragment {
                 finish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        getActivity().finish();
-                        startActivity(new Intent(getActivity(),QuizScoreActivity.class));
+                        progressBar.setVisibility(View.VISIBLE);
+                        finish.setEnabled(false);
+
+                        SharedPref pref=new SharedPref(getContext());
+
+                        finishAndUpdateScore(pref.getUserId(),7);
                     }
                 });
 
@@ -104,6 +122,49 @@ public class QuizFragment extends Fragment {
         }
 
         return view;
+
+    }
+
+    void finishAndUpdateScore(String id, final int score){
+
+        APIINTERFACE service= Utils.getRetrofitService();
+        Call<UpdateScoreModel> call=service.updateScore(id,score);
+
+        call.enqueue(new Callback<UpdateScoreModel>() {
+            @Override
+            public void onResponse(Call<UpdateScoreModel> call, Response<UpdateScoreModel> response) {
+                finish.setEnabled(true);
+                progressBar.setVisibility(View.GONE);
+
+                int status=response.code();
+                UpdateScoreModel model=response.body();
+
+                if(model!=null && response.isSuccess()){
+                    if(model.isSuccess()){
+                        Toast.makeText(getContext(),model.getMsg() ,Toast.LENGTH_SHORT);
+
+                        getActivity().finish();
+                        Intent in=new Intent(getActivity(),QuizScoreActivity.class);
+                        in.putExtra("score",score);
+
+                        startActivity(in);
+                    }else{
+                        Toast.makeText(getContext(),model.getMsg() ,Toast.LENGTH_SHORT);
+                    }
+
+                }else{
+                    Toast.makeText(getContext(),"Some error occurred !!",Toast.LENGTH_SHORT);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateScoreModel> call, Throwable t) {
+                Toast.makeText(getContext(),"Some error occurred !!",Toast.LENGTH_SHORT);
+                progressBar.setVisibility(View.GONE);
+                finish.setEnabled(true);
+            }
+        });
 
     }
 

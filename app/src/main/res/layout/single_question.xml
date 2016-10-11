@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -148,4 +152,14 @@
         android:layout_height="wrap_content" />
 
 </LinearLayout>
+
+<ProgressBar
+    android:visibility="gone"
+    android:layout_centerInParent="true"
+    android:id="@+id/progress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+</RelativeLayout>
+
 </ScrollView>
