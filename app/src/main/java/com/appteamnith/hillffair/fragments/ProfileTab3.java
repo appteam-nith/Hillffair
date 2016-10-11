@@ -57,6 +57,7 @@ public class ProfileTab3 extends Fragment {
             @Override
             public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
                 NewsfeedModel data = response.body();
+
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
                         recyclerView.setVisibility(View.VISIBLE);
@@ -67,7 +68,7 @@ public class ProfileTab3 extends Fragment {
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
                         if(getActivity()!=null)
-                        Toast.makeText(getActivity(), data.getError(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), data.getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     recyclerView.setVisibility(View.GONE);

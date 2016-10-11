@@ -14,13 +14,13 @@ public class ProfileDataModel {
     @SerializedName("success")
     private boolean success;
 
-    @SerializedName("error")
-    private String error;
+    @SerializedName("msg")
+    private String msg;
 
-    public ProfileDataModel(ProfileTab2.ProfileBasicDetailModel profileInfo, boolean success, String error) {
+    public ProfileDataModel(ProfileTab2.ProfileBasicDetailModel profileInfo, boolean success, String msg) {
         this.profileInfo = profileInfo;
         this.success = success;
-        this.error = error;
+        this.msg = msg;
     }
 
     public ProfileTab2.ProfileBasicDetailModel getProfileInfo() {
@@ -39,11 +39,11 @@ public class ProfileDataModel {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

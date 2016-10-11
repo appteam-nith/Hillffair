@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -150,15 +151,18 @@ public class LoginActivity extends AppCompatActivity {
                 loadToast.success();
                 Login mLoginObject = response.body();
                 int status_code = response.code();
+
                 if (mLoginObject != null && response.isSuccess()) {
                     boolean returnedResponse = mLoginObject.success;
+
                     if (returnedResponse) {
                         pref.setUserId(mLoginObject.getId());
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    } else {
-                        String error = mLoginObject.getError();
+                    }else {
+                        String error = mLoginObject.getMsg();
                         if (error != null && !error.isEmpty()) {
                             Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                            Log.v("msg",error);
                         }
                         loadToast.error();
                     }
@@ -166,6 +170,12 @@ public class LoginActivity extends AppCompatActivity {
                     loadToast.error();
                     if (status_code == 503) {
                         Toast.makeText(LoginActivity.this, "Server Down", Toast.LENGTH_SHORT).show();
+                    }else{
+                        String error = mLoginObject.getMsg();
+                        if (error != null && !error.isEmpty()) {
+                            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                            Log.v("msg",error);
+                        }
                     }
                 }
 

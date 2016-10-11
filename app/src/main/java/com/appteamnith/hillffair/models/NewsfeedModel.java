@@ -13,13 +13,13 @@ public class NewsfeedModel {
     private ArrayList<NewsfeedModel2> feed;
     @SerializedName("success")
     private boolean success;
-    @SerializedName("error")
-    private String error;
+    @SerializedName("msg")
+    private String msg;
 
-    public NewsfeedModel(ArrayList<NewsfeedModel2> feed, boolean success, String error) {
+    public NewsfeedModel(ArrayList<NewsfeedModel2> feed, boolean success, String msg) {
         this.feed = feed;
         this.success = success;
-        this.error = error;
+        this.msg = msg;
     }
 
     public ArrayList<NewsfeedModel2> getFeed() {
@@ -38,11 +38,11 @@ public class NewsfeedModel {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }
