@@ -10,13 +10,13 @@ public class Register {
     private String id;
     @SerializedName("success")
     private boolean success;
-    @SerializedName("error")
-    private String error;
+    @SerializedName("msg")
+    private String msg;
 
     public Register(String id, boolean success, String error) {
         this.id = id;
         this.success = success;
-        this.error = error;
+        this.msg = error;
     }
 
     public String getId() {
@@ -35,11 +35,11 @@ public class Register {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

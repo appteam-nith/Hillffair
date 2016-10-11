@@ -83,8 +83,6 @@ public class ProfileTab2 extends Fragment {
         @SerializedName("date")
         private String date;
 
-
-
         public ProfileBasicDetailModel(String _id, String name, String email, String pwd, boolean nitian, String photo, String rollno, String phone, String date) {
             this._id = _id;
             this.name = name;
@@ -170,35 +168,6 @@ public class ProfileTab2 extends Fragment {
             this.date = date;
         }
 
-
-        @SerializedName("success")
-        public boolean success;
-
-        @SerializedName("error")
-        public  String error;
-
-        public ProfileBasicDetailModel(boolean success, String error) {
-            this.success = success;
-            this.error = error;
-        }
-
-        public boolean isSuccess() {
-            return success;
-        }
-
-        public void setSuccess(boolean success) {
-            this.success = success;
-        }
-
-        public String getError() {
-            return error;
-        }
-
-        public void setError(String error) {
-            this.error = error;
-        }
-
-
     }
 
     private void profileBasicInfo(String id){
@@ -209,6 +178,7 @@ public class ProfileTab2 extends Fragment {
             @Override
             public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
                 ProfileBasicDetailModel model = response.body().getProfileInfo();
+
                 sharedPref.setUserName(model.getName());
                 int status_code = response.code();
                 boolean returnedResponse = response.body().isSuccess();
@@ -233,11 +203,6 @@ public class ProfileTab2 extends Fragment {
                     if(status_code==503){
                         if(getActivity()!=null)
                         Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
-                    }
-                    String error = model.getError();
-                    if (error != null && !error.isEmpty()) {
-                        if(getActivity()!=null)
-                        Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
                     }
                 }
 
