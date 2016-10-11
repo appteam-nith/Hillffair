@@ -49,7 +49,8 @@
                         android:text="Hillffair 2k16"
                         android:textAppearance="@android:style/TextAppearance.Large"
                         android:textColor="@android:color/white"
-                        />
+                        android:background="#000"
+                     />
 
                     <TextView
                         android:textAppearance="@android:style/TextAppearance.Medium"
@@ -57,7 +58,8 @@
                         android:layout_height="wrap_content"
                         android:text="Nit Hamirpur"
                         android:textColor="@android:color/white"
-                        />
+                        android:background="#000"
+                      />
 
                 </LinearLayout>
             </RelativeLayout>
