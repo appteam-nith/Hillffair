@@ -53,6 +53,7 @@
             android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.QuizQuestionActivity"
+            android:screenOrientation="portrait"
             android:label="Quiz" />
         <activity
             android:name=".activities.QuizScoreActivity"

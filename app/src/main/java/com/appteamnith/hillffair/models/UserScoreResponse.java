@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserScoreResponse {
 
 
-    @SerializedName("quize")
+    @SerializedName("quiz")
     private ProfileTab1.QuizResponse quizResponse;
 
     @SerializedName("success")
