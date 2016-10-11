@@ -117,6 +117,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
@@ -146,9 +153,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.profile) {
             startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.settings) {
+            startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -158,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (returnedResponse) {
                         pref.setUserId(mLoginObject.getId());
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        finish();
                     }else {
                         String error = mLoginObject.getMsg();
                         if (error != null && !error.isEmpty()) {
