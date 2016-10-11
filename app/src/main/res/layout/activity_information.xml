@@ -39,6 +39,7 @@
         android:padding="10dp"
         android:textSize="30sp"
         android:text="BEST OF LUCK!!!"
+        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

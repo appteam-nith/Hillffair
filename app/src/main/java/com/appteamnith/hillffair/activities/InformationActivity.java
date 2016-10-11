@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 
 public class InformationActivity extends AppCompatActivity {
+
+    private Button accept;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +22,18 @@ public class InformationActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        findViewById(R.id.accept_and_enter_quiz).setOnClickListener(new View.OnClickListener() {
+        accept=(Button)findViewById(R.id.accept_and_enter_quiz);
+
+        final SharedPref sp=new SharedPref(this);
+
+        if(sp.getInstructionsReadStatus()){
+           accept.setVisibility(View.GONE);
+        }
+
+        accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sp.setInstructionsReadStatus(true);
                 finish();
             }
         });

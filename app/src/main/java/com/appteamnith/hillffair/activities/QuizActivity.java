@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 
 public class QuizActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -17,6 +19,8 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_home);
+
+        final SharedPref sp=new SharedPref(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,7 +32,11 @@ public class QuizActivity extends AppCompatActivity {
         enter_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(QuizActivity.this,QuizQuestionActivity.class));
+                if(sp.getInstructionsReadStatus()){
+                    startActivity(new Intent(QuizActivity.this,QuizQuestionActivity.class));
+                }else{
+                    Toast.makeText(QuizActivity.this,"Read Quiz Instructions first",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
