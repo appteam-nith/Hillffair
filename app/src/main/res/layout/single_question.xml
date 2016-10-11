@@ -85,6 +85,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
         <RadioButton
             android:textColor="#505050"
             android:id="@+id/radioA"
@@ -117,6 +121,8 @@
             android:text="D. 6 Members"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        </RadioGroup>
 
     </LinearLayout>
 
