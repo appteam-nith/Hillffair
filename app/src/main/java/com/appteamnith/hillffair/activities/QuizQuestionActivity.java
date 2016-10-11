@@ -20,6 +20,7 @@ import com.appteamnith.hillffair.fragments.QuizFragment;
 import com.appteamnith.hillffair.models.QuizQuestionsModel;
 import com.appteamnith.hillffair.models.SingleQuestionModel;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.utilities.ScoreCalculator;
 import com.appteamnith.hillffair.utilities.Utils;
 
 import java.util.List;
@@ -90,6 +91,31 @@ public class QuizQuestionActivity extends AppCompatActivity {
                         pager.setVisibility(View.VISIBLE);
 
                         if(questions!=null){
+                            //initialize scoreCalculator
+                            ScoreCalculator sc=ScoreCalculator.getInstance();
+
+                            String answers[]=new String[questions.size()];
+                            String selectedChoices[]=new String[questions.size()];
+                            int question_type[]=new int[questions.size()];
+
+                            for(int i1=0;i1<questions.size();i1++){
+                                SingleQuestionModel ques=questions.get(i1);
+
+                                answers[i1]=ques.getAnswer();
+                                selectedChoices[i1]="";
+
+                                if(ques.isSingleChoice()){
+                                    question_type[i1]=1;
+                                }else{
+                                    question_type[i1]=2;
+                                }
+
+                            }
+
+                            sc.setAnswers(answers);
+                            sc.setSelectedChoices(selectedChoices);
+                            sc.setQuestion_type(question_type);
+
                             FragmentManager fragmentManager=getSupportFragmentManager();
                             pager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
 

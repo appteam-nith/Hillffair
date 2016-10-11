@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/quiz_title"
             android:id="@+id/score_obtained"
-            android:text="8"
+            android:text="0"
             android:paddingRight="20dp"
             android:layout_width="wrap_content"
             android:textSize="55sp"
