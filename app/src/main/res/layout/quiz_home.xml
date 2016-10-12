@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_quiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,93 +13,97 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:titleTextColor="#FFF"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:titleTextColor="#FFF"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/quiz_title"
-            android:textSize="65sp"
-            android:layout_centerInParent="true"
-            android:text="QUIZ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:paddingLeft="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/quiz_title"
-            android:text="by App Team NITH"
-            android:layout_width="wrap_content"
-            android:textSize="17sp"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="25dp"
-        android:textSize="14sp"
-        android:layout_marginRight="25dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/quiz_comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-        <RelativeLayout
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
         <LinearLayout
-            android:id="@+id/temp_id1"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <Button
-                android:text="INSTRUCTIONS"
-                android:layout_width="230dp"
-                android:id="@+id/quiz_instructions_link"
-                android:padding="18dp"
-                android:textSize="16sp"
-                android:layout_height="wrap_content" />
-            <Button
-                android:text="ENTER QUIZ"
-                android:layout_width="230dp"
-                android:id="@+id/enter_quiz"
-                android:layout_marginTop="10dp"
-                android:padding="18dp"
-                android:textSize="16sp"
-                android:layout_height="wrap_content" />
-            <Button
-                android:text="LEADERBOARD"
-                android:id="@+id/leaderboard_link"
-                android:layout_marginTop="10dp"
-                android:layout_width="230dp"
-                android:padding="18dp"
-                android:textSize="14dp"
-                android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/quiz_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="QUIZ"
+                    android:textSize="65sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/quiz_title"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="120dp"
+                    android:text="by App Team NITH"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="@string/quiz_comment"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/temp_id1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/quiz_instructions_link"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:padding="18dp"
+                        android:text="INSTRUCTIONS"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/enter_quiz"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="18dp"
+                        android:text="ENTER QUIZ"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/leaderboard_link"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="18dp"
+                        android:text="LEADERBOARD"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+            </RelativeLayout>
         </LinearLayout>
-        
-    </RelativeLayout>
-    </LinearLayout>
 
     </ScrollView>
 
