@@ -17,15 +17,18 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:text="username"
-            android:textSize="25sp" />
+            android:textColor="#303F9F"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/leader_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="score"
             android:gravity="center"
+            android:text="score"
+            android:textColor="#448AFF"
             android:textSize="25sp" />
     </LinearLayout>
 
@@ -40,8 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="rollno"
             android:gravity="center"
+            android:text="rollno"
+            android:textColor="#448AFF"
             android:textSize="25sp" />
 
         <TextView
@@ -49,8 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="sets"
             android:gravity="center"
+            android:text="sets"
+            android:textColor="#448AFF"
             android:textSize="25sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
