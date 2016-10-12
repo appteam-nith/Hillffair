@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.utilities.Utils;
 
 public class ForgetPassword extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class ForgetPassword extends AppCompatActivity {
    boolean isemail=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref = new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         confirmpwd = (Button)findViewById(R.id.confirmbutton);

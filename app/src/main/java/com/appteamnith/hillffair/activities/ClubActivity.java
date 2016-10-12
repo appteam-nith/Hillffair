@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.ClubModel;
 import com.appteamnith.hillffair.models.ClubModel2;
 import com.appteamnith.hillffair.utilities.Utils;
@@ -41,6 +42,8 @@ public class ClubActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_activity);
         progressBar= (ProgressBar) findViewById(R.id.progress);
