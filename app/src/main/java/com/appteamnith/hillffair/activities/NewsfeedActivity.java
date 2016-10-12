@@ -34,8 +34,8 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPref pref = new SharedPref(this);
-        setThem(pref.getThemeId());
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.newsfeed);
