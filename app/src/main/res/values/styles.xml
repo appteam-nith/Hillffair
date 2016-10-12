@@ -23,45 +23,45 @@
     </style>
 
     <style name="batman" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#686767</item>
-        <item name="colorPrimaryDark">#2b2a2a</item>
-        <item name="colorAccent">#efd518</item>
-        <item name="android:textColor">#878383</item>
+        <item name="colorPrimary">#607D8B</item>
+        <item name="colorPrimaryDark">#37474F</item>
+        <item name="colorAccent">#90A4AE</item>
+        <item name="android:textColor">#000</item>
         <item name="android:windowBackground">@color/back_batman</item>
     </style>
 
     <style name="captainamerica" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#27b3e6</item>
-        <item name="colorPrimaryDark">#128fbe</item>
-        <item name="colorAccent">#f4303a</item>
+        <item name="colorPrimary">#039BE5</item>
+        <item name="colorPrimaryDark">#01579B</item>
+        <item name="colorAccent">#40C4FF</item>
         <item name="android:windowBackground">@color/back_captainamerica</item>
     </style>
 
     <style name="flash" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#872b33</item>
-        <item name="colorPrimaryDark">#5c1a20</item>
-        <item name="colorAccent">#e1c355</item>
+        <item name="colorPrimary">#8D6E63</item>
+        <item name="colorPrimaryDark">#3E2723</item>
+        <item name="colorAccent">#BCAAA4</item>
         <item name="android:windowBackground">@color/back_flash</item>
     </style>
 
     <style name="superman" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#1a81cc</item>
-        <item name="colorPrimaryDark">#1467a3</item>
-        <item name="colorAccent">#d4fc0e0e</item>
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#B71C1C</item>
+        <item name="colorAccent">#FF5252</item>
         <item name="android:windowBackground">@color/back_superman</item>
     </style>
 
     <style name="wonderwoman" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#f92d39</item>
-        <item name="colorPrimaryDark">#dc222c</item>
-        <item name="colorAccent">#ede921</item>
+        <item name="colorPrimary">#EF6C00</item>
+        <item name="colorPrimaryDark">#E65100</item>
+        <item name="colorAccent">#FF9100</item>
         <item name="android:windowBackground">@color/back_wonderwoman</item>
     </style>
 
     <style name="hulk" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#539f09</item>
-        <item name="colorPrimaryDark">#1a6004</item>
-        <item name="colorAccent">#b966df</item>
+        <item name="colorPrimary">#43A047</item>
+        <item name="colorPrimaryDark">#1B5E20</item>
+        <item name="colorAccent">#00E676</item>
         <item name="android:windowBackground">@color/back_hulk</item>
     </style>
 
