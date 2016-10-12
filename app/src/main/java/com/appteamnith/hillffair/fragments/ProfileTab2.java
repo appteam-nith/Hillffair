@@ -179,7 +179,7 @@ public class ProfileTab2 extends Fragment {
             public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
                 ProfileBasicDetailModel model = response.body().getProfileInfo();
 
-                sharedPref.setUserName(model.getName());
+              //  sharedPref.setUserName(model.getName());
                 int status_code = response.code();
                 boolean returnedResponse = response.body().isSuccess();
                 progress.setVisibility(View.GONE);
