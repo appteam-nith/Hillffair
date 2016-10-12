@@ -44,8 +44,8 @@ public class ProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        SharedPref pref = new SharedPref(this);
-        setThem(pref.getThemeId());
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
