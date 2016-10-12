@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.appteamnith.hillffair.models.CoreTeamItem;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CoreTeamAdapter;
 
@@ -21,6 +22,8 @@ public class CoreTeamActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref = new SharedPref(this);
+        setThem(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coreteam);
 
