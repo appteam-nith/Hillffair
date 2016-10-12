@@ -33,12 +33,12 @@
     </array>
 
 
-    <color name="back_batman">#c7000000</color>
-    <color name="back_superman">#e8dc28</color>
-    <color name="back_wonderwoman">#f98a91</color>
-    <color name="back_flash">#b8b8b6</color>
-    <color name="back_captainamerica">#caec1f34</color>
-    <color name="back_hulk">#88de2c</color>
+    <color name="back_batman">#ECEFF1</color>
+    <color name="back_superman">#FFEBEE</color>
+    <color name="back_wonderwoman">#FFF3E0</color>
+    <color name="back_flash">#EFEBE9</color>
+    <color name="back_captainamerica">#E1F5FE</color>
+    <color name="back_hulk">#E8F5E9</color>
 
     <!-- defaults -->
     <color name="colorPrimary">#3F51B5</color>
