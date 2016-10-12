@@ -55,10 +55,11 @@ public class ScoreCalculator {
 
     public int calculateScore(){
         for(int i=0;i<answers.length;i++){
-            Log.i("cal-score",answers[i]+" ----- "+selectedChoices[i]);
+            Log.i("cal-score","#"+answers[i]+"# ----- #"+selectedChoices[i]+"#");
 
             if(question_type[i]==1){
-                if(answers[i].equals(selectedChoices[i])){
+                if(answers[i].trim().equals(selectedChoices[i].trim())){
+                    Log.v("score1++","for i= "+i);
                     totalScore++;
                 }
 
@@ -66,13 +67,16 @@ public class ScoreCalculator {
                 int flag=1;
 
                 for(int j=0;j<answers[i].length();j++){
-                    if(selectedChoices[i].indexOf(answers[i].charAt(j))!=-1){
+                    char temp=answers[i].charAt(j);
+
+                    if(selectedChoices[i].indexOf(temp)==-1){
                         flag=0;
                         break;
                     }
                 }
 
                 if(flag==1){
+                    Log.v("score2++","for i= "+i);
                     totalScore++;
                 }
             }
