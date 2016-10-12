@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
-
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.NewsfeedModel;
 
 import com.appteamnith.hillffair.utilities.Utils;
@@ -34,6 +34,8 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref = new SharedPref(this);
+        setThem(pref.getThemeId());
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.newsfeed);
