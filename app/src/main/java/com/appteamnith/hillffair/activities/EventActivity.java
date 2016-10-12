@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.ClubEventAdapter;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.ClubEvent;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 import com.appteamnith.hillffair.utilities.Utils;
@@ -32,6 +33,8 @@ public class EventActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref = new SharedPref(this);
+        setThem(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_toolbar);
