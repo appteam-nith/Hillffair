@@ -17,6 +17,8 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_home);
 

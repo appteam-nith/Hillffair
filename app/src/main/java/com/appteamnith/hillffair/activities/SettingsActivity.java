@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -17,6 +18,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
