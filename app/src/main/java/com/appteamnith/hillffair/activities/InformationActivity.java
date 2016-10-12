@@ -15,8 +15,8 @@ public class InformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPref pref = new SharedPref(this);
-        setThem(pref.getThemeId());
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
