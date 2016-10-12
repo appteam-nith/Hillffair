@@ -42,8 +42,8 @@ public class ClubActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        SharedPref pref = new SharedPref(this);
-        setThem(pref.getThemeId());
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_activity);
         progressBar= (ProgressBar) findViewById(R.id.progress);
