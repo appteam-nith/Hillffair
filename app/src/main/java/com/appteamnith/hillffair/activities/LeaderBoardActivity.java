@@ -1,14 +1,18 @@
 package com.appteamnith.hillffair.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.LeaderBoardAdapter;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.LeaderBoardModel;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
@@ -21,43 +25,54 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LeaderBoardActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    RecyclerView.LayoutManager layoutManager;;
-    ArrayList<LeaderBoardUserModel>users;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    ;
+    private ArrayList<LeaderBoardUserModel> users;
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPref sharedPref = new SharedPref(this);
+        setTheme(sharedPref.getThemeId());
         setContentView(R.layout.activity_leader_board);
 
-        recyclerView =(RecyclerView)findViewById(R.id.leader_recycler);
 
+        recyclerView = (RecyclerView) findViewById(R.id.leader_recycler);
+        progressBar = (ProgressBar) findViewById(R.id.leader_progress);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.leader_toolbar);
+        toolbar.setTitle("LeaderBoard");
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setSubtitleTextColor(Color.WHITE);
+        toolbar.setSubtitle("NITH Hillffair Quiz");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        progressBar.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         getLeaderBoard("1");
 
-
-
-
     }
 
-    public void getLeaderBoard(String from){
+    public void getLeaderBoard(String from) {
         APIINTERFACE mAPI = Utils.getRetrofitService();
-        Call<LeaderBoardModel> mService= mAPI.getLeaderBoard(from);
+        Call<LeaderBoardModel> mService = mAPI.getLeaderBoard(from);
         mService.enqueue(new Callback<LeaderBoardModel>() {
             @Override
             public void onResponse(Call<LeaderBoardModel> call, Response<LeaderBoardModel> response) {
-               users=response.body().getUsers();
-                adapter = new LeaderBoardAdapter(users,getApplicationContext());
+                users = response.body().getUsers();
+                adapter = new LeaderBoardAdapter(users, getApplicationContext());
                 recyclerView.setAdapter(adapter);
-                Log.e("Inside onresponse ()","-->"+users.get(0).getName());
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<LeaderBoardModel> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
-
+                   progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -65,9 +80,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     }
 
 
-
-
-    public class LeaderBoardUserModel{
+    public class LeaderBoardUserModel {
 
         @SerializedName("name")
         private String name;

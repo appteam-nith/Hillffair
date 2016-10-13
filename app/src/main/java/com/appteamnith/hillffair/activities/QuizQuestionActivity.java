@@ -38,7 +38,6 @@ public class QuizQuestionActivity extends AppCompatActivity {
     private LinearLayout staytuned_message;
     private TextView message;
 
-    private SharedPref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
