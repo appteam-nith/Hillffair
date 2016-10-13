@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
-import com.appteamnith.hillffair.utilities.StartupShow;
 
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -31,7 +30,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip;
-    private StartupShow prefManager;
 
     private SharedPref sharedPref;
     private boolean settings_call=false;
@@ -43,7 +41,6 @@ public class WelcomeActivity extends AppCompatActivity {
         settings_call=getIntent().getBooleanExtra("settings_call",false);
 
         sharedPref=new SharedPref(this);
-        prefManager = new StartupShow(this);
         if (!sharedPref.launchStartUpShow() && settings_call==false) {
             launchHomeScreen();
             finish();

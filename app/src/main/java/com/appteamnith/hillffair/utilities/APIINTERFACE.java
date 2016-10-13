@@ -3,6 +3,7 @@ package com.appteamnith.hillffair.utilities;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
+import com.appteamnith.hillffair.models.LeaderBoardModel;
 import com.appteamnith.hillffair.models.QuizQuestionsModel;
 import com.appteamnith.hillffair.models.UpdateScoreModel;
 import com.appteamnith.hillffair.models.UserScoreResponse;
@@ -69,6 +70,9 @@ public interface APIINTERFACE {
     @FormUrlEncoded
     @POST("quiz/score")
     Call<UpdateScoreModel> updateScore(@Field("id") String id, @Field("score") int score);
+
+    @GET("quiz/leaderboard")
+    Call<LeaderBoardModel> getLeaderBoard(@Query("from")String from);
 
 }
 
