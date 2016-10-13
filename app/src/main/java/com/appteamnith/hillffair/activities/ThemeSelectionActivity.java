@@ -93,6 +93,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
 
         if(settings_call==false)
         startActivity(new Intent(ThemeSelectionActivity.this,LoginActivity.class));
+        else
+        startActivity(new Intent(ThemeSelectionActivity.this,SettingsActivity.class));
 
         finish();
     }
