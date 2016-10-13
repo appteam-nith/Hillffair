@@ -48,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
                 in.putExtra("settings_call",true);
 
                 startActivity(in);
+                finish();
             }
         });
 

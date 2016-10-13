@@ -104,4 +104,17 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
         sharedPref.setThemeId(themeVal);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(settings_call){
+            Intent in=new Intent(ThemeSelectionActivity.this,SettingsActivity.class);
+            overridePendingTransition(0,0);
+            startActivity(in);
+            finish();
+        }
+
+    }
+
 }
