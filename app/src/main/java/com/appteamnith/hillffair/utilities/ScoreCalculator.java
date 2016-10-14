@@ -13,7 +13,8 @@ public class ScoreCalculator {
     private int totalScore=0;
     private int question_type[];    // 1 => single   2 => multiple
 
-    private ScoreCalculator(){}
+    private ScoreCalculator(){
+    }
 
     public static ScoreCalculator getInstance(){
         if(obj==null){
@@ -28,16 +29,21 @@ public class ScoreCalculator {
     }
 
     public void setChoice(int qno, String choice){
+        if(selectedChoices!=null)
        selectedChoices[qno-1]=choice;
        //Log.v("#######"+qno,"choice is "+choice+", answer is "+answers[qno-1]);
     }
 
     public void setChoice(int qno,String choice,boolean b){
+        if(selectedChoices==null)return;
+
         if(b){
             selectedChoices[qno-1]=selectedChoices[qno-1]+choice;
         }else{
-            selectedChoices[qno-1].replaceAll(choice,"Z");
+            selectedChoices[qno-1]=selectedChoices[qno-1].replaceAll(choice,"Z");
         }
+
+        Log.v("testing-checkboxes",selectedChoices[qno-1]);
 
     }
 
@@ -54,6 +60,8 @@ public class ScoreCalculator {
     }
 
     public int calculateScore(){
+        if(answers==null) return 0;
+
         for(int i=0;i<answers.length;i++){
             Log.i("cal-score","#"+answers[i]+"# ----- #"+selectedChoices[i]+"#");
 
