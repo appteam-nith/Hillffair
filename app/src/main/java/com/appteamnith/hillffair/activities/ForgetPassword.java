@@ -1,17 +1,27 @@
 package com.appteamnith.hillffair.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
+import com.appteamnith.hillffair.models.ForgotPassword;
+import com.appteamnith.hillffair.models.SendPassword;
+import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.Utils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ForgetPassword extends AppCompatActivity {
     Button confirmpwd;
@@ -19,6 +29,9 @@ public class ForgetPassword extends AppCompatActivity {
     EditText repwd;
     EditText code;
     EditText email;
+   String email1;
+    ForgotPassword fin;
+    Button verifyemail;
     boolean ispassword=false;
     TextInputLayout pwdTextInput;
     TextInputLayout repwdTextInput;
@@ -30,6 +43,7 @@ public class ForgetPassword extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+        verifyemail = (Button)findViewById(R.id.foremail);
         confirmpwd = (Button)findViewById(R.id.confirmbutton);
         pwd = (EditText)findViewById(R.id.forgetpwd);
         repwd = (EditText) findViewById(R.id.confirmforgetpwd);
@@ -37,6 +51,16 @@ public class ForgetPassword extends AppCompatActivity {
         repwdTextInput = (TextInputLayout) findViewById(R.id.repwdtextinput);
         email = (EditText)findViewById(R.id.forgotemail);
         emailTextInputLayout = (TextInputLayout)findViewById(R.id.emailtextinput);
+        code=(EditText)findViewById(R.id.confirmcode);
+        verifyemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                email1 = email.getText().toString();
+                sendemail(email1);
+
+
+        }
+        });
         pwd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -113,6 +137,113 @@ public class ForgetPassword extends AppCompatActivity {
 
                                      }
         );
+
+
+       confirmpwd.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               int vericode;
+               String mycode = code.getText().toString();
+                vericode = Integer.parseInt(mycode);
+
+               if(vericode==fin.user.getCode()) {
+
+
+                   send_id(fin.user.get_id1(), pwd.getText().toString());
+               }
+
+               else {
+                   Toast.makeText(ForgetPassword.this, "Code entered is not correct", Toast.LENGTH_SHORT).show();
+               }
+           }
+       });
+
+
+
+
+    }
+
+    private void sendemail (String Email)
+    {
+        APIINTERFACE mApiService = Utils.getRetrofitService();
+        Call<ForgotPassword> mService = mApiService.forgotPassword(Email);
+        mService.enqueue(new Callback<ForgotPassword>() {
+            @Override
+            public void onResponse(Call<ForgotPassword> call, Response<ForgotPassword> response) {
+                ForgotPassword mLoginObject = response.body();
+                int status_code = response.code();
+               // boolean returnedResponse = response.body().isSuccess();
+
+                if (mLoginObject != null && response.isSuccess()) {
+                    boolean returnedResponse = mLoginObject.isSuccess();
+                    if (returnedResponse) {
+
+                        Toast.makeText(ForgetPassword.this, "Enter the new Password and code", Toast.LENGTH_SHORT).show();
+                        fin = mLoginObject;
+
+
+
+
+                    }
+
+                    else{
+                        Toast.makeText(ForgetPassword.this, "Internal Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else
+                {
+                        Toast.makeText(ForgetPassword.this, "Server Down", Toast.LENGTH_SHORT).show();
+
+
+                }
+                }
+
+
+
+            @Override
+            public void onFailure(Call<ForgotPassword> call, Throwable t) {
+                Toast.makeText(ForgetPassword.this, "Please Check Your Ineternet Connection", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    private void send_id(String id,  String pwd)
+    {
+        APIINTERFACE mApiService = Utils.getRetrofitService();
+        Call<SendPassword> mService = mApiService.sendPassword(id,pwd);
+        mService.enqueue(new Callback<SendPassword>() {
+            @Override
+            public void onResponse(Call<SendPassword> call, Response<SendPassword> response) {
+                SendPassword obj = response.body();
+                if (obj != null && response.isSuccess()) {
+                    boolean returnedResponse = obj.isSuccess();
+
+                    if (returnedResponse) {
+                        Toast.makeText(ForgetPassword.this, "Password changed Successfully", Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(ForgetPassword.this,pwd , Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    } else {
+                        Toast.makeText(ForgetPassword.this, "Internal error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else
+                {
+                    Toast.makeText(ForgetPassword.this, "Server error", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+
+
+            @Override
+            public void onFailure(Call<SendPassword> call, Throwable t) {
+                Toast.makeText(ForgetPassword.this, "Check your Internet Permission", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }
