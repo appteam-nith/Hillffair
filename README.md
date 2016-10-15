@@ -33,6 +33,10 @@ Note: Also while sending Pull Request make sure all naming conventions are follo
 ### Libraries used
 - [Glide](https://github.com/bumptech/glide)
 - [Retrofit](https://github.com/square/retrofit)
+- [OneSignal](https://github.com/OneSignal/OneSignal-Android-SDK)
+- [Okhttp](https://github.com/square/okhttp)
+- [Gson](https://github.com/google/gson)
+- [Load-Toast](https://github.com/code-mc/loadtoast)
 
 ### License
 This project is currently licensed under the GNU General Public License v3.  
