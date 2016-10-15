@@ -187,6 +187,8 @@ public class LoginActivity extends AppCompatActivity {
                 t.printStackTrace();
                 loadToast.error();
                 Toast.makeText(LoginActivity.this, "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
+
+
             }
         });
     }

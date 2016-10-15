@@ -3,8 +3,11 @@ package com.appteamnith.hillffair.utilities;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
+import com.appteamnith.hillffair.models.ForgotPassword;
+
 import com.appteamnith.hillffair.models.LeaderBoardModel;
 import com.appteamnith.hillffair.models.QuizQuestionsModel;
+import com.appteamnith.hillffair.models.SendPassword;
 import com.appteamnith.hillffair.models.UpdateScoreModel;
 import com.appteamnith.hillffair.models.UserScoreResponse;
 import com.appteamnith.hillffair.models.ClubModel2;
@@ -74,6 +77,15 @@ public interface APIINTERFACE {
     @GET("quiz/leaderboard")
     Call<LeaderBoardModel> getLeaderBoard(@Query("from")String from);
 
+    @FormUrlEncoded
+    @POST("password/forgot")
+    Call<ForgotPassword> forgotPassword(@Field("email")String email);
+
+
+
+    @FormUrlEncoded
+    @POST("password/new")
+    Call<SendPassword> sendPassword(@Field("id")String id , @Field("pwd")String pwd);
 }
 
 
