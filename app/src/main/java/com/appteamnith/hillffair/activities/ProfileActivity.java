@@ -1,23 +1,17 @@
 package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.PagerAdapter;
@@ -25,16 +19,9 @@ import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.fragments.ProfileTab1;
 import com.appteamnith.hillffair.fragments.ProfileTab2;
 import com.appteamnith.hillffair.fragments.ProfileTab3;
-import com.appteamnith.hillffair.utilities.APIINTERFACE;
-import com.appteamnith.hillffair.utilities.Utils;
-import com.google.gson.annotations.SerializedName;
+import com.bumptech.glide.Glide;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Aditya on 10/3/2016.
@@ -44,13 +31,12 @@ import retrofit2.Response;
 public class ProfileActivity extends AppCompatActivity{
 
     private int PICK_IMAGE_REQUEST = 1;
-    ImageView open_gallery;
-    ImageButton profile_pic;
-    TextView profile_name;
-
-    SharedPref sharedPref ;
+    private SharedPref sharedPref ;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private Toolbar toolbar;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -58,6 +44,16 @@ public class ProfileActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         sharedPref=new SharedPref(this);
+
+        collapsingToolbarLayout= (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        toolbar= (Toolbar) findViewById(R.id.toolbar);
+        imageView= (ImageView) findViewById(R.id.image_View);
+        setSupportActionBar(toolbar);
+        toolbar.inflateMenu(R.menu.menu_profile);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapsingToolbarLayout.setTitle(sharedPref.getUserName());
+        toolbar.setTitle(sharedPref.getUserName());
+
 
         // List of All The Fragment for the Profile Tabs and Their Title
 
@@ -84,16 +80,11 @@ public class ProfileActivity extends AppCompatActivity{
 
 
 
-        profile_name = (TextView) findViewById(R.id.profile_name);
-        profile_name.setText(sharedPref.getUserName());
-        open_gallery = (ImageView) findViewById(R.id.open_gallery);
-        profile_pic = (ImageButton) findViewById(R.id.profile_pic);
-
 
     }
 
 
-    public void openGallery(View v){
+    public void openGallery(){
 
         Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
@@ -104,23 +95,26 @@ public class ProfileActivity extends AppCompatActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
             Uri uri = data.getData();
-
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView profile_pic = (ImageView) findViewById(R.id.profile_pic);
-                RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
-                roundedBitmapDrawable.setCornerRadius(2.0f);
-                roundedBitmapDrawable.setCircular(true);
-                profile_pic.setImageDrawable(roundedBitmapDrawable);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Glide.with(this).load(uri).into(imageView);
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_profile,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.select_picture:
+                openGallery();
+                return true;
+            default:
+        return super.onOptionsItemSelected(item);}
+    }
 }

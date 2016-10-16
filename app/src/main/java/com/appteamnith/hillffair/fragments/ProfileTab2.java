@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
@@ -36,7 +36,7 @@ public class ProfileTab2 extends Fragment {
     EditText et1,et2,et4,et5;
     private ProgressBar progress;
     SharedPref sharedPref;
-    private ScrollView scroll_layout;
+    private LinearLayout scroll_layout;
 
 
 
@@ -50,7 +50,7 @@ public class ProfileTab2 extends Fragment {
         et4 = (EditText) view.findViewById(R.id.et4);
         et5 = (EditText) view.findViewById(R.id.et5);
         progress = (ProgressBar) view.findViewById(R.id.progress);
-        scroll_layout = (ScrollView) view.findViewById(R.id.scroll_layout);
+        scroll_layout = (LinearLayout) view.findViewById(R.id.scroll_layout);
 
         if(savedInstanceState==null){
             progress.setVisibility(view.VISIBLE);
@@ -61,15 +61,27 @@ public class ProfileTab2 extends Fragment {
             if(savedInstanceState.getString(USER_NAME)!=null&&!savedInstanceState.getString(USER_NAME).isEmpty()){
                 et1.setText(savedInstanceState.getString(USER_NAME));
             }
+            else {
+                et1.setVisibility(View.GONE);
+            }
             if(savedInstanceState.getString(USER_EMAIL)!=null&&!savedInstanceState.getString(USER_EMAIL).isEmpty()){
                 et4.setText(savedInstanceState.getString(USER_EMAIL));
+            }
+            else {
+                et4.setVisibility(View.GONE);
             }
             if(savedInstanceState.getString(USER_ROLLNO)!=null&&!savedInstanceState.getString(USER_ROLLNO).isEmpty()){
                 et2.setText(savedInstanceState.getString(USER_ROLLNO));
             }
+            else {
+                et2.setVisibility(View.GONE);
+            }
             if(savedInstanceState.getString(USER_PHONE)!=null&&!savedInstanceState.getString(USER_PHONE).isEmpty()){
                 et5.setText(savedInstanceState.getString(USER_PHONE));
 
+            }
+            else {
+                et5.setVisibility(View.GONE);
             }
         }
 
