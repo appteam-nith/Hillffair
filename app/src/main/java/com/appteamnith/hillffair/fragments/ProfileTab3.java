@@ -64,11 +64,11 @@ public class ProfileTab3 extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         list = data.getFeed();
                         adapter.refresh(list);
-                    } else {
+                    }else {
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
-                        if(getActivity()!=null)
-                        Toast.makeText(getActivity(), data.getMsg(), Toast.LENGTH_SHORT).show();
+                     //   if(getActivity()!=null)
+                       // Toast.makeText(getActivity(), data.getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     recyclerView.setVisibility(View.GONE);
