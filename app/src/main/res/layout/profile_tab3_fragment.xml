@@ -22,7 +22,7 @@
             android:visibility="gone"
             android:id="@+id/no_data_textview"
             android:text="No Data Avialable"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
 

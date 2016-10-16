@@ -16,10 +16,11 @@ import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
-
 import com.appteamnith.hillffair.models.NewsfeedModel;
-
+import com.appteamnith.hillffair.models.NewsfeedModel2;
 import com.appteamnith.hillffair.utilities.Utils;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +32,9 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
     private CardAdapter adapter;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private boolean loading = true;
+    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=0;
+    private ArrayList<NewsfeedModel2> list=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +54,37 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
 
         adapter = new CardAdapter(this);
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
 
-  showData("1");
+                    if (loading) {
+                        if (totalItemCount > previousTotal) {
+                            loading = false;
+                            previousTotal = totalItemCount;
+                        }
+                    }
+                    if (!loading && (totalItemCount - visibleItemCount)
+                            <= (pastVisiblesItems + visibleThreshold)) {
+
+                        list.add(null);
+                        adapter.notifyItemInserted(list.size() + 1);
+                        feedNo+=11;
+                        showData(feedNo);
+                        loading = true;
+                    }
+                }
+            }
+        });
+
+  showData(1);
         // Button to upload the NewsFeed
 
         FloatingActionButton upload= (FloatingActionButton) findViewById(R.id.upload_btn);
@@ -73,8 +103,12 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
      * Adding few albums for testing
      */
 
-    private void  showData(String from){
-        Call<NewsfeedModel> newsfeedResponse= Utils.getRetrofitService().getAllNews(from);
+    private void  showData(int from){
+        if(from>1){
+            adapter.removeItem(null);
+        }
+
+        Call<NewsfeedModel> newsfeedResponse= Utils.getRetrofitService().getAllNews(""+from);
         newsfeedResponse.enqueue(new Callback<NewsfeedModel>() {
             @Override
             public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
@@ -84,7 +118,12 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 if(response!=null){
-                    adapter.refresh(response.body().getFeed());
+                    if(response.body().getFeed().size()>0){
+                    list.addAll(response.body().getFeed());
+                    adapter.refresh(list);}
+                    else {
+                        adapter.removeItem(null);
+                    }
                 }
             }
 
@@ -94,7 +133,6 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                     swipeRefreshLayout.setRefreshing(false);
                 }
                    t.printStackTrace();
-
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(NewsfeedActivity.this, "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
             }
@@ -103,6 +141,6 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
 
     @Override
     public void onRefresh() {
-        showData("1");
+        showData(1);
     }
 }
