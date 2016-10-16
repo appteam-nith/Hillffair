@@ -1,12 +1,20 @@
 package com.appteamnith.hillffair.activities;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,7 +27,9 @@ import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.fragments.QuizFragment;
 import com.appteamnith.hillffair.models.QuizQuestionsModel;
 import com.appteamnith.hillffair.models.SingleQuestionModel;
+import com.appteamnith.hillffair.models.UpdateScoreModel;
 import com.appteamnith.hillffair.utilities.APIINTERFACE;
+import com.appteamnith.hillffair.utilities.Connection;
 import com.appteamnith.hillffair.utilities.ScoreCalculator;
 import com.appteamnith.hillffair.utilities.Utils;
 
@@ -34,10 +44,11 @@ public class QuizQuestionActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ViewPager pager;
     private ProgressBar progressBar;
-    private Button back2home;
+    private Button back2home,finish;
     private LinearLayout staytuned_message;
-    private TextView message;
-
+    private TextView message,time_left;
+    private FragmentManager manager;
+    private static timer t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +57,18 @@ public class QuizQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_question);
 
+        manager=getSupportFragmentManager();
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         pager=(ViewPager)findViewById(R.id.question_pager);
         back2home=(Button)findViewById(R.id.home_link);
+        finish=(Button)findViewById(R.id.finish_button);
         staytuned_message=(LinearLayout)findViewById(R.id.stay_tuned_message);
         progressBar=(ProgressBar)findViewById(R.id.progress);
         message=(TextView)findViewById(R.id.message);
+        time_left=(TextView)findViewById(R.id.time_left);
 
         back2home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +81,8 @@ public class QuizQuestionActivity extends AppCompatActivity {
         String userId=pref.getUserId();
 
         loadQuizwithRetrofit(userId);
+
+        t=new timer(this,time_left);
 
     }
 
@@ -92,6 +108,12 @@ public class QuizQuestionActivity extends AppCompatActivity {
                         pager.setVisibility(View.VISIBLE);
 
                         if(questions!=null){
+                            for(int i=0;i<questions.size();i++){
+                                Log.i("first-option "+i,"#"+questions.get(i).getOptionsA()+"#");
+                            }
+
+                            t.execute();
+
                             //initialize scoreCalculator
                             ScoreCalculator sc=ScoreCalculator.getInstance();
 
@@ -102,8 +124,8 @@ public class QuizQuestionActivity extends AppCompatActivity {
                             for(int i1=0;i1<questions.size();i1++){
                                 SingleQuestionModel ques=questions.get(i1);
 
-                                answers[i1]=ques.getAnswer();
-                                selectedChoices[i1]="";
+                                answers[i1]=ques.getAnswer()+"";
+                                selectedChoices[i1]=" ";
 
                                 if(ques.isSingleChoice()){
                                     question_type[i1]=1;
@@ -113,6 +135,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
 
                             }
 
+                            // array initialization
                             sc.setAnswers(answers);
                             sc.setSelectedChoices(selectedChoices);
                             sc.setQuestion_type(question_type);
@@ -181,6 +204,198 @@ public class QuizQuestionActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(staytuned_message.getVisibility()==View.GONE || progressBar.getVisibility()==View.VISIBLE){
+            QuizDialog dialog=new QuizDialog();
+            dialog.show(manager,"dialog");
+
+        }else {
+            super.onBackPressed();
+        }
+
+    }
+
+    public void submitScore(){
+        progressBar.setVisibility(View.VISIBLE);
+
+        if(finish!=null)
+        finish.setEnabled(false);
+
+        SharedPref pref=new SharedPref(this);
+
+        ScoreCalculator sc=ScoreCalculator.getInstance();
+
+        int score_calculated=sc.calculateScore();
+        Log.v("calculated_score is ",score_calculated+"");
+
+        sc.resetInstance();     //Important
+
+        finishAndUpdateScore(pref.getUserId(),score_calculated);
+    }
+
+    public void finishAndUpdateScore(String id, final int score){
+
+        APIINTERFACE service= Utils.getRetrofitService();
+        Call<UpdateScoreModel> call=service.updateScore(id,score);
+
+        call.enqueue(new Callback<UpdateScoreModel>() {
+            @Override
+            public void onResponse(Call<UpdateScoreModel> call, Response<UpdateScoreModel> response) {
+
+                if(finish!=null){
+                    finish.setEnabled(true);
+                }
+
+                progressBar.setVisibility(View.GONE);
+
+                int status=response.code();
+                UpdateScoreModel model=response.body();
+
+                if(model!=null && response.isSuccess()){
+                    if(model.isSuccess()){
+                        Toast.makeText(QuizQuestionActivity.this,model.getMsg() ,Toast.LENGTH_SHORT);
+
+                        finish();
+                        Intent in=new Intent(QuizQuestionActivity.this,QuizScoreActivity.class);
+                        in.putExtra("score",score);
+
+                        startActivity(in);
+                        t.cancel(true);
+                    }else{
+                        Toast.makeText(QuizQuestionActivity.this,model.getMsg() ,Toast.LENGTH_SHORT);
+                    }
+
+                }else{
+                    Toast.makeText(QuizQuestionActivity.this,"Some error occurred !!",Toast.LENGTH_SHORT);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UpdateScoreModel> call, Throwable t) {
+                Toast.makeText(QuizQuestionActivity.this,"Some error occurred !!",Toast.LENGTH_SHORT);
+                progressBar.setVisibility(View.GONE);
+                if(finish!=null){
+                    finish.setEnabled(true);
+                }
+            }
+        });
+
+    }
+
+    public static class QuizDialog extends DialogFragment{
+
+        @Override
+        public Dialog onCreateDialog(Bundle saveInstanceState) {
+            android.app.AlertDialog.Builder builder= new android.app.AlertDialog.Builder(getActivity());
+
+            builder.setTitle("Are you sure?");
+            builder.setMessage("Note that these questions will not appear again, so better to attempt it now. " +
+                    "Do you still want to exit from quiz?");
+
+            builder.setNegativeButton("Never Mind", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dismiss();
+                }
+            });
+
+            builder.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    t.cancel(true);
+                    getActivity().finish();
+
+                }
+            });
+
+            Dialog d=builder.create();
+
+            return d;
+        }
+    }
+
+    private static class timer extends AsyncTask<Void, Pair<String, String>, Void>{
+
+        private TextView timer_text=null;
+        private Context context;
+
+        public timer(Context context, TextView timer_text) {
+            this.context=context;
+            this.timer_text = timer_text;
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            for(int i=3;i>=0;i--){  // 3 minutes
+                for(int j=59;j>=0;j--){ // 59 seconds
+
+                    if(isCancelled()){
+                        Log.v("cancel","called");
+                        return null;
+                    }
+
+                    Log.v("timer",i+" mins "+j+" seconds");
+                    publishProgress(new Pair<String, String>(i+"",j+""));
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Pair<String, String>... values) {
+            String str="";
+
+            if(values[0].first.length()==1){
+                str+="0";
+            }
+            str+=values[0].first+" mins ";
+
+            if(values[0].second.length()==1){
+                str+="0";
+            }
+            str+=values[0].second+" seconds ";
+
+            timer_text.setText(str);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if(new Connection(context).isInternet()){
+                Log.v("internet","available");
+
+                ((QuizQuestionActivity)context).submitScore();
+
+            }else{
+                Log.v("internet","not available");
+                Toast.makeText(context.getApplicationContext(),"No internet Connection",Toast.LENGTH_SHORT);
+
+                ((AppCompatActivity)context).finish();
+                Intent in=new Intent(context,QuizScoreActivity.class);
+                in.putExtra("score",0);
+
+                context.startActivity(in);
+            }
+
+        }
     }
 
 }

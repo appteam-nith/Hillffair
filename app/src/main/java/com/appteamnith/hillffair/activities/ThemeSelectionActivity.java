@@ -93,6 +93,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
 
         if(settings_call==false)
         startActivity(new Intent(ThemeSelectionActivity.this,LoginActivity.class));
+        else
+        startActivity(new Intent(ThemeSelectionActivity.this,SettingsActivity.class));
 
         finish();
     }
@@ -100,6 +102,19 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     void savetoSharedPref(){
         SharedPref sharedPref = new SharedPref(context);
         sharedPref.setThemeId(themeVal);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(settings_call){
+            Intent in=new Intent(ThemeSelectionActivity.this,SettingsActivity.class);
+            overridePendingTransition(0,0);
+            startActivity(in);
+            finish();
+        }
+
     }
 
 }

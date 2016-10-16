@@ -1,7 +1,5 @@
 package com.appteamnith.hillffair.fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,20 +14,12 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
-import com.appteamnith.hillffair.activities.QuizScoreActivity;
+import com.appteamnith.hillffair.activities.QuizQuestionActivity;
 import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.SingleQuestionModel;
-import com.appteamnith.hillffair.models.UpdateScoreModel;
-import com.appteamnith.hillffair.utilities.APIINTERFACE;
 import com.appteamnith.hillffair.utilities.ScoreCalculator;
-import com.appteamnith.hillffair.utilities.Utils;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by sukhbir on 8/10/16.
@@ -175,7 +165,7 @@ public class QuizFragment extends Fragment {
 
                         sc.resetInstance();     //Important
 
-                        finishAndUpdateScore(pref.getUserId(),score_calculated);
+                        ((QuizQuestionActivity)getActivity()).finishAndUpdateScore(pref.getUserId(),score_calculated);
                     }
                 });
 
@@ -187,49 +177,6 @@ public class QuizFragment extends Fragment {
         }
 
         return view;
-
-    }
-
-    void finishAndUpdateScore(String id, final int score){
-
-        APIINTERFACE service= Utils.getRetrofitService();
-        Call<UpdateScoreModel> call=service.updateScore(id,score);
-
-        call.enqueue(new Callback<UpdateScoreModel>() {
-            @Override
-            public void onResponse(Call<UpdateScoreModel> call, Response<UpdateScoreModel> response) {
-                finish.setEnabled(true);
-                progressBar.setVisibility(View.GONE);
-
-                int status=response.code();
-                UpdateScoreModel model=response.body();
-
-                if(model!=null && response.isSuccess()){
-                    if(model.isSuccess()){
-                        Toast.makeText(getContext(),model.getMsg() ,Toast.LENGTH_SHORT);
-
-                        getActivity().finish();
-                        Intent in=new Intent(getActivity(),QuizScoreActivity.class);
-                        in.putExtra("score",score);
-
-                        startActivity(in);
-                    }else{
-                        Toast.makeText(getContext(),model.getMsg() ,Toast.LENGTH_SHORT);
-                    }
-
-                }else{
-                    Toast.makeText(getContext(),"Some error occurred !!",Toast.LENGTH_SHORT);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<UpdateScoreModel> call, Throwable t) {
-                Toast.makeText(getContext(),"Some error occurred !!",Toast.LENGTH_SHORT);
-                progressBar.setVisibility(View.GONE);
-                finish.setEnabled(true);
-            }
-        });
 
     }
 

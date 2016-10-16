@@ -38,7 +38,7 @@
                 android:id="@+id/time_left"
                 android:layout_weight="1"
                 android:layout_marginLeft="20dp"
-                android:text="05 mins 30 seconds"
+                android:text="-- mins -- seconds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -14,11 +14,12 @@ import com.appteamnith.hillffair.application.SharedPref;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    TextView intro,theme;
+    private TextView intro,theme;
+    private SharedPref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPref pref= new SharedPref(this);
+        pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -47,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
                 in.putExtra("settings_call",true);
 
                 startActivity(in);
+                finish();
             }
         });
 
@@ -74,4 +76,5 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(in);
         finish();
     }
+
 }
