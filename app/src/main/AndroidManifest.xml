@@ -32,7 +32,8 @@
             android:label="NewsFeed"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.ProfileActivity"
+            android:parentActivityName=".activities.HomeActivity"/>
         <activity
             android:name=".activities.UploadNewsFeedActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />

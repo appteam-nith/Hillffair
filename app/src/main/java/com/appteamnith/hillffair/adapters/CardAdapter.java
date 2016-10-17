@@ -21,11 +21,14 @@ import java.util.ArrayList;
  */
 
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
 
     private ArrayList<NewsfeedModel2> list_card=new ArrayList<>();
+    public static final int FOOTER_VIEW = 1;
+    public static final int NORMAL_VIEW = 2;
+    private View view;
 
 
 
@@ -42,23 +45,31 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType == FOOTER_VIEW&&list_card.size()!=0) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_progress, parent, false);
+            return new footerView(view);
+        }
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
 
-        NewsfeedModel2 card = list_card.get(position);
-        if(card.getUsername()!=null&&!card.getUsername().isEmpty())
-        holder.user_name.setText(card.getUsername());
-        if(card.getDescription()!=null&&!card.getDescription().isEmpty())
-        holder.user_msg.setText(card.getDescription());
-        if(card.getTitle()!=null&&!card.getTitle().isEmpty())
-            holder.title.setText(card.getTitle());
+        if(holder instanceof MyViewHolder&&getItemViewType(position)!=FOOTER_VIEW)
+        {
+            MyViewHolder h=(MyViewHolder) holder;
+            NewsfeedModel2 card = list_card.get(position);
+            if(card!=null){
+                if(card.getUsername()!=null&&!card.getUsername().isEmpty())
+                    h.user_name.setText(card.getUsername());
+                if(card.getDescription()!=null&&!card.getDescription().isEmpty())
+                    h.user_msg.setText(card.getDescription());
+                if(card.getTitle()!=null&&!card.getTitle().isEmpty())
+                    h.title.setText(card.getTitle());
  /*       if(card.getNo_of_likes()!=0)
         holder.no_of_likes.setText(""+card.getNo_of_likes());*/
         /*
@@ -66,17 +77,22 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         if(card.getPost_date()!=null&&!card.getPost_date().isEmpty())
         holder.post_date.setText(card.getPost_date());
         */
-        if(card.getPhoto()!=null&&!card.getPhoto().isEmpty())
-        Glide.with(mContext).load(card.getPhoto()).into(holder.post_img);
-        else
-        holder.post_img.setImageResource(R.drawable.photo1);
+                if(card.getPhoto()!=null&&!card.getPhoto().isEmpty())
+                    Glide.with(mContext).load(card.getPhoto()).into(h.post_img);
+                else
+                    h.post_img.setImageResource(R.drawable.photo1);
 
        /* holder.lyk_status.setLiked(card.getLyk_status());*/
+            }
+
+
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return list_card.size();
+        return list_card.size()+1;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -94,6 +110,25 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
             lyk_status = (com.like.LikeButton) view.findViewById(R.id.lyk_status);
             title = (TextView)view.findViewById(R.id.post_title);
 
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position>=list_card.size()?FOOTER_VIEW:NORMAL_VIEW;
+    }
+
+    public static class footerView extends RecyclerView.ViewHolder {
+        public footerView(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public void removeItem(NewsfeedModel2 item) {
+        int indexOfItem = list_card.indexOf(item);
+        if (indexOfItem != -1) {
+            list_card.remove(indexOfItem);
+            notifyItemRemoved(indexOfItem);
         }
     }
 }
