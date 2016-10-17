@@ -21,21 +21,6 @@
                 android:padding="5dp"
                 android:textAppearance="@android:style/TextAppearance.Medium" />
 
-            <TextView
-                android:id="@+id/view_number_question_solved"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:textAppearance="@android:style/TextAppearance.Medium" />
-            <!--
-            <TextView
-                android:id="@+id/question_solved"
-                android:padding="5dp"
-                android:textAppearance="@android:style/TextAppearance.Medium"
-                android:text="Question Solved"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />-->
         </LinearLayout>
 
         <TextView
