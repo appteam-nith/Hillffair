@@ -289,6 +289,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void registrationProcessWithRetrofit(final String email, String password, final String rollno, final String phoneno, final String name, boolean isnitian) {
         APIINTERFACE mApiService = Utils.getRetrofitService();
         Call<Register> registerCall = mApiService.register(name, email, password, isnitian, rollno, phoneno);
+
         registerCall.enqueue(new Callback<Register>() {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
@@ -296,14 +297,14 @@ public class SignUpActivity extends AppCompatActivity {
                 int status_code=response.code();
                if(register!=null&&response.isSuccess()){
                    if (register.isSuccess()){
-                       Toast.makeText(SignUpActivity.this,"SuccessFully Register",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(SignUpActivity.this,"SuccessFully Register Please verify your Email.",Toast.LENGTH_LONG).show();
                        loadToast.success();
                        startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                    }
                    else {
                        loadToast.error();
-                       if(register.getError()!=null&&!register.getError().isEmpty()){
-                           Toast.makeText(SignUpActivity.this,register.getError(),Toast.LENGTH_SHORT).show();
+                       if(register.getMsg()!=null&&!register.getMsg().isEmpty()){
+                           Toast.makeText(SignUpActivity.this,register.getMsg(),Toast.LENGTH_SHORT).show();
 
                        }
                    }

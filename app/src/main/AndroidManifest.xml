@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.NewsfeedActivity"
             android:label="NewsFeed"
@@ -47,9 +47,28 @@
         <activity
             android:name=".activities.ClubActivity"
             android:parentActivityName=".activities.EventActivity" />
-
-        <activity android:name=".activities.ForgetPassword"></activity>
-
+        <activity android:name=".activities.ForgetPassword" />
+        <activity
+            android:name=".activities.QuizActivity"
+            android:label="Quiz"
+            android:parentActivityName=".activities.HomeActivity" />
+        <activity
+            android:name=".activities.QuizQuestionActivity"
+            android:screenOrientation="portrait"
+            android:label="Quiz" />
+        <activity
+            android:name=".activities.QuizScoreActivity"
+            android:label="Quiz Score"
+            android:parentActivityName=".activities.QuizActivity" />
+        <activity
+            android:name=".activities.InformationActivity"
+            android:label="Quiz Instructions"
+            android:parentActivityName=".activities.QuizActivity" />
+        <activity android:name=".activities.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".activities.HomeActivity"/>
+        <activity android:name=".activities.LeaderBoardActivity"
+            android:parentActivityName=".activities.QuizActivity"/>
     </application>
 
 </manifest>

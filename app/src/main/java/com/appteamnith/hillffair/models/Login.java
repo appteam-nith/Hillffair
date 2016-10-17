@@ -13,12 +13,13 @@ public class Login {
     @SerializedName("success")
     public boolean success;
 
-    @SerializedName("error")
-    public  String error;
+    @SerializedName("msg")
+    public  String msg;
 
-    public Login(boolean success, String error) {
+    public Login(String id,boolean success, String msg) {
         this.success = success;
-        this.error = error;
+        this.id=id;
+        this.msg = msg;
     }
 
     public boolean isSuccess() {
@@ -29,12 +30,12 @@ public class Login {
         this.success = success;
     }
 
-    public String getError() {
-        return error;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public String getId() {

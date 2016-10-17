@@ -40,6 +40,8 @@ public class ProfileActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -76,8 +78,10 @@ public class ProfileActivity extends AppCompatActivity{
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        //End of Tab Layout in Profile Activity
+        tabLayout.getTabAt(1).select();
+        viewPager.setOffscreenPageLimit(3);
 
+        //End of Tab Layout in Profile Activity
 
 
 

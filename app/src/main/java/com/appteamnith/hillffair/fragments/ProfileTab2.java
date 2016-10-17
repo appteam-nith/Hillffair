@@ -38,8 +38,6 @@ public class ProfileTab2 extends Fragment {
     SharedPref sharedPref;
     private LinearLayout scroll_layout;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -86,18 +84,12 @@ public class ProfileTab2 extends Fragment {
         }
 
 
-
-
-    return view;
-
+        return view;
 
     }
 
 
-
-
     public class ProfileBasicDetailModel implements Parcelable{
-
         @SerializedName("_id")
         private String _id;
 
@@ -125,8 +117,6 @@ public class ProfileTab2 extends Fragment {
         @SerializedName("date")
         private String date;
 
-
-
         public ProfileBasicDetailModel(String _id, String name, String email, String pwd, boolean nitian, String photo, String rollno, String phone, String date) {
             this._id = _id;
             this.name = name;
@@ -150,8 +140,6 @@ public class ProfileTab2 extends Fragment {
             rollno = in.readString();
             phone = in.readString();
             date = in.readString();
-            success = in.readByte() != 0;
-            error = in.readString();
         }
 
         @Override
@@ -165,8 +153,6 @@ public class ProfileTab2 extends Fragment {
             dest.writeString(rollno);
             dest.writeString(phone);
             dest.writeString(date);
-            dest.writeByte((byte) (success ? 1 : 0));
-            dest.writeString(error);
         }
 
         @Override
@@ -258,35 +244,6 @@ public class ProfileTab2 extends Fragment {
             this.date = date;
         }
 
-
-        @SerializedName("success")
-        public boolean success;
-
-        @SerializedName("error")
-        public  String error;
-
-        public ProfileBasicDetailModel(boolean success, String error) {
-            this.success = success;
-            this.error = error;
-        }
-
-        public boolean isSuccess() {
-            return success;
-        }
-
-        public void setSuccess(boolean success) {
-            this.success = success;
-        }
-
-        public String getError() {
-            return error;
-        }
-
-        public void setError(String error) {
-            this.error = error;
-        }
-
-
     }
 
     private void profileBasicInfo(String id){
@@ -297,7 +254,8 @@ public class ProfileTab2 extends Fragment {
             @Override
             public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
                 ProfileBasicDetailModel model = response.body().getProfileInfo();
-                sharedPref.setUserName(model.getName());
+
+               sharedPref.setUserName(model.getName());
                 int status_code = response.code();
                 boolean returnedResponse = response.body().isSuccess();
                 progress.setVisibility(View.GONE);
@@ -314,11 +272,8 @@ public class ProfileTab2 extends Fragment {
                 }
                 else {
                     if(status_code==503){
+                        if(getActivity()!=null)
                         Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
-                    }
-                    String error = model.getError();
-                    if (error != null && !error.isEmpty()) {
-                        Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -328,6 +283,7 @@ public class ProfileTab2 extends Fragment {
             public void onFailure(Call<ProfileDataModel> call, Throwable t) {
                 progress.setVisibility(View.GONE);
                 t.printStackTrace();
+                if(getActivity()!=null)
                 Toast.makeText(getActivity(), "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
             }
         });

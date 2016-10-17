@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
 /**
  * Created by Aditya on 9/13/2016.
@@ -77,6 +78,7 @@ public class ProfileTab3 extends Fragment {
             @Override
             public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
                 NewsfeedModel data = response.body();
+
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
 
@@ -95,13 +97,15 @@ public class ProfileTab3 extends Fragment {
                         noData.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
-                        noData.setText(data.getError());
+                        noData.setText(data.getMsg());
+
                     }
                 } else {
                     noData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
                     noData.setText("Please Check Internet Connection");
+
                 }
             }
 
@@ -112,6 +116,7 @@ public class ProfileTab3 extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
                 noData.setText("Please Check Internet Connection");
+
             }
         });
     }

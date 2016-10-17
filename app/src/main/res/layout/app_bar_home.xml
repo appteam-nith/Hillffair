@@ -4,13 +4,12 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    >
+    android:background="@android:color/white">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -47,18 +46,22 @@
                         android:id="@+id/love_music"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hillffair 2k16"
+                        android:text="HILL'FFAIR 2k16"
+                        android:textSize="28dp"
                         android:textAppearance="@android:style/TextAppearance.Large"
                         android:textColor="@android:color/white"
-                         />
+                     />
 
                     <TextView
                         android:textAppearance="@android:style/TextAppearance.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nit Hamirpur"
+                        android:text="NIT HAMIRPUR"
+                        android:textSize="18dp"
+
                         android:textColor="@android:color/white"
-                         />
+
+                      />
 
                 </LinearLayout>
             </RelativeLayout>

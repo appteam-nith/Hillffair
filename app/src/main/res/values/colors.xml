@@ -4,6 +4,7 @@
     <color name="screen2">#00ff7f</color>
     <color name="screen3">#ffb90f</color>
     <color name="screen4">#ff7f50</color>
+    <color name="white">#fff</color>
 
     <!--for the dark inactive dots-->
     <color name="ddscreen1">#9ac0cd</color>
@@ -32,14 +33,20 @@
     </array>
 
 
-    <color name="back_batman">#c6000000</color>
-    <color name="back_superman">#d4fc0e0e</color>
-    <color name="back_wonderwoman">#cebaa820</color>
-    <color name="back_greenlantern">#c03ccf3c</color>
-    <color name="back_captainamerica">#caec1f34</color>
-    <color name="white">#ffffff</color>
+    <color name="back_batman">#ECEFF1</color>
+    <color name="back_superman">#FFEBEE</color>
+    <color name="back_wonderwoman">#FFF3E0</color>
+    <color name="back_flash">#EFEBE9</color>
+    <color name="back_captainamerica">#E1F5FE</color>
+    <color name="back_hulk">#E8F5E9</color>
 
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1565C0</color>
-    <color name="colorAccent">#2979FF</color>
+    <!-- defaults -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#448AFF</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
 </resources>

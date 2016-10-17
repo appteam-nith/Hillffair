@@ -12,11 +12,19 @@ public class SharedPref {
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
 
-
     public SharedPref(Context context) {
         this.context = context;
         prefs = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
         editor = prefs.edit();
+    }
+
+    public void setInstructionsReadStatus(boolean b){
+        editor.putBoolean("quizinstruct",b);
+        editor.commit();
+    }
+
+    public boolean getInstructionsReadStatus(){
+        return prefs.getBoolean("quizinstruct",false);
     }
 
     public int getThemeId() {

@@ -16,16 +16,20 @@ import com.appteamnith.hillffair.application.SharedPref;
 
 public class ThemeSelectionActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private int themeVal;
     ImageView batman, superman, hulk, wonderwoman, flash, captain;
-Context context;
+    Context context;
+    boolean settings_call=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_selection);
         init();
         context=this;
+
+        settings_call=getIntent().getBooleanExtra("settings_call",false);
+
         setRoundImage(batman,R.drawable.batman_btn);
         setRoundImage(superman,R.drawable.superman_btn);
         setRoundImage(hulk,R.drawable.hulk);
@@ -59,9 +63,8 @@ Context context;
         roundedBitmapDrawable.setCircular(true);
         view.setImageDrawable(roundedBitmapDrawable);
 
-
-
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -87,13 +90,31 @@ Context context;
 
         }
         savetoSharedPref();
+
+        if(settings_call==false)
         startActivity(new Intent(ThemeSelectionActivity.this,LoginActivity.class));
+        else
+        startActivity(new Intent(ThemeSelectionActivity.this,SettingsActivity.class));
+
         finish();
     }
     
     void savetoSharedPref(){
         SharedPref sharedPref = new SharedPref(context);
         sharedPref.setThemeId(themeVal);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(settings_call){
+            Intent in=new Intent(ThemeSelectionActivity.this,SettingsActivity.class);
+            overridePendingTransition(0,0);
+            startActivity(in);
+            finish();
+        }
+
     }
 
 }
