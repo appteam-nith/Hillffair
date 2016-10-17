@@ -2,8 +2,6 @@ package com.appteamnith.hillffair.fragments;
 
 
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.UserScoreResponse;
 import com.appteamnith.hillffair.utilities.Utils;
-import com.google.gson.annotations.SerializedName;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +28,7 @@ public class ProfileTab1 extends Fragment {
     private static final String USER_NO_QUESTION ="noOfQuestion" ;
     private LinearLayout data_layout;
     private ProgressBar progressBar;
-    private TextView score,questionSolved,noOfQuestionSolved,noScore;
+    private TextView score,noScore;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -39,8 +36,6 @@ public class ProfileTab1 extends Fragment {
         data_layout= (LinearLayout) v.findViewById(R.id.data_layout);
         progressBar= (ProgressBar) v.findViewById(R.id.progress);
         score= (TextView) v.findViewById(R.id.view_score);
-        //questionSolved= (TextView) v.findViewById(R.id.view_number_question_solved);
-        noOfQuestionSolved= (TextView) v.findViewById(R.id.view_number_question_solved);
         noScore= (TextView) v.findViewById(R.id.no_data_textview);
         if(savedInstanceState==null){
             progressBar.setVisibility(View.VISIBLE);
@@ -50,7 +45,6 @@ public class ProfileTab1 extends Fragment {
             if((savedInstanceState.getString(USER_SCORE)!=null&&!savedInstanceState.getString(USER_SCORE).isEmpty())||(savedInstanceState.getString(USER_NO_QUESTION)!=null&&!savedInstanceState.getString(USER_NO_QUESTION).isEmpty())){
                 data_layout.setVisibility(View.VISIBLE);
                 score.setText(savedInstanceState.getString(USER_SCORE));
-                noOfQuestionSolved.setText(savedInstanceState.getString(USER_NO_QUESTION));
             }
             else {
                 noScore.setVisibility(View.VISIBLE);
@@ -62,64 +56,6 @@ public class ProfileTab1 extends Fragment {
         return v;
     }
 
-
-    public  class QuizResponse implements Parcelable{
-        @SerializedName("sets")
-        private int qSolved;
-
-        @SerializedName("points")
-        private int points;
-
-        public QuizResponse(int qSolved, int points) {
-            this.qSolved = qSolved;
-            this.points = points;
-        }
-
-        protected QuizResponse(Parcel in) {
-            qSolved = in.readInt();
-            points = in.readInt();
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(qSolved);
-            dest.writeInt(points);
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        public  final Creator<QuizResponse> CREATOR = new Creator<QuizResponse>() {
-            @Override
-            public QuizResponse createFromParcel(Parcel in) {
-                return new QuizResponse(in);
-            }
-
-            @Override
-            public QuizResponse[] newArray(int size) {
-                return new QuizResponse[size];
-            }
-        };
-
-        public int getqSolved() {
-            return qSolved;
-        }
-
-        public void setqSolved(int qSolved) {
-            this.qSolved = qSolved;
-        }
-
-        public int getPoints() {
-            return points;
-        }
-
-        public void setPoints(int points) {
-            this.points = points;
-        }
-    }
-
     private void getData(String id){
         Call<UserScoreResponse> getUserScoreResponseCall= Utils.getRetrofitService().getUserScore(id);
         getUserScoreResponseCall.enqueue(new Callback<UserScoreResponse>() {
@@ -127,27 +63,17 @@ public class ProfileTab1 extends Fragment {
             public void onResponse(Call<UserScoreResponse> call, Response<UserScoreResponse> response) {
                 UserScoreResponse data=response.body();
                 if(data!=null&&response.isSuccess()){
-                    QuizResponse score=data.getQuizResponse();
-                    if(score!=null){
-                        int s=score.getPoints();
-                        int q=score.getqSolved();
-                        if(s!=0&&q!=0){
+                    int score=data.getScore();
+                        if(score>=0){
                             ProfileTab1.this.data_layout.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
-                            ProfileTab1.this.score.setText("Score of Quiz is "+s);
-                            ProfileTab1.this.noOfQuestionSolved.setText("Number of Question Solved "+q);
+                            ProfileTab1.this.score.setText("Score of Quiz is "+score);
                         }
                         else {
                             noScore.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
                             ProfileTab1.this.noScore.setText("No Data Available");
                         }
-                    }
-                    else {
-                        noScore.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
-                        ProfileTab1.this.noScore.setText("No Data Available");
-                    }
 
                 }
                 else {
@@ -170,6 +96,5 @@ public class ProfileTab1 extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(USER_SCORE,score.getText().toString());
-        outState.putString(USER_NO_QUESTION,noOfQuestionSolved.getText().toString());
     }
 }
