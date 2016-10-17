@@ -29,10 +29,10 @@ import java.util.Arrays;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
-
+    private SharedPref pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       SharedPref pref= new SharedPref(this);
+        pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -139,6 +139,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            pref.setUserId(null);
+            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
             return true;
         }
 

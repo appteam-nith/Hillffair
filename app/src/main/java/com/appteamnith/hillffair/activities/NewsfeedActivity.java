@@ -121,13 +121,22 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                 }
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
-                if(response!=null){
-                    if(response.body().getFeed().size()>0){
-                    list.addAll(response.body().getFeed());
-                    adapter.refresh(list);}
+                if(response!=null&&response.isSuccess()){
+                    if(response.body().getFeed()!=null){
+                        if(response.body().getFeed().size()>0){
+                            list.addAll(response.body().getFeed());
+                            adapter.refresh(list);}
+                        else {
+                            adapter.removeItem(null);
+                        }
+                    }
                     else {
                         adapter.removeItem(null);
                     }
+
+                }
+                else {
+                    Toast.makeText(NewsfeedActivity.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
                 }
             }
 

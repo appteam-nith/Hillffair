@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.custom_views.EditorView;
 import com.appteamnith.hillffair.utilities.Utils;
 import com.google.gson.annotations.SerializedName;
@@ -29,11 +30,15 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
     private EditorView editorView;
     private ImageView camera_image, upload_image;
     private ProgressBar progressBar;
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPref=new SharedPref(this);
+        setTheme(sharedPref.getThemeId());
         setContentView(R.layout.activity_upload_news_feed);
+
         editorView = (EditorView) findViewById(R.id.editor);
         camera_image = (ImageView) findViewById(R.id.select_image);
         upload_image = (ImageView) findViewById(R.id.upload_news);
@@ -129,7 +134,7 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
 
     private void upload(String title, String description) {
 
-        Call<UploadResponse> uploadResponseCall = Utils.getRetrofitService().uploadNews(title, description, "57f0d2ae0a012d0011b9e991", "Sahil Ramola");
+        Call<UploadResponse> uploadResponseCall = Utils.getRetrofitService().uploadNews(title, description, sharedPref.getUserId(), sharedPref.getUserName());
         uploadResponseCall.enqueue(new Callback<UploadResponse>() {
             @Override
             public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {

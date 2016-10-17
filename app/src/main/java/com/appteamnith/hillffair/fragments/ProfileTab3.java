@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HEAD;
 
 /**
  * Created by Aditya on 9/13/2016.
@@ -34,8 +33,10 @@ public class ProfileTab3 extends Fragment {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private CardAdapter adapter;
-    private ArrayList<NewsfeedModel2> list;
+    private ArrayList<NewsfeedModel2> list=new ArrayList<>();
     private TextView noData;
+    private boolean loading = true;
+    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,12 +47,13 @@ public class ProfileTab3 extends Fragment {
         progressBar = (ProgressBar) v.findViewById(R.id.progress);
         adapter = new CardAdapter(getActivity());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
 
-        SharedPref sharedPref=new SharedPref(getActivity());
+        final SharedPref sharedPref=new SharedPref(getActivity());
         Log.d("id",sharedPref.getUserId());
         if(savedInstanceState==null){
-            getData("1",sharedPref.getUserId());
+            getData(1,sharedPref.getUserId());
             progressBar.setVisibility(View.VISIBLE);
         }
 
@@ -68,12 +70,42 @@ public class ProfileTab3 extends Fragment {
             }
 
         }
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if (totalItemCount > previousTotal) {
+                            loading = false;
+                            previousTotal = totalItemCount;
+                        }
+                    }
+                    if (!loading && (totalItemCount - visibleItemCount)
+                            <= (pastVisiblesItems + visibleThreshold)) {
+
+                        list.add(null);
+                        adapter.notifyItemInserted(list.size() + 1);
+                        feedNo+=11;
+                        getData(feedNo,sharedPref.getUserId());
+                        loading = true;
+                    }
+                }
+            }
+        });
+
         return v;
     }
 
 
-    private void getData(String from, String id) {
-        Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(from, id);
+    private void getData(int from, String id) {
+        if(from>1){
+            adapter.removeItem(null);
+        }
+        Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(""+from, id);
         getUserNewsFeed.enqueue(new Callback<NewsfeedModel>() {
             @Override
             public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
@@ -81,19 +113,22 @@ public class ProfileTab3 extends Fragment {
 
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
+                        if(data.getFeed()!=null){
+                            list.addAll(data.getFeed());
+                            if(list.size()>0){
+                                recyclerView.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                adapter.refresh(list);
+                            }
+                            else {
+                                adapter.removeItem(null);
+                                noData.setVisibility(View.VISIBLE);
+                                noData.setText("No Post Uploaded");
+                            }
 
-                        list = data.getFeed();
-                        if(list.size()>0){
-                            recyclerView.setVisibility(View.VISIBLE);
-                            progressBar.setVisibility(View.GONE);
-                            adapter.refresh(list);
                         }
-                        else {
-                            noData.setVisibility(View.VISIBLE);
-                            noData.setText("No Post Uploaded");
-                        }
-
                     } else {
+                        adapter.removeItem(null);
                         noData.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
@@ -101,6 +136,7 @@ public class ProfileTab3 extends Fragment {
 
                     }
                 } else {
+                    adapter.removeItem(null);
                     noData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
