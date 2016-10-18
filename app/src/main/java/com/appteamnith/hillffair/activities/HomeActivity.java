@@ -21,15 +21,18 @@ import android.view.View;
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.HomeAdapter;
 import com.appteamnith.hillffair.application.SharedPref;
+import com.appteamnith.hillffair.models.main_screen_model;
 import com.appteamnith.hillffair.utilities.DividerItemDecoration;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
     private SharedPref pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         pref= new SharedPref(this);
@@ -48,44 +51,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
+        ArrayList<main_screen_model> list=new ArrayList<>();
+        list.add(new main_screen_model(R.drawable.news_feed,"NewsFeed",R.color.newsFeed));
+        list.add(new main_screen_model(R.drawable.clubs,"Clubs",R.color.club));
+        list.add(new main_screen_model(R.drawable.quiz,"Quiz",R.color.quiz));
+        list.add(new main_screen_model(R.drawable.core,"Core Teams",R.color.coreTeam));
+        list.add(new main_screen_model(R.drawable.sponsor,"Sponsors",R.color.sponsor));
 
-        Integer photo[] = {R.drawable.jimg2, R.drawable.jimg4, R.drawable.jimg3, R.drawable.jimg1,
-                R.drawable.jimg1, R.drawable.jimg3 , R.drawable.jimg4 };
-        adapter = new HomeAdapter(Arrays.asList(photo), this);
-        GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 3);
+        adapter = new HomeAdapter(list, this);
+        GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(HomeActivity.this, LinearLayoutManager.VERTICAL, Color.BLACK));
-
-        // code that vary the size of each column in the row of grid layout
+        //recyclerView.addItemDecoration(new DividerItemDecoration(HomeActivity.this, LinearLayoutManager.VERTICAL, Color.BLACK));
 
         staggeredGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                int value=1;
 
-                switch (position){
-                    case 0: value=2;
-                        break;
-                    case 1: value=1;
-                        break;
-                    case 2: value=1;
-                        break;
-                    case 3: value=2;
-                        break;
-                    case 4: value=1;
-                        break;
-                    case 5: value=1;
-                        break;
-                    case 6: value=1;
-                        break;
-                    default: value=1;
-                    break;
-                }
-
-                return  value;
+                return 1;
             }
         });
+
+        // code that vary the size of each column in the row of grid layout
+
+
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
