@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by parvesh_dhull on 5/10/16.
  */
 
+
 public class ClubModel2 {
         @SerializedName("profile")
         private ClubModel profile;
@@ -14,11 +15,13 @@ public class ClubModel2 {
         @SerializedName("error")
         private String error;
 
+
     public ClubModel2(ClubModel profile, boolean success, String error) {
         this.profile = profile;
         this.success = success;
         this.error = error;
     }
+
 
     public ClubModel getProfile() {
         return profile;

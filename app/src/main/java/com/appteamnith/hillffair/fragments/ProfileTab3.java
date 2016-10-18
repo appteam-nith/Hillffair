@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.CardAdapter;
@@ -29,30 +29,83 @@ import retrofit2.Response;
  */
 public class ProfileTab3 extends Fragment {
 
+    private static final String USER_POST ="post" ;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private CardAdapter adapter;
-    private ArrayList<NewsfeedModel2> list;
+    private ArrayList<NewsfeedModel2> list=new ArrayList<>();
+    private TextView noData;
+    private boolean loading = true;
+    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.profile_tab3_fragment, container, false);
+        noData= (TextView) v.findViewById(R.id.no_data_textview);
         recyclerView = (RecyclerView) v.findViewById(R.id.list);
         progressBar = (ProgressBar) v.findViewById(R.id.progress);
         adapter = new CardAdapter(getActivity());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        final LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
 
-        SharedPref sharedPref=new SharedPref(getActivity());
+        final SharedPref sharedPref=new SharedPref(getActivity());
         Log.d("id",sharedPref.getUserId());
-        getData("1",sharedPref.getUserId());
+        if(savedInstanceState==null){
+            getData(1,sharedPref.getUserId());
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        else {
+            if(savedInstanceState.getParcelableArrayList(USER_POST)!=null)
+            {
+                recyclerView.setVisibility(View.VISIBLE);
+                list=savedInstanceState.getParcelableArrayList(USER_POST);
+                adapter.refresh(list);
+            }
+            else {
+                noData.setVisibility(View.VISIBLE);
+                noData.setText("No Post Uploaded");
+            }
+
+        }
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    visibleItemCount = mLayoutManager.getChildCount();
+                    totalItemCount = mLayoutManager.getItemCount();
+                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+
+                    if (loading) {
+                        if (totalItemCount > previousTotal) {
+                            loading = false;
+                            previousTotal = totalItemCount;
+                        }
+                    }
+                    if (!loading && (totalItemCount - visibleItemCount)
+                            <= (pastVisiblesItems + visibleThreshold)) {
+
+                        list.add(null);
+                        adapter.notifyItemInserted(list.size() + 1);
+                        feedNo+=11;
+                        getData(feedNo,sharedPref.getUserId());
+                        loading = true;
+                    }
+                }
+            }
+        });
+
         return v;
     }
 
 
-    private void getData(String from, String id) {
-        Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(from, id);
+    private void getData(int from, String id) {
+        if(from>1){
+            adapter.removeItem(null);
+        }
+        Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(""+from, id);
         getUserNewsFeed.enqueue(new Callback<NewsfeedModel>() {
             @Override
             public void onResponse(Call<NewsfeedModel> call, Response<NewsfeedModel> response) {
@@ -60,33 +113,53 @@ public class ProfileTab3 extends Fragment {
 
                 if (data != null && response.isSuccess()) {
                     if (data.isSuccess()) {
-                        recyclerView.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
-                        list = data.getFeed();
-                        adapter.refresh(list);
-                    }else {
+                        if(data.getFeed()!=null){
+                            list.addAll(data.getFeed());
+                            if(list.size()>0){
+                                recyclerView.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                adapter.refresh(list);
+                            }
+                            else {
+                                adapter.removeItem(null);
+                                noData.setVisibility(View.VISIBLE);
+                                noData.setText("No Post Uploaded");
+                            }
+
+                        }
+                    } else {
+                        adapter.removeItem(null);
+                        noData.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
-                     //   if(getActivity()!=null)
-                       // Toast.makeText(getActivity(), data.getMsg(), Toast.LENGTH_SHORT).show();
+                        noData.setText(data.getMsg());
+
                     }
                 } else {
+                    adapter.removeItem(null);
+                    noData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);
-                    if(getActivity()!=null)
-                    Toast.makeText(getActivity(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                    noData.setText("Please Check Internet Connection");
+
                 }
             }
 
             @Override
+
             public void onFailure(Call<NewsfeedModel> call, Throwable t) {
                 recyclerView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
                 t.printStackTrace();
-                if(getActivity()!=null)
-                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                noData.setText("Please Check Internet Connection");
+
             }
         });
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(USER_POST,list);
+    }
 }

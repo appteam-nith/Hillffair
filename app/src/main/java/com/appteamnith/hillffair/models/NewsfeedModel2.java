@@ -4,9 +4,13 @@ package com.appteamnith.hillffair.models;
  * Created by parvesh_dhull on 3/10/16.
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class NewsfeedModel2 {
+
+public class NewsfeedModel2 implements  Parcelable{
     @SerializedName("_id")
     private String _id;
     @SerializedName("title")
@@ -31,6 +35,27 @@ public class NewsfeedModel2 {
         this.userid = userid;
         this.username = username;
     }
+
+    protected NewsfeedModel2(Parcel in) {
+        _id = in.readString();
+        title = in.readString();
+        photo = in.readString();
+        description = in.readString();
+        userid = in.readString();
+        username = in.readString();
+    }
+
+    public static final Creator<NewsfeedModel2> CREATOR = new Creator<NewsfeedModel2>() {
+        @Override
+        public NewsfeedModel2 createFromParcel(Parcel in) {
+            return new NewsfeedModel2(in);
+        }
+
+        @Override
+        public NewsfeedModel2[] newArray(int size) {
+            return new NewsfeedModel2[size];
+        }
+    };
 
     public String get_id() {
         return _id;
@@ -78,5 +103,20 @@ public class NewsfeedModel2 {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(title);
+        parcel.writeString(photo);
+        parcel.writeString(description);
+        parcel.writeString(userid);
+        parcel.writeString(username);
     }
 }
