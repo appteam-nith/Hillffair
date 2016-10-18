@@ -253,30 +253,32 @@ public class ProfileTab2 extends Fragment {
         mService.enqueue(new Callback<ProfileDataModel>() {
             @Override
             public void onResponse(Call<ProfileDataModel> call, Response<ProfileDataModel> response) {
-                ProfileBasicDetailModel model = response.body().getProfileInfo();
+                if(response!=null) {
+                    if(response.body().getProfileInfo()!=null){
+                    ProfileBasicDetailModel model = response.body().getProfileInfo();
 
-               sharedPref.setUserName(model.getName());
-                int status_code = response.code();
-                boolean returnedResponse = response.body().isSuccess();
-                progress.setVisibility(View.GONE);
-                scroll_layout.setVisibility(View.VISIBLE);
-                if(returnedResponse){
-                    if(model.getRollno().isEmpty()){
-                        et2.setVisibility(View.GONE);
+                    sharedPref.setUserName(model.getName());
+                    int status_code = response.code();
+                    boolean returnedResponse = response.body().isSuccess();
+                    progress.setVisibility(View.GONE);
+                    scroll_layout.setVisibility(View.VISIBLE);
+
+                    if (returnedResponse) {
+                        if (model.getRollno().isEmpty()) {
+                            et2.setVisibility(View.GONE);
+                        }
+                        et1.setText(model.getName());
+                        et2.setText(model.getRollno());
+                        et4.setText(model.getEmail());
+                        et5.setText(model.getPhone());
+
+                    } else {
+                        if (status_code == 503) {
+                            if (getActivity() != null)
+                                Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    et1.setText(model.getName());
-                    et2.setText(model.getRollno());
-                    et4.setText(model.getEmail());
-                    et5.setText(model.getPhone());
-
-                }
-                else {
-                    if(status_code==503){
-                        if(getActivity()!=null)
-                        Toast.makeText(getActivity(), "Server Down", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+                }}
             }
 
             @Override
