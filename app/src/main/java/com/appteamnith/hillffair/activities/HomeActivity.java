@@ -2,6 +2,7 @@ package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,14 +10,17 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.HomeAdapter;
@@ -150,14 +154,47 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch(id) {
+            case R.id.profile:
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                break;
+            case R.id.settings:
+                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+                finish();
+                break;
+            case R.id.aboutus:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(String.format("%1$s", getString(R.string.app_name)));
+                builder.setMessage(getResources().getText(R.string.aboutus_text));
+                builder.setPositiveButton("OK", null);
+                builder.setIcon(R.drawable.ic_action_about);
+                AlertDialog welcomeAlert = builder.create();
+                welcomeAlert.show();
+                break;
 
-        if (id == R.id.profile) {
-            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-        } else if (id == R.id.settings) {
-            startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
-            finish();
+            case R.id.report:  Intent intent = new Intent(Intent.ACTION_SENDTO);
+                String uriText = "mailto:" + Uri.encode("appteam.nith@gmail.com") + "?subject=" +
+                        Uri.encode("Reporting A Bug/Feedback") + "&body=" + Uri.encode("Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Hillfair 2k16.\n.....\n\n-Your name");
+
+                Uri uri = Uri.parse(uriText);
+                intent.setData(uri);
+                startActivity(Intent.createChooser(intent, "Send Email"));
+                break;
+            case R.id.license:
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+                builder2.setTitle(String.format("%1$s", getString(R.string.open_source_licenses)));
+                CharSequence str=getResources().getText(R.string.licenses_text);
+                builder2.setMessage(str );
+                builder2.setPositiveButton("OK", null);
+                AlertDialog welcomeAlert2 = builder2.create();
+                welcomeAlert2.show();
+                ((TextView) welcomeAlert2.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+                break;
+            case R.id.notification:
+                startActivity(new Intent(HomeActivity.this, NewsfeedActivity.class));
+                break;
+
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
