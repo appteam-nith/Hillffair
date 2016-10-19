@@ -32,8 +32,9 @@
             android:label="NewsFeed"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.ProfileActivity"
-            android:parentActivityName=".activities.HomeActivity"/>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.UploadNewsFeedActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
@@ -54,8 +55,8 @@
             android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.QuizQuestionActivity"
-            android:screenOrientation="portrait"
-            android:label="Quiz" />
+            android:label="Quiz"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.QuizScoreActivity"
             android:label="Quiz Score"
@@ -64,11 +65,17 @@
             android:name=".activities.InformationActivity"
             android:label="Quiz Instructions"
             android:parentActivityName=".activities.QuizActivity" />
-        <activity android:name=".activities.SettingsActivity"
+        <activity
+            android:name=".activities.SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".activities.HomeActivity"/>
-        <activity android:name=".activities.LeaderBoardActivity"
-            android:parentActivityName=".activities.QuizActivity"/>
+            android:parentActivityName=".activities.HomeActivity" />
+        <activity
+            android:name=".activities.LeaderBoardActivity"
+            android:parentActivityName=".activities.QuizActivity" />
+        <activity
+            android:name=".aboutHillffairActivity"
+            android:label="@string/title_activity_about_hillffair"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

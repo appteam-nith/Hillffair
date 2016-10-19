@@ -54,9 +54,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ArrayList<main_screen_model> list=new ArrayList<>();
         list.add(new main_screen_model(R.drawable.news_feed,"NewsFeed",R.color.newsFeed));
         list.add(new main_screen_model(R.drawable.clubs,"Clubs",R.color.club));
-        list.add(new main_screen_model(R.drawable.quiz,"Quiz",R.color.quiz));
         list.add(new main_screen_model(R.drawable.core,"Core Teams",R.color.coreTeam));
+        list.add(new main_screen_model(R.drawable.quiz,"Quiz",R.color.quiz));
         list.add(new main_screen_model(R.drawable.sponsor,"Sponsors",R.color.sponsor));
+        list.add(new main_screen_model(R.drawable.about,"About",R.color.about))
 
         adapter = new HomeAdapter(list, this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 2);
@@ -91,6 +92,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 else if (position==3){
                     startActivity(new Intent(HomeActivity.this,QuizActivity.class));
                 }
+                
             }
         }));
     }

@@ -63,4 +63,6 @@
         <item>henrysweart@gmail.com</item>
         <item>gracepowell@yahoo.com</item>
     </string-array>
+    <string name="title_activity_about_hillffair">aboutHillffairActivity</string>
+    <string name="about_hillffair">HILL’FFAIR, the annual cultural fest of NIT Hamirpur, boasts of being a three day extravaganza filled with fun, frolic and excitement. Since the time its roots were laid, way back in 1988, it has only grown and grown in every aspect - be it the standards, popularity or the level of competition. No wonder, today, HILL'FFAIR is one of the major college fests in northern India! /n /n The event celebrates cultural diversity- equally respecting the East and the West. We take great pleasure in informing you that this year’s theme is “La Vendimia – The Retro Revival”. And we are sure to set the golden age of the 70’s rolling again, amidst unparalleled joy and celebrations, which will capture the essence and mirth of the yester years.</string>
 </resources>
