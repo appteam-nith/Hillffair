@@ -30,14 +30,8 @@ public class SponsorActivity extends AppCompatActivity {
         rvSponsor = (RecyclerView)findViewById(R.id.rvSponsor);
 
         sponsorItems = new ArrayList<>();
-        /*sponsorItems.add(new SponsorItem("Fossbytes",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("SBI",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("SVJN",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("The Big Jump",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("Tata Powers",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("Prodot",R.drawable.fossbyte));
-        sponsorItems.add(new SponsorItem("HimCab",R.drawable.fossbyte));*/
 
+        sponsorItems.add(new SponsorItem("skysandle.in",BASE_URL+"sponsor-22.png"));
         sponsorItems.add(new SponsorItem("Board Of School Education, H.P.",BASE_URL+"sponsor-16.png"));
         sponsorItems.add(new SponsorItem("Tata Shaktee",BASE_URL+"sponsor-17.png"));
         sponsorItems.add(new SponsorItem("Cad Desk",BASE_URL+"sponsor-18.png"));
@@ -45,7 +39,7 @@ public class SponsorActivity extends AppCompatActivity {
         sponsorItems.add(new SponsorItem("HPSEDC",BASE_URL+"sponsor-19.png"));
         sponsorItems.add(new SponsorItem("Ratan Jewellers",BASE_URL+"sponsor-20.png"));
         sponsorItems.add(new SponsorItem("Chankya The Guru",BASE_URL+"sponsor-21.png"));
-
+        sponsorItems.add(new SponsorItem("L'OREAL",BASE_URL+"sponsor-7.png"));
 
         sponsorAdapter = new SponsorAdapter(sponsorItems,SponsorActivity.this);
         rvSponsor.setAdapter(sponsorAdapter);
