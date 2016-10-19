@@ -6,9 +6,9 @@ package com.appteamnith.hillffair.models;
 public class SponsorItem {
 
     public String sponsor_name;
-    public int image_id;
+    public String image_id;
 
-    public SponsorItem(String sponsor_name, int image_id)
+    public SponsorItem(String sponsor_name, String image_id)
     {
         this.sponsor_name = sponsor_name;
         this.image_id = image_id;
