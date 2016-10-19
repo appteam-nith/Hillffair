@@ -3,6 +3,7 @@ package com.appteamnith.hillffair.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -46,11 +47,11 @@ public class ClubActivity extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.club_activity);
+
         progressBar= (ProgressBar) findViewById(R.id.progress);
         frameLayout= (FrameLayout) findViewById(R.id.layout_data);
-        ctl = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_Detail);
-        grup_img= (ImageView) findViewById(R.id.image_View);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        grup_img= (ImageView) findViewById(R.id.backdrop);
         clubName= (TextView) findViewById(R.id.grup_name);
         description= (TextView) findViewById(R.id.desc_club);
         setSupportActionBar(toolbar);
@@ -60,7 +61,7 @@ public class ClubActivity extends AppCompatActivity {
         if (i != null) {
             if (i.hasExtra(EventActivity.CLUB_NAME))
                 club_name = i.getStringExtra(EventActivity.CLUB_NAME);
-            ctl.setTitle(club_name);
+            initCollapsingToolbar();
             showData(club_name);
         }
 
@@ -101,4 +102,32 @@ public class ClubActivity extends AppCompatActivity {
           }
       });
   }
+
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(" ");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle(club_name);
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
+    }
 }

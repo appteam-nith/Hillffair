@@ -54,5 +54,6 @@
     <color name="quiz">#FFD1C4E9</color>
     <color name="coreTeam">#FFBBDEFB</color>
     <color name="sponsor">#FFFFCC80</color>
+    <color name="about" >#FFFFF59D</color>
 
 </resources>
