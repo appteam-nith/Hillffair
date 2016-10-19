@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.appteamnith.hillffair.R;
+import com.appteamnith.hillffair.application.SharedPref;
 
 
 public class aboutHillffairActivity extends AppCompatActivity {
@@ -15,9 +16,11 @@ private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         setContentView(R.layout.activity_about_hillffair);
+        initCollapsingToolbar();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
     }
@@ -39,7 +42,7 @@ private Toolbar toolbar;
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("");
+                    collapsingToolbar.setTitle("About Hill'ffair");
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");

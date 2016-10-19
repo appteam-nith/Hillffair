@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.SponsorAdapter;
+import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.SponsorItem;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class SponsorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
         setContentView(R.layout.activity_sponsor);
 
         rvSponsor = (RecyclerView)findViewById(R.id.rvSponsor);
