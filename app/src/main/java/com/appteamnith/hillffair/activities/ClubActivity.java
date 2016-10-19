@@ -39,7 +39,7 @@ public class ClubActivity extends AppCompatActivity {
     private TextView description;
     private FrameLayout frameLayout;
     private ProgressBar progressBar;
-
+    private String id,name;     // battleday
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,15 +59,25 @@ public class ClubActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         if (i != null) {
-            if (i.hasExtra(EventActivity.CLUB_NAME))
+            if (i.hasExtra(EventActivity.CLUB_NAME)){
                 club_name = i.getStringExtra(EventActivity.CLUB_NAME);
+                showData(club_name);
+
+            }else if(i.hasExtra("battleday")){
+                id=i.getStringExtra("id");
+                name=i.getStringExtra("name");
+
+                if(name!=null)
+                  club_name=name;
+
+                if(id!=null)
+                showSpecialData(id);
+
+            }
             initCollapsingToolbar();
-            showData(club_name);
+
         }
-
-
     }
-
 
   private void showData(final String club_name){
       Call<ClubModel2> getClubData= Utils.getRetrofitService().getClubInfo(club_name);
@@ -102,6 +112,11 @@ public class ClubActivity extends AppCompatActivity {
           }
       });
   }
+
+    private void showSpecialData(String id){
+        
+
+    }
 
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =
