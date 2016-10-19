@@ -3,9 +3,11 @@ package com.appteamnith.hillffair.utilities;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
+import com.appteamnith.hillffair.models.Dislike;
 import com.appteamnith.hillffair.models.ForgotPassword;
 
 import com.appteamnith.hillffair.models.LeaderBoardModel;
+import com.appteamnith.hillffair.models.Likecount;
 import com.appteamnith.hillffair.models.QuizQuestionsModel;
 import com.appteamnith.hillffair.models.SendPassword;
 import com.appteamnith.hillffair.models.UpdateScoreModel;
@@ -86,6 +88,15 @@ public interface APIINTERFACE {
     @FormUrlEncoded
     @POST("password/new")
     Call<SendPassword> sendPassword(@Field("id")String id , @Field("pwd")String pwd);
+
+    @FormUrlEncoded
+    @POST("newsfeed/like")
+    Call<Likecount>likecount(@Field("id")String id);
+
+
+    @FormUrlEncoded
+    @POST("newsfeed/unlike")
+    Call<Dislike>dislike(@Field("id")String id);
 }
 
 

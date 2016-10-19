@@ -26,17 +26,21 @@ public class NewsfeedModel2 implements  Parcelable{
     @SerializedName("uName")
     private String username;
 
-    @SerializedName("date")
+
+    private int likes;
+
+
     private String date;
 
 
-    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username, String date) {
+    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username, String date,int likes) {
         this._id = _id;
         this.title = title;
         this.photo = photo;
         this.description = description;
         this.userid = userid;
         this.username = username;
+        this.likes=likes;
         this.date = date;
     }
 
@@ -110,6 +114,7 @@ public class NewsfeedModel2 implements  Parcelable{
         this.username = username;
     }
 
+    public int getLikes(){return likes;}
     public String getDate() {
         return date;
     }
@@ -131,6 +136,7 @@ public class NewsfeedModel2 implements  Parcelable{
         parcel.writeString(description);
         parcel.writeString(userid);
         parcel.writeString(username);
+        parcel.writeInt(likes);
         parcel.writeString(date);
     }
 }
