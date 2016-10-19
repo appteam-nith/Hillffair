@@ -1,5 +1,6 @@
 package com.appteamnith.hillffair.utilities;
 
+import com.appteamnith.hillffair.activities.ClubActivity;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
@@ -101,6 +102,10 @@ public interface APIINTERFACE {
 
     @GET("events/special")
     Call<BattleDayModel> getSpecialEvents();
+
+
+    @GET("events/special/event")
+    Call<ClubActivity.BattleResponseEvent> getEventData(@Query("id") String id);
 
 }
 
