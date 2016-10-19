@@ -1,7 +1,6 @@
 package com.appteamnith.hillffair.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -13,7 +12,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
@@ -26,11 +24,9 @@ import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.adapters.HomeAdapter;
 import com.appteamnith.hillffair.application.SharedPref;
 import com.appteamnith.hillffair.models.main_screen_model;
-import com.appteamnith.hillffair.utilities.DividerItemDecoration;
 import com.appteamnith.hillffair.utilities.RecyclerItemClickListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
@@ -63,6 +59,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         list.add(new main_screen_model(R.drawable.sponsor,"Sponsors",R.color.sponsor));
         list.add(new main_screen_model(R.drawable.core,"Core Teams",R.color.coreTeam));
         list.add(new main_screen_model(R.drawable.clubs,"Clubs",R.color.club));
+        list.add(new main_screen_model(R.drawable.contributors,"Contributors",R.color.contributors));
 
         adapter = new HomeAdapter(list, this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 2);
@@ -101,6 +98,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else if(position==6){
                     startActivity(new Intent(HomeActivity.this, EventActivity.class));
+                }
+                else if(position==7){
+                    startActivity(new Intent(HomeActivity.this, ContributorsActivity.class));
                 }
             }
         }));

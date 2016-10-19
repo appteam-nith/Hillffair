@@ -84,8 +84,9 @@
             android:name=".activities.SponsorActivity"
             android:label="Sponsors"
             android:parentActivityName=".activities.HomeActivity" />
-        <activity android:name=".activities.contributors">
-        </activity>
+        <activity android:name=".activities.ContributorsActivity"
+            android:label="Contributors"
+            android:parentActivityName=".activities.HomeActivity"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

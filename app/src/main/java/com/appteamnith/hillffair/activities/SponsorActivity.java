@@ -31,7 +31,7 @@ public class SponsorActivity extends AppCompatActivity {
 
         sponsorItems = new ArrayList<>();
 
-        sponsorItems.add(new SponsorItem("skysandle.in",BASE_URL+"sponsor-22.png"));
+        sponsorItems.add(new SponsorItem("SkyCandle.in",BASE_URL+"sponsor-22.png"));
         sponsorItems.add(new SponsorItem("Board Of School Education, H.P.",BASE_URL+"sponsor-16.png"));
         sponsorItems.add(new SponsorItem("Tata Shaktee",BASE_URL+"sponsor-17.png"));
         sponsorItems.add(new SponsorItem("Cad Desk",BASE_URL+"sponsor-18.png"));
