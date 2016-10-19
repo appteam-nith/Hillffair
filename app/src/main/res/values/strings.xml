@@ -56,6 +56,14 @@
     12. <b>Advice:</b> Attempt as many sets possible to score more points.\n\n
     13. Winners will be announced after Hillffair 2016, and will be rewarded.\n\n
     14. For any queries/complaints/bugs, contact us at appteam.nith@gmail.com</string>
+    <string name="aboutus_text">\"fakjajekj\"</string>
+    <string name="open_source_licenses">Licenses</string>
+    <string name="licenses_text">
+    This project is currently licensed under the GNU General Public License v3.\n\n
+        \t<a href="https://github.com/bumptech/glide">Glide</a>\n\n
+\t<a href="https://square.github.io/retrofit/#license">Android Retrofit Library</a>\n\n
+\t<a href="https://github.com/code-mc/loadtoast">Load Toast</a>\n\n
+    </string>
     <string-array name="autocomplete">
         <item>johnpaul@yahoo.com</item>
         <item>marykate@yahoo.com</item>
@@ -63,4 +71,6 @@
         <item>henrysweart@gmail.com</item>
         <item>gracepowell@yahoo.com</item>
     </string-array>
+
+
 </resources>
