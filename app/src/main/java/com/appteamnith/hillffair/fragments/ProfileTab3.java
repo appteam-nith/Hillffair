@@ -105,6 +105,11 @@ public class ProfileTab3 extends Fragment {
         if(from>1){
             adapter.removeItem(null);
         }
+        else if(from==1) {
+            list.clear();
+            adapter.refresh(list);
+            recyclerView.setVisibility(View.GONE);
+        }
         Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(""+from, id);
         getUserNewsFeed.enqueue(new Callback<NewsfeedModel>() {
             @Override

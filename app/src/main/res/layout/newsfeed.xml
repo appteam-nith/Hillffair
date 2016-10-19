@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/camera"
+        android:src="@drawable/upload"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
         android:elevation="6dp"

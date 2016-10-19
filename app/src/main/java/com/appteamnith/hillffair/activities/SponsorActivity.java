@@ -25,7 +25,6 @@ public class SponsorActivity extends AppCompatActivity {
         SharedPref pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_sponsor);
         String BASE_URL="https://s3.ap-south-1.amazonaws.com/hillffair2016/images/";
         rvSponsor = (RecyclerView)findViewById(R.id.rvSponsor);

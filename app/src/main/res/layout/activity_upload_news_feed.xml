@@ -18,6 +18,7 @@
             android:layout_alignParentTop="true">
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/select_image"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
@@ -28,7 +29,7 @@
                 android:id="@+id/upload_news"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
                 android:src="@drawable/sendbutton" />
         </LinearLayout>
 <View

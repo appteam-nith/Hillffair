@@ -56,7 +56,6 @@
     12. <b>Advice:</b> Attempt as many sets possible to score more points.\n\n
     13. Winners will be announced after Hillffair 2016, and will be rewarded.\n\n
     14. For any queries/complaints/bugs, contact us at appteam.nith@gmail.com</string>
-    <string name="aboutus_text">\"fakjajekj\"</string>
     <string name="open_source_licenses">Licenses</string>
     <string name="licenses_text">
     This project is currently licensed under the GNU General Public License v3.\n\n
@@ -74,5 +73,7 @@
 
     <string name="title_activity_about_hillffair">aboutHillffairActivity</string>
     <string name="about_hillffair">HILL\'FFAIR, the annual cultural fest of NIT Hamirpur, boasts of being a three day extravaganza filled with fun, frolic and excitement. Since the time its roots were laid, way back in 1988, it has only grown and grown in every aspect - be it the standards, popularity or the level of competition. No wonder, today, HILL\'FFAIR is one of the major college fests in northern India! \n \n The event celebrates cultural diversity- equally respecting the East and the West. We take great pleasure in informing you that this year\’s theme is \“La Vendimia – The Retro Revival\”. And we are sure to set the golden age of the 70\’s rolling again, amidst unparalleled joy and celebrations, which will capture the essence and mirth of the yester years.</string>
-
+<string name="aboutus_text">A Open Source Project by <a href="https://github.com/appteam-nith/">AppTeam NITH</a> for Cultural Festival Hillffair 2k16.\n\nSource code available at
+        <a href="https://github.com/appteam-nith/Hillffair">GitHub</a>.
+    </string>
 </resources>

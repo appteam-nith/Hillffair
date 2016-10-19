@@ -116,7 +116,7 @@ public class ProfileActivity extends AppCompatActivity{
         switch (item.getItemId())
         {
             case R.id.select_picture:
-                openGallery();
+                //openGallery();
                 return true;
             default:
         return super.onOptionsItemSelected(item);}
