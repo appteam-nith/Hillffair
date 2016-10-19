@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@drawable/main_screen"
+                    android:src="@drawable/homescreenimage"
                     android:id="@+id/backdrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -42,8 +42,26 @@
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/love_music"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HILL'FFAIR 2k16"
+                        android:textSize="28dp"
+                        android:textAppearance="@android:style/TextAppearance.Large"
+                        android:textColor="@android:color/white"
+                        />
 
+                    <TextView
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NIT HAMIRPUR"
+                        android:textSize="18dp"
 
+                        android:textColor="@android:color/white"
+
+                        />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -64,6 +82,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/list"
-        />
+        app:behavior_overlapTop="50dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

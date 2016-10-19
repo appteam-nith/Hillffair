@@ -6,7 +6,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,9 +15,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
-import com.appteamnith.hillffair.utilities.APIINTERFACE;
 
 import com.appteamnith.hillffair.R;
 import com.appteamnith.hillffair.application.SharedPref;
@@ -311,9 +307,7 @@ public class SignUpActivity extends AppCompatActivity {
                }
                 else  {
                    loadToast.error();
-                  if(status_code==503){
-                      Toast.makeText(SignUpActivity.this,"Server Down",Toast.LENGTH_SHORT).show();
-                  }
+                   Toast.makeText(SignUpActivity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
 
                }
             }
@@ -321,7 +315,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Register> call, Throwable t) {
                 t.printStackTrace();
-                loadToast.error();
+                Toast.makeText(SignUpActivity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
             }
         });
     }
