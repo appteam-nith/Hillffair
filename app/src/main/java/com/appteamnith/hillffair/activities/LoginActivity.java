@@ -171,12 +171,10 @@ public class LoginActivity extends AppCompatActivity {
                     loadToast.error();
                     if (status_code == 503) {
                         Toast.makeText(LoginActivity.this, "Server Down", Toast.LENGTH_SHORT).show();
-                    }else{
-                        String error = mLoginObject.getMsg();
-                        if (error != null && !error.isEmpty()) {
-                            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
-                            Log.v("msg",error);
-                        }
+                    }else {
+
+                        Toast.makeText(LoginActivity.this, "Please Check Your Internet Connection", Toast.LENGTH_LONG).show();
+
                     }
                 }
 
