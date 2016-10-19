@@ -40,10 +40,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
         main_screen_model m=arrayList.get(position);
         holder.imageView.setImageResource(m.getPhoto_id());
         holder.textView.setText(m.getName());
+
         if(position==0)
-        holder.cardView.setBackgroundColor(Color.rgb(255,205,210));
-       else  if(position==1)
-            holder.cardView.setBackgroundColor(Color.rgb(248,187,208));
+            holder.cardView.setBackgroundColor(Color.rgb(255,205,210));
+        else if(position==1)
+            holder.cardView.setBackgroundColor(Color.rgb(157,255,164));
         else if(position==2)
             holder.cardView.setBackgroundColor(Color.rgb(209,196,233));
         else if(position==3)
@@ -52,6 +53,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
             holder.cardView.setBackgroundColor(Color.rgb(255,204,128));
         else if(position==5)
             holder.cardView.setBackgroundColor(Color.rgb(255,245,157));
+        else if(position==6)
+            holder.cardView.setBackgroundColor(Color.rgb(248,187,208));
 
     }
 
