@@ -111,6 +111,11 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
         if(from>1){
             adapter.removeItem(null);
         }
+        else if(from==1) {
+            list.clear();
+            adapter.refresh(list);
+            recyclerView.setVisibility(View.GONE);
+        }
 
         Call<NewsfeedModel> newsfeedResponse= Utils.getRetrofitService().getAllNews(""+from);
         newsfeedResponse.enqueue(new Callback<NewsfeedModel>() {
@@ -119,12 +124,15 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                 if(swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(false);
                 }
+
+
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 if(response!=null&&response.isSuccess()){
                     if(response.body().getFeed()!=null){
                         if(response.body().getFeed().size()>0){
                             list.addAll(response.body().getFeed());
+
                             adapter.refresh(list);}
                         else {
                             adapter.removeItem(null);

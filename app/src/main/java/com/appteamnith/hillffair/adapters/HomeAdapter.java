@@ -50,7 +50,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.viewHolder> {
             holder.cardView.setBackgroundColor(Color.rgb(187,222,251));
         else if(position==4)
             holder.cardView.setBackgroundColor(Color.rgb(255,204,128));
-
+        else if(position==5)
+            holder.cardView.setBackgroundColor(Color.rgb(255,245,157));
 
     }
 

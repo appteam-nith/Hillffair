@@ -69,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    app:cardElevation="8dp"
+                    app:cardElevation="0dp"
                     app:cardUseCompatPadding="true">
 
                     <LinearLayout
@@ -96,6 +96,7 @@
                             android:layout_below="@id/grup_name"
                             android:text="@string/about_hillffair"
                             android:padding="10dp"
+                            android:fontFamily="sans-serif-thin"
                             android:textAppearance="@android:style/TextAppearance.Medium" />
 
                     </LinearLayout>

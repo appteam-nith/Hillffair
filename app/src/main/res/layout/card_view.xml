@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/lyk_status"
-                    android:text="100"
+                    android:text="0"
                     android:id="@+id/no_of_likes"
                     android:textColor="#000"
                     android:layout_centerVertical="true"

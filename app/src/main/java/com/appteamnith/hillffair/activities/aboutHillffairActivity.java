@@ -1,4 +1,4 @@
-package com.appteamnith.hillffair;
+package com.appteamnith.hillffair.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -6,6 +6,8 @@ import android.support.design.widget.CollapsingToolbarLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.appteamnith.hillffair.R;
 
 
 public class aboutHillffairActivity extends AppCompatActivity {
@@ -37,7 +39,7 @@ private Toolbar toolbar;
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("About Hill'ffair");
+                    collapsingToolbar.setTitle("");
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");

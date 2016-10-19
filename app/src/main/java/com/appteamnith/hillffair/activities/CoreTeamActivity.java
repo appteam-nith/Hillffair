@@ -19,7 +19,7 @@ public class CoreTeamActivity extends AppCompatActivity {
     CoreTeamAdapter core_team_adapter;
     ArrayList<CoreTeamItem> array_list;
     Toolbar core_team_toolbar;
-
+private static final String BASE_URL="https://api-hillfair-2k16.herokuapp.com/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPref pref= new SharedPref(this);
@@ -29,32 +29,21 @@ public class CoreTeamActivity extends AppCompatActivity {
 
         recycler_view=(RecyclerView)findViewById(R.id.core_team_list);
         array_list=new ArrayList<>();
-        array_list.add(new CoreTeamItem("Rishabh Bhandari","Clubs Secretary","url"));
-        array_list.add(new CoreTeamItem("Deepak Kumar Jain","Hillffair Secretary","url"));
-        array_list.add(new CoreTeamItem("Sourabh Thakur","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Mukul Chandel","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Avantika Sharma","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Bhanu Pratap Singh","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Dhananjay Kumar Pal","Convener","url"));
-        array_list.add(new CoreTeamItem("Medha Agrawal","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Aprajit Pandit","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Aruni Juyal","Convener","url"));
-        array_list.add(new CoreTeamItem("Nishant Rana","Convener","url"));
-        array_list.add(new CoreTeamItem("Aanchal Negi","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Aditya Verma","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Shikhar Shrivastava","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Abhilasha","Convener","url"));
-        array_list.add(new CoreTeamItem("Naveen Banyal","Jt. Secretary","url"));
-        array_list.add(new CoreTeamItem("Rishabh Jain","Convener","url"));
-        array_list.add(new CoreTeamItem("Varun B.","Convener","url"));
-        array_list.add(new CoreTeamItem("Nishant Dogra","Convener","url"));
-        array_list.add(new CoreTeamItem("Amit Gupta","Convener","url"));
-        array_list.add(new CoreTeamItem("Tanya Rani","Convener","url"));
-        array_list.add(new CoreTeamItem("Mudit Banyal","Convener","url"));
-        array_list.add(new CoreTeamItem("Kunal Sharma","Convener","url"));
-        array_list.add(new CoreTeamItem("Ashima Anand","Convener","url"));
-        array_list.add(new CoreTeamItem("Praveen Kumar","Convener","url"));
-        array_list.add(new CoreTeamItem("Shubham Dhiman","Convener","url"));
+        array_list.add(new CoreTeamItem("Ajay k. Sharma","Director",BASE_URL+"photos/director.jpg"));
+        array_list.add(new CoreTeamItem("Dr. Raman Parti","Dean Student Welfare","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/raman_parti.png"));
+        array_list.add(new CoreTeamItem("Dr. Surender Soni","Faculty Coordinator","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/surender_soni.png"));
+        array_list.add(new CoreTeamItem("Deepak Kumar Jain","Hillffair Secretary",BASE_URL+"photos/deepak_kumar_jain.jpg"));
+        array_list.add(new CoreTeamItem("Rishabh Bhandari","Clubs Secretary",BASE_URL+"photos/rishabh_bhandari.jpg"));
+        array_list.add(new CoreTeamItem("Sourabh Thakur","Jt. Secretary(Dramatics)",BASE_URL+"photos/sourabh_thakur.jpg"));
+        array_list.add(new CoreTeamItem("Mukul Chandel","Creative Head(Pixonoids)",BASE_URL+"photos/mukul_chandel.jpg"));
+        array_list.add(new CoreTeamItem("Avantika Sharma","Graphic Head(Pixonoids)",BASE_URL+"photos/avantika_sharma.jpg"));
+        array_list.add(new CoreTeamItem("Bhanu Pratap Singh","Jt. Secretary(Music Club)",BASE_URL+"photos/bhanu_pratap.jpg"));
+        array_list.add(new CoreTeamItem("Medha Agrawal","Jt. Secretary(PR Club)",BASE_URL+"photos/medha_agrawal.jpg"));
+        array_list.add(new CoreTeamItem("Aprajit Pandit","Jt. Secretary(Dance Club)",BASE_URL+"photos/aprajit_pandit.jpg"));
+        array_list.add(new CoreTeamItem("Aanchal Negi","Jt. Secretary(Fashion Prade)",BASE_URL+"photos/aanchal_negi.jpg"));
+        array_list.add(new CoreTeamItem("Aditya Verma","Jt. Secretary(Discipline committee)",BASE_URL+"photos/aditya_verma.jpg"));
+        array_list.add(new CoreTeamItem("Shikhar Shrivastava","Jt. Secretary(Organization)",BASE_URL+"photos/shikhar_shrivastava.jpg"));
+        array_list.add(new CoreTeamItem("Naveen Banyal","Jt. Secretary(Technical Committee)",BASE_URL+"photos/naveen_banyal.jpg"));
         core_team_adapter=new CoreTeamAdapter(array_list,CoreTeamActivity.this);
         recycler_view.setAdapter(core_team_adapter);
         LinearLayoutManager liner_layout_manager=new LinearLayoutManager(this);

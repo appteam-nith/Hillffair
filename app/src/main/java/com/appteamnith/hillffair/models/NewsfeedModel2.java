@@ -27,13 +27,21 @@ public class NewsfeedModel2 implements  Parcelable{
     private String username;
 
 
-    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username) {
+    private int likes;
+
+
+    private String date;
+
+
+    public NewsfeedModel2(String _id, String title, String photo, String description, String userid, String username, String date,int likes) {
         this._id = _id;
         this.title = title;
         this.photo = photo;
         this.description = description;
         this.userid = userid;
         this.username = username;
+        this.likes=likes;
+        this.date = date;
     }
 
     protected NewsfeedModel2(Parcel in) {
@@ -43,6 +51,7 @@ public class NewsfeedModel2 implements  Parcelable{
         description = in.readString();
         userid = in.readString();
         username = in.readString();
+        date = in.readString();
     }
 
     public static final Creator<NewsfeedModel2> CREATOR = new Creator<NewsfeedModel2>() {
@@ -105,6 +114,15 @@ public class NewsfeedModel2 implements  Parcelable{
         this.username = username;
     }
 
+    public int getLikes(){return likes;}
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,5 +136,7 @@ public class NewsfeedModel2 implements  Parcelable{
         parcel.writeString(description);
         parcel.writeString(userid);
         parcel.writeString(username);
+        parcel.writeInt(likes);
+        parcel.writeString(date);
     }
 }
