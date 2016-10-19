@@ -21,17 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
+
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.NewsfeedActivity"
             android:label="NewsFeed"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
+
         <activity android:name=".activities.ProfileActivity"
             android:parentActivityName=".activities.HomeActivity"/>
         <activity
@@ -44,6 +47,7 @@
             android:name=".activities.EventActivity"
             android:label="Clubs"
             android:parentActivityName=".activities.HomeActivity" />
+
         <activity
             android:name=".activities.ClubActivity"
             android:parentActivityName=".activities.EventActivity" />
@@ -69,6 +73,11 @@
             android:parentActivityName=".activities.HomeActivity"/>
         <activity android:name=".activities.LeaderBoardActivity"
             android:parentActivityName=".activities.QuizActivity"/>
+
+        <activity android:name=".activities.SponsorActivity"
+            android:label="Sponsors"
+            android:parentActivityName=".activities.HomeActivity"/>
+
     </application>
 
 </manifest>

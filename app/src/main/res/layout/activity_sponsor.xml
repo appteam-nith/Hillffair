@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.appteamnith.hillffair.activities.SponsorActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/tbSponsor"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp">
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tbSponsor"
+        android:layout_marginTop="50dp"
+        android:scrollbars="horizontal"
+        android:id="@+id/rvSponsor">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

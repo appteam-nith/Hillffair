@@ -95,6 +95,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 else if (position==3){
                     startActivity(new Intent(HomeActivity.this,QuizActivity.class));
                 }
+                else if(position==4){
+                    startActivity(new Intent(HomeActivity.this,SponsorActivity.class));
+                }
             }
         }));
     }
