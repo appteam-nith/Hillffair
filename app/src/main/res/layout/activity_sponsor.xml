@@ -20,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tbSponsor"
-        android:layout_marginTop="50dp"
         android:scrollbars="horizontal"
         android:id="@+id/rvSponsor">
 

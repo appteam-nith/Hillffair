@@ -91,10 +91,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(HomeActivity.this, EventActivity.class));
                 }
                 else if (position==2){
-                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
                 }
                 else if (position==3){
-                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
+                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
                 }
 
                 else if(position==4){
