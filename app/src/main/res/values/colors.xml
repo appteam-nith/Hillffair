@@ -55,5 +55,6 @@
     <color name="coreTeam">#FFBBDEFB</color>
     <color name="sponsor">#FFFFCC80</color>
     <color name="about" >#FFFFF59D</color>
+    <color name="battleday" >#9dffa4</color>
 
 </resources>

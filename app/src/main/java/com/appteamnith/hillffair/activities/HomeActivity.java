@@ -56,12 +56,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         ArrayList<main_screen_model> list=new ArrayList<>();
+        list.add(new main_screen_model(R.drawable.about,"About",R.color.about));
+        list.add(new main_screen_model(R.drawable.swords_crossed,"BattleDay",R.color.battleday));
         list.add(new main_screen_model(R.drawable.news_feed,"NewsFeed",R.color.newsFeed));
-        list.add(new main_screen_model(R.drawable.clubs,"Clubs",R.color.club));
-        list.add(new main_screen_model(R.drawable.core,"Core Teams",R.color.coreTeam));
         list.add(new main_screen_model(R.drawable.quiz,"Quiz",R.color.quiz));
         list.add(new main_screen_model(R.drawable.sponsor,"Sponsors",R.color.sponsor));
-        list.add(new main_screen_model(R.drawable.about,"About",R.color.about));
+        list.add(new main_screen_model(R.drawable.core,"Core Teams",R.color.coreTeam));
+        list.add(new main_screen_model(R.drawable.clubs,"Clubs",R.color.club));
 
         adapter = new HomeAdapter(list, this);
         GridLayoutManager staggeredGridLayoutManager = new GridLayoutManager(this, 2);
@@ -77,31 +78,29 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        // code that vary the size of each column in the row of grid layout
-
-
-
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 if (position == 0) {
-                    startActivity(new Intent(HomeActivity.this, NewsfeedActivity.class));
+                    startActivity(new Intent(HomeActivity.this,aboutHillffairActivity.class));
                 }
                 else if(position==1){
-                    startActivity(new Intent(HomeActivity.this, EventActivity.class));
+                    startActivity(new Intent(HomeActivity.this,BattleDayActivity.class));
                 }
                 else if (position==2){
-                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
+                    startActivity(new Intent(HomeActivity.this, NewsfeedActivity.class));
                 }
                 else if (position==3){
-                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
                 }
-
                 else if(position==4){
                     startActivity(new Intent(HomeActivity.this,SponsorActivity.class));
                 }
                 else if(position==5){
-                    startActivity(new Intent(HomeActivity.this,aboutHillffairActivity.class));
+                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                }
+                else if(position==6){
+                    startActivity(new Intent(HomeActivity.this, EventActivity.class));
                 }
             }
         }));

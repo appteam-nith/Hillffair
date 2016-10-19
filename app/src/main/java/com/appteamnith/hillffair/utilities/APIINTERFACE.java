@@ -1,8 +1,10 @@
 package com.appteamnith.hillffair.utilities;
 
+import com.appteamnith.hillffair.activities.ClubActivity;
 import com.appteamnith.hillffair.activities.EventActivity;
 import com.appteamnith.hillffair.activities.UploadNewsFeedActivity;
 
+import com.appteamnith.hillffair.models.BattleDayModel;
 import com.appteamnith.hillffair.models.Dislike;
 import com.appteamnith.hillffair.models.ForgotPassword;
 
@@ -97,6 +99,14 @@ public interface APIINTERFACE {
     @FormUrlEncoded
     @POST("newsfeed/unlike")
     Call<Dislike>dislike(@Field("id")String id);
+
+    @GET("events/special")
+    Call<BattleDayModel> getSpecialEvents();
+
+
+    @GET("events/special/event")
+    Call<ClubActivity.BattleResponseEvent> getEventData(@Query("id") String id);
+
 }
 
 
