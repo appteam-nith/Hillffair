@@ -8,7 +8,7 @@
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/new_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,24 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
-
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.NewsfeedActivity"
             android:label="NewsFeed"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".activities.ProfileActivity"
             android:parentActivityName=".activities.HomeActivity" />
-
         <activity
             android:name=".activities.UploadNewsFeedActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
@@ -49,7 +45,6 @@
             android:name=".activities.EventActivity"
             android:label="Clubs"
             android:parentActivityName=".activities.HomeActivity" />
-
         <activity
             android:name=".activities.ClubActivity"
             android:parentActivityName=".activities.EventActivity" />
@@ -73,7 +68,6 @@
         <activity
             android:name=".activities.SettingsActivity"
             android:label="Settings"
-
             android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.LeaderBoardActivity"
@@ -81,15 +75,20 @@
         <activity
             android:name=".activities.aboutHillffairActivity"
             android:label="@string/title_activity_about_hillffair"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".activities.HomeActivity"/>
-        <activity android:name=".activities.LeaderBoardActivity"
-            android:parentActivityName=".activities.QuizActivity"/>
-
-        <activity android:name=".activities.SponsorActivity"
+            android:parentActivityName=".activities.HomeActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.LeaderBoardActivity"
+            android:parentActivityName=".activities.QuizActivity" />
+        <activity
+            android:name=".activities.SponsorActivity"
             android:label="Sponsors"
-            android:parentActivityName=".activities.HomeActivity"/>
-
+            android:parentActivityName=".activities.HomeActivity" />
+        <activity android:name=".activities.contributors">
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
