@@ -21,7 +21,11 @@ import com.bumptech.glide.Glide;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,10 +93,23 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
       if(card.getLikes()>=0)
         h.no_of_likes.setText(""+card.getLikes());
         /*
+*/
+        if(card.getDate()!=null&&!card.getDate().isEmpty()){
 
-        if(card.getPost_date()!=null&&!card.getPost_date().isEmpty())
-        holder.post_date.setText(card.getPost_date());
-        */
+            String od = card.getDate();
+            String fd = od.substring(0,10);
+            SimpleDateFormat odFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            SimpleDateFormat ndFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+            try {
+                Date date = odFormat.parse(fd);
+                String nd = ndFormat.format(date);
+                h.post_date.setText(nd);
+            }
+            catch (ParseException e){
+
+            }
+        }
+
                 if(card.getPhoto()!=null&&!card.getPhoto().isEmpty())
                     Glide.with(mContext).load(card.getPhoto()).into(h.post_img);
                 else
@@ -204,6 +221,8 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
            // Call<Likecount> mService = mApiService.likecount();
         //}
     }
+
+
 
     @Override
     public int getItemViewType(int position) {

@@ -10,6 +10,22 @@
             android:id="@+id/settings"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Settings" />
+        <item
+            android:id="@+id/aboutus"
+            android:icon="@drawable/ic_action_about"
+            android:title="About Us" />
+        <item
+            android:id="@+id/report"
+            android:icon="@drawable/ic_report"
+            android:title="Report a bug" />
+        <item
+            android:id="@+id/license"
+            android:icon="@drawable/ic_action_labels"
+            android:title="License" />
+        <item
+            android:id="@+id/notification"
+            android:icon="@drawable/ic_action_alarms"
+            android:title="Notifications" />
     </group>
 
 </menu>
