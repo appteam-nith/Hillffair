@@ -4,7 +4,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="7dp"
+
     >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/dc"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/index_converted" />
+
+
+    <ImageView
+        android:id="@+id/marvel"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:src="@drawable/marvelalt"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" /></RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -116,22 +142,6 @@
 
 
 
-                    <ImageView
-                        android:id="@+id/dc"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/index_converted" />
-
-
-                    <ImageView
-                        android:id="@+id/marvel"
-                        android:layout_width="150dp"
-
-                        android:layout_height="40dp"
-                        android:src="@drawable/marvel"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true" />
 
 
                 </RelativeLayout>

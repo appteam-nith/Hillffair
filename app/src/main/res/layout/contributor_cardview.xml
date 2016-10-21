@@ -33,6 +33,7 @@
             android:id="@+id/contributorName"
             android:text="contributorName"
             android:gravity="center"
+            android:textColor="#111"
             android:layout_weight="1"/>
         <TextView
             android:layout_width="wrap_content"
