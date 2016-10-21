@@ -28,6 +28,7 @@
             android:title="Notifications" />
         <item
             android:id="@+id/logout"
+            android:icon="@drawable/logout"
 
             android:title="Logout" />
 

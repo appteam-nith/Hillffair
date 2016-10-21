@@ -4,9 +4,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp">
+    android:layout_margin="7dp"
+
+    >
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,12 +28,14 @@
         android:layout_height="30dp"
         android:src="@drawable/marvelalt"
         android:adjustViewBounds="true"
+        android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true" /></RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:scrollbars="none"
-        android:layout_height="498dp">
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -135,7 +139,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:orientation="horizontal">
-
 
 
 
