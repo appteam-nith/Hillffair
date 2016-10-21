@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
         registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isName && isemail && ispassword && isphone) {
+                if (isName && isemail && ispassword && isphone && isPasswordValid(Password.getText().toString()) && ConfirmPassword.getText().toString().equals(Password.getText().toString()) ) {
                     rollno = Rollno.getText().toString();
                     phoneno = Phoneno.getText().toString();
                     name = Name.getText().toString();
@@ -90,6 +90,10 @@ public class SignUpActivity extends AppCompatActivity {
                         registrationProcessWithRetrofit(email, password, "", phoneno, name, false);
                     }
 
+                }
+                else
+                {
+                    Toast.makeText(SignUpActivity.this, "Please Enter The correct data", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -165,6 +169,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (Utils.checkData(Password.getText().toString()) && Password.getText().toString().length() > 8) {
 
                     passwordTextInputLayout.setErrorEnabled(false);
+
                 } else {
                     passwordTextInputLayout.setErrorEnabled(true);
                     passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
@@ -278,8 +283,13 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
+        if(password.length()<=8)
+        {
+            Toast.makeText(this, "Please Keep the length of the password more then 8", Toast.LENGTH_SHORT).show();
+        }
+        
+            return password.length() > 8;
+        
     }
 
     private void registrationProcessWithRetrofit(final String email, String password, final String rollno, final String phoneno, final String name, boolean isnitian) {
@@ -296,6 +306,7 @@ public class SignUpActivity extends AppCompatActivity {
                        Toast.makeText(SignUpActivity.this,"SuccessFully Register Please verify your Email.",Toast.LENGTH_LONG).show();
                        loadToast.success();
                        startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
+                       finish();
                    }
                    else {
                        loadToast.error();
@@ -314,6 +325,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Register> call, Throwable t) {
+                loadToast.error();
                 t.printStackTrace();
                 Toast.makeText(SignUpActivity.this,"Please Check Your Internet Connection",Toast.LENGTH_SHORT).show();
             }

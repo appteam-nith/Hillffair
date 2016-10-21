@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -104,53 +106,35 @@
                 android:textColor="#FFF"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/signup_text"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login"
+                android:text="Signup"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify Your Email after Signup"
+
+                android:textSize="17dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                />
 
         </LinearLayout>
 
 
 
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="10dp"
-        android:orientation="vertical">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4px"
-            android:layout_alignParentBottom="true"
-            android:paddingBottom="10dp"
-            android:layout_marginTop="90dp"
-            android:background="#FFA500"
 
-            />
-
-        <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="5dp"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Don't have an account?"
-            android:textSize="15sp"
-
-            />
-
-        <TextView
-            android:id="@+id/signup_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup"
-            android:textColor="#FFA500"
-            android:textSize="18sp" />
-</LinearLayout>
-    </LinearLayout>
 
 </RelativeLayout>
 
