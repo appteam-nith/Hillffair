@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:textColor="#124d3e"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Select your favourite comic theme!"
+                    android:layout_height="match_parent"
+                    android:textSize="30sp"/>
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+                    <ImageView
+                        android:id="@+id/batman"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/marvel" />
+
+
+                    <ImageView
+                        android:id="@+id/flash"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/mv" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+
+
+                    <ImageView
+                        android:id="@+id/superman"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/marvel" />
+
+
+                    <ImageView
+                        android:id="@+id/captain"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/mv" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+
+
+                    <ImageView
+                        android:id="@+id/wonderwoman"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/marvel" />
+
+
+                    <ImageView
+                        android:id="@+id/hulk"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/mv" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+    </ScrollView>
+</LinearLayout>

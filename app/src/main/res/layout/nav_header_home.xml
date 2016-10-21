@@ -11,11 +11,11 @@
     <ImageView
         android:layout_marginTop="14dp"
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:scaleType="centerInside"
-        android:src="@drawable/main_screen" />
+        android:src="@drawable/main_screen_opt" />
 
     <TextView
         android:visibility="gone"

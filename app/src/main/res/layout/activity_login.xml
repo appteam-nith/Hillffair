@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:layout_width="match_parent">
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFF"
+
     android:orientation="vertical">
 
     <ProgressBar
@@ -27,10 +30,10 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="192dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:src="@drawable/hillffair" />
+            android:src="@drawable/main_screen_opt" />
 
     </RelativeLayout>
 
@@ -119,22 +122,25 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Verify Your Email after Signup"
-
+                android:layout_marginTop="15dp"
                 android:textSize="17dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                />
+                android:text="Verify Your Email after Signup"/>
+        </LinearLayout>
+
 
         </LinearLayout>
 
 
 
 
-    </LinearLayout>
+
 
 
 </RelativeLayout>
 
+
+
+</ScrollView>

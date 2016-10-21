@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.SignUpActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/textinputlayoutname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:errorTextAppearance="@style/error_appearance">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:textColor="#000"
+                        android:inputType="textPersonName"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Student of NIT Hamirpur"
+                    android:id="@+id/choice_register"
+                    android:layout_marginTop="5dp"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_roll"
+                    android:visibility="gone"
+                    app:errorTextAppearance="@style/error_appearance"
+                    >
+
+                    <EditText
+                        android:id="@+id/rollno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:hint="Roll No."
+                        android:inputType="textPersonName"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_email"
+                    app:errorTextAppearance="@style/error_appearance"
+                    >
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_phone"
+                    app:errorTextAppearance="@style/error_appearance"
+                    >
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:textColor="#000"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone No."
+                        android:inputType="phone"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_pwd"
+                    app:errorTextAppearance="@style/error_appearance"
+                    >
+
+                    <EditText
+                        android:id="@+id/pwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:textColor="#000"
+                        android:inputType="textPassword"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/input_repwd"
+                    app:errorTextAppearance="@style/error_appearance"
+                    >
+
+                    <EditText
+                        android:id="@+id/repwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Confirm Passsword"
+                        android:inputType="textPassword"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:id="@+id/signup_button"
+                    android:background="@drawable/login"
+                    android:text=" Sign Up "
+                    android:textColor="#fff"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>
