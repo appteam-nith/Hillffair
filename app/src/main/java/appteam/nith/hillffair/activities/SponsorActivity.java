@@ -35,11 +35,11 @@ public class SponsorActivity extends AppCompatActivity {
         sponsorItems.add(new SponsorItem("Board Of School Education, H.P.",BASE_URL+"sponsor-16.png"));
         sponsorItems.add(new SponsorItem("Tata Shaktee",BASE_URL+"sponsor-17.png"));
         sponsorItems.add(new SponsorItem("Cad Desk",BASE_URL+"sponsor-18.png"));
-    //  sponsorItems.add(new SponsorItem("",BASE_URL+"sponsor-4.png"));
         sponsorItems.add(new SponsorItem("HPSEDC",BASE_URL+"sponsor-19.png"));
         sponsorItems.add(new SponsorItem("Ratan Jewellers",BASE_URL+"sponsor-20.png"));
         sponsorItems.add(new SponsorItem("Chankya The Guru",BASE_URL+"sponsor-21.png"));
-        sponsorItems.add(new SponsorItem("L'OREAL",BASE_URL+"sponsor-7.png"));
+        sponsorItems.add(new SponsorItem("L'OREAL",BASE_URL+"sponsor-3.png"));
+        sponsorItems.add(new SponsorItem("Made Easy",BASE_URL+"sponsor-4.png"));
 
         sponsorAdapter = new SponsorAdapter(sponsorItems,SponsorActivity.this);
         rvSponsor.setAdapter(sponsorAdapter);

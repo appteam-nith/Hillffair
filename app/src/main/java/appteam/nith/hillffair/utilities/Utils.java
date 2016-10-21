@@ -4,6 +4,7 @@ import appteam.nith.hillffair.application.MyApplication;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.Interceptor;
@@ -30,6 +31,8 @@ public class Utils {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         OkHttpClient.Builder oBuilder = new OkHttpClient.Builder();
         oBuilder.addNetworkInterceptor(loggingInterceptor);
+        oBuilder.connectTimeout(15l, TimeUnit.SECONDS);
+        oBuilder.readTimeout(15l,TimeUnit.SECONDS);
 // code to add cache in retrofit
 
         oBuilder.cache(new Cache(new File(MyApplication.getAppContext().getCacheDir(),"cache"),10*1024*1024));

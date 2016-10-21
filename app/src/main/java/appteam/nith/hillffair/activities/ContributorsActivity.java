@@ -32,7 +32,7 @@ public class ContributorsActivity extends AppCompatActivity {
         contributorsItems = new ArrayList<>();
         contributorsItems.add(new contributorsItem("Sahil Badyal", BASE_URL + "sahilbadyal.png", BASE_URL + "sahilbadyal"));
         contributorsItems.add(new contributorsItem("Nishant Choudhary", BASE_URL + "nishant23j.png", BASE_URL + "nishant23j"));
-        contributorsItems.add(new contributorsItem("Kunal Sharma", BASE_URL + "kunal.png", BASE_URL + "kunal12422"));
+        contributorsItems.add(new contributorsItem("Kunal Sharma", "https://avatars1.githubusercontent.com/u/9267351?v=3&s=400", BASE_URL + "kunal12422"));
         contributorsItems.add(new contributorsItem("Shubham Naik", BASE_URL + "nrshubham.png", BASE_URL + "nrshubham"));
         contributorsItems.add(new contributorsItem("Ashima Anand", BASE_URL + "ashima1795.png", BASE_URL + "ashima1795"));
 

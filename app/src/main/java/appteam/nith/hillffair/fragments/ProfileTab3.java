@@ -35,8 +35,7 @@ public class ProfileTab3 extends Fragment {
     private CardAdapter adapter;
     private ArrayList<NewsfeedModel2> list=new ArrayList<>();
     private TextView noData;
-    private boolean loading = true;
-    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=0;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,46 +69,11 @@ public class ProfileTab3 extends Fragment {
             }
 
         }
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) {
-                    visibleItemCount = mLayoutManager.getChildCount();
-                    totalItemCount = mLayoutManager.getItemCount();
-                    pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
-
-                    if (loading) {
-                        if (totalItemCount > previousTotal) {
-                            loading = false;
-                            previousTotal = totalItemCount;
-                        }
-                    }
-                    if (!loading && (totalItemCount - visibleItemCount)
-                            <= (pastVisiblesItems + visibleThreshold)) {
-
-                        list.add(null);
-                        adapter.notifyItemInserted(list.size() + 1);
-                        feedNo+=11;
-                        getData(feedNo,sharedPref.getUserId());
-                        loading = true;
-                    }
-                }
-            }
-        });
-
         return v;
     }
 
 
     private void getData(int from, String id) {
-        if(from>1){
-            adapter.removeItem(null);
-        }
-        else if(from==1) {
-            list.clear();
-            adapter.refresh(list);
-            recyclerView.setVisibility(View.GONE);
-        }
         Call<NewsfeedModel> getUserNewsFeed = Utils.getRetrofitService().getAllUserNews(""+from, id);
         getUserNewsFeed.enqueue(new Callback<NewsfeedModel>() {
             @Override
@@ -128,14 +92,12 @@ public class ProfileTab3 extends Fragment {
                             else {
                                 recyclerView.setVisibility(View.GONE);
                                 progressBar.setVisibility(View.GONE);
-                                adapter.removeItem(null);
                                 noData.setVisibility(View.VISIBLE);
                                 noData.setText("No Post Uploaded");
                             }
 
                         }
                     } else {
-                        adapter.removeItem(null);
                         noData.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                         progressBar.setVisibility(View.GONE);
@@ -143,7 +105,6 @@ public class ProfileTab3 extends Fragment {
 
                     }
                 } else {
-                    adapter.removeItem(null);
                     noData.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
                     progressBar.setVisibility(View.GONE);

@@ -25,7 +25,7 @@
 
             <ImageView
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="25dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/club_image"
                 android:layout_width="102dp"
@@ -34,6 +34,7 @@
                 />
 
             <TextView
+
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
