@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/data_layout">
+    <TextView
+        android:padding="5dp"
+        android:text="Score"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:id="@+id/view_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/view_number_question_solved"
+        android:padding="5dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:text="Number of Question Solved"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <!--
+    <TextView
+        android:id="@+id/question_solved"
+        android:padding="5dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:text="Question Solved"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />-->
+</LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_data_textview"
+        android:layout_centerInParent="true"
+        android:text="Posts"/>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>

@@ -10,7 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:scrollbars="none"
-        android:layout_height="match_parent">
+        android:layout_height="498dp">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     <ImageView
                         android:id="@+id/batman"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/batman_btn" />
@@ -49,7 +49,7 @@
                     <ImageView
                         android:id="@+id/flash"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/flash" />
 
@@ -67,7 +67,7 @@
                     <ImageView
                         android:id="@+id/superman"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/superman_btn" />
@@ -76,7 +76,7 @@
                     <ImageView
                         android:id="@+id/captain"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/captain" />
@@ -94,7 +94,7 @@
                     <ImageView
                         android:id="@+id/wonderwoman"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/wonderwoman_btn" />
@@ -103,11 +103,39 @@
                     <ImageView
                         android:id="@+id/hulk"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="90dp"
                         android:layout_weight="0.5"
                         android:src="@drawable/hulk" />
 
+
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
+
+
+
+                    <ImageView
+                        android:id="@+id/dc"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/index_converted" />
+
+
+                    <ImageView
+                        android:id="@+id/marvel"
+                        android:layout_width="150dp"
+
+                        android:layout_height="40dp"
+                        android:src="@drawable/marvel"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true" />
+
+
+                </RelativeLayout>
 
             </LinearLayout>
         </FrameLayout>

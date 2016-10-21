@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:layout_width="match_parent">
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFF"
+
     android:orientation="vertical">
 
     <ProgressBar
@@ -25,10 +29,10 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="192dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:src="@drawable/hillffair" />
+            android:src="@drawable/main_screen_opt" />
 
     </RelativeLayout>
 
@@ -108,49 +112,44 @@
         </LinearLayout>
 
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="10dp"
-        android:orientation="vertical">
         <View
             android:layout_width="match_parent"
             android:layout_height="4px"
             android:layout_alignParentBottom="true"
-            android:paddingBottom="10dp"
+
             android:layout_marginTop="90dp"
             android:background="#FFA500"
 
             />
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="5dp"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:text="Don't have an account?"
-            android:textSize="15sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
 
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="Don't have an account?"
+                android:textSize="15sp"
 
-        <TextView
-            android:id="@+id/signup_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup"
-            android:textColor="#FFA500"
-            android:textSize="18sp" />
-</LinearLayout>
+                />
+
+            <TextView
+                android:id="@+id/signup_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signup"
+                android:textColor="#FFA500"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-</RelativeLayout>
 
+</RelativeLayout>
+</ScrollView>
