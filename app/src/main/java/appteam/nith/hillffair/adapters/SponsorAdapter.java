@@ -54,11 +54,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
 
         if(!(sponsorItemArrayList.get(position).image_id==null)){
            // holder.sponsorimage.setImageResource(sponsorItemArrayList.get(position).image_id);
-            Glide.with(context).load(sponsorItemArrayList.get(position).image_id).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(new ImageViewTarget<Bitmap>(holder.sponsorimage) {
+            Glide.with(context).load(sponsorItemArrayList.get(position).image_id).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(new ImageViewTarget<Bitmap>(holder.sponsorimage) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable drawable= RoundedBitmapDrawableFactory.create(context.getResources(),resource);
-                    drawable.setCircular(true);
+                    drawable.setCircular(false);
                     holder.sponsorimage.setImageDrawable(drawable);
                 }
             });
