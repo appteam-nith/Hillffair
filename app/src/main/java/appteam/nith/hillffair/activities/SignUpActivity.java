@@ -321,6 +321,10 @@ public class SignUpActivity extends AppCompatActivity {
                   if(status_code==503){
                       Toast.makeText(SignUpActivity.this,"Server Down",Toast.LENGTH_SHORT).show();
                   }
+                   else
+                  {
+                      Toast.makeText(SignUpActivity.this, "Check your internet Connection", Toast.LENGTH_SHORT).show();
+                  }
 
                }
             }

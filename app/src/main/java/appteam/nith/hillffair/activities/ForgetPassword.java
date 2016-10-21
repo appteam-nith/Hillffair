@@ -72,13 +72,19 @@ public class ForgetPassword extends AppCompatActivity {
         verifyemail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email1 = email.getText().toString();
 
 
-                    sendemail(email1);
+                    if(email.getText().toString().isEmpty() || !isemail)
+                    {
+                        Toast.makeText(ForgetPassword.this, "Enter the correct email", Toast.LENGTH_SHORT).show();
+                    }
+                else {
+                        email1 = email.getText().toString();
+                        loadToast.show();
+                        sendemail(email1);
+                    }
+            //    verifyemail.setEnabled(false);
 
-                verifyemail.setEnabled(false);
-                 loadToast.show();
 
                 View view = ForgetPassword.this.getCurrentFocus();
                 if (view != null) {
@@ -286,7 +292,7 @@ public class ForgetPassword extends AppCompatActivity {
                 else
                 {
                     loadToast.error();
-                    Toast.makeText(ForgetPassword.this, "Server error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgetPassword.this, "Check your internet connection", Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -336,7 +336,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            for(int i=3;i>=0;i--){  // 3 minutes
+            for(int i=1;i>=0;i--){  // 1 minutes
                 for(int j=59;j>=0;j--){ // 59 seconds
 
                     if(isCancelled()){
