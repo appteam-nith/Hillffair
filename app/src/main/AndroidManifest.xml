@@ -1,46 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appteamnith.hillffair">
-
+    package="appteam.nith.hillffair">
+    <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
 
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/new_logo"
+        android:icon="@mipmap/icon2"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity android:name=".activities.ThemeSelectionActivity" />
         <activity android:name=".activities.WelcomeActivity" />
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.LoginActivity">
+        </activity>
+        <activity android:name=".Notification.NotificationActivity"
+            android:parentActivityName=".activities.HomeActivity"/>
         <activity android:name=".activities.SignUpActivity" />
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+        </activity>
         <activity
             android:name=".activities.NewsfeedActivity"
             android:label="NewsFeed"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activities.ProfileActivity"
-            android:parentActivityName=".activities.HomeActivity" />
+        <activity android:name=".activities.ProfileActivity"
+            android:parentActivityName=".activities.HomeActivity"/>
         <activity
             android:name=".activities.UploadNewsFeedActivity"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
-            android:name=".activities.CoreTeamActivity"
-            android:parentActivityName=".activities.HomeActivity" />
+        <activity android:name=".activities.CoreTeamActivity"
+            android:parentActivityName=".activities.HomeActivity"></activity>
         <activity
             android:name=".activities.EventActivity"
             android:label="Clubs"
@@ -55,8 +57,8 @@
             android:parentActivityName=".activities.HomeActivity" />
         <activity
             android:name=".activities.QuizQuestionActivity"
-            android:label="Quiz"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="Quiz" />
         <activity
             android:name=".activities.QuizScoreActivity"
             android:label="Quiz Score"
@@ -65,21 +67,18 @@
             android:name=".activities.InformationActivity"
             android:label="Quiz Instructions"
             android:parentActivityName=".activities.QuizActivity" />
-        <activity
-            android:name=".activities.SettingsActivity"
+        <activity android:name=".activities.SettingsActivity"
             android:label="Settings"
-            android:parentActivityName=".activities.HomeActivity" />
-        <activity
-            android:name=".activities.LeaderBoardActivity"
-            android:parentActivityName=".activities.QuizActivity" />
+            android:parentActivityName=".activities.HomeActivity"/>
+        <activity android:name=".activities.LeaderBoardActivity"
+            android:parentActivityName=".activities.QuizActivity"/>
+        <activity android:name=".Notification.Notification2"
+            android:parentActivityName=".Notification.NotificationActivity"/>
         <activity
             android:name=".activities.aboutHillffairActivity"
             android:label="@string/title_activity_about_hillffair"
             android:parentActivityName=".activities.HomeActivity"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activities.LeaderBoardActivity"
-            android:parentActivityName=".activities.QuizActivity" />
         <activity
             android:name=".activities.SponsorActivity"
             android:label="Sponsors"

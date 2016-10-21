@@ -2,7 +2,7 @@
 
 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_marginBottom="10dp"
     android:layout_width="match_parent"
@@ -81,8 +81,8 @@
                 android:layout_height="wrap_content">
 
                 <com.like.LikeButton
-                    app:icon_type="heart"
-                    app:icon_size="30dp"
+                    tools:icon_type="heart"
+                    tools:icon_size="30dp"
                     android:id="@+id/lyk_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +93,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/lyk_status"
-                    android:text="0"
                     android:id="@+id/no_of_likes"
                     android:textColor="#000"
                     android:layout_centerVertical="true"
@@ -104,7 +103,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="29/09/2016"
                     android:layout_centerVertical="true"
                     android:id="@+id/post_date"
                     android:paddingRight="15dp"/>

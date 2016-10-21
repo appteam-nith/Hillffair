@@ -26,6 +26,11 @@
             android:id="@+id/notification"
             android:icon="@drawable/ic_action_alarms"
             android:title="Notifications" />
+        <item
+            android:id="@+id/logout"
+
+            android:title="Logout" />
+
     </group>
 
 </menu>
