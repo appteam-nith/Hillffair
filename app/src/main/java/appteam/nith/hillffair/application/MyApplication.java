@@ -67,7 +67,19 @@ public class MyApplication extends Application {
             OSNotificationAction.ActionType actionType = result.action.type;
             JSONObject data = result.notification.payload.additionalData;
             String customKey;
-
+            DbHelper dbHelper = new DbHelper(getApplicationContext());
+            String id =result.notification.payload.notificationID;
+            String title=result.notification.payload.title;
+            String small_icon=result.notification.payload.smallIcon;
+            String large_icon=result.notification.payload.largeIcon;
+            String launch_url=result.notification.payload.launchURL;
+            String description = result.notification.payload.body  ;
+            String image = result.notification.payload.bigPicture;
+            if(!dbHelper.checkidrepeated(id)) {
+                if (dbHelper.insert_2_homeposts(id, small_icon, title, description, image, large_icon, launch_url)) {
+                    Log.v("", "inserted Successfully");
+                }
+            }
             if (data != null) {
                 customKey = data.optString("customkey", null);
                 if (customKey != null)
