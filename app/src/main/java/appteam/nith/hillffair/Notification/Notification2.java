@@ -22,6 +22,7 @@ import com.bumptech.glide.request.target.Target;
 import net.steamcrafted.loadtoast.LoadToast;
 
 import appteam.nith.hillffair.R;
+import appteam.nith.hillffair.application.SharedPref;
 
 /**
  * Created by root on 20/10/16.
@@ -33,6 +34,9 @@ public class Notification2 extends AppCompatActivity {
     ImageView big_picture;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_post_expand);
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_toolbar);

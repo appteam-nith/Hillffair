@@ -20,8 +20,6 @@ import static android.R.attr.tag;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-
-
     SQLiteDatabase mdb;
 
     private static final int DATABASE_VERSION      = 2;

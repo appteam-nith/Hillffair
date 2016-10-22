@@ -1,11 +1,15 @@
 package appteam.nith.hillffair.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +25,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import appteam.nith.hillffair.Manifest;
 import appteam.nith.hillffair.Notification.NotificationActivity;
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.adapters.HomeAdapter;
@@ -149,13 +154,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
             pref.setUserId(null);
             pref.setRollNo(null);
             pref.setUserName(null);
             startActivity(new Intent(HomeActivity.this,LoginActivity.class));
             finish();
             return true;
+
+        } else if(id == R.id.contacts){
+
+            CharSequence name[] = {"Deepak Kumar Jain\n(Hillffair Secretary)\n9882654141\n",
+                    "Rishabh Bhandari\n(Clubs Secretary)\n9882852966\n"};
+
+            final CharSequence number[] = {"9882654141", "9882852966"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setIcon(android.R.drawable.ic_menu_call);
+            builder.setTitle("Emergency Contact");
+            builder.setItems(name, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if(android.os.Build.VERSION.SDK_INT < 23) {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
+                        startActivity(intent);
+                    }
+                    else {
+                        if(ContextCompat.checkSelfPermission(HomeActivity.this, android.Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_GRANTED){
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
+                            startActivity(intent);
+                        }
+                    }
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -219,8 +252,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private
- void initCollapsingToolbar() {
+    private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(" ");
@@ -248,6 +280,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
     }
+
     private void profileBasicInfo(String id){
 
         APIINTERFACE mAPI = Utils.getRetrofitService();

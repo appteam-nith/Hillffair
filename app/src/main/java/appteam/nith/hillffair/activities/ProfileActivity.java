@@ -51,7 +51,6 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         imageView= (ImageView) findViewById(R.id.image_View);
         setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.menu_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         collapsingToolbarLayout.setTitle(sharedPref.getUserName());
         toolbar.setTitle(sharedPref.getUserName());
@@ -105,20 +104,5 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_profile,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.select_picture:
-                openGallery();
-                return true;
-            default:
-        return super.onOptionsItemSelected(item);}
-    }
 }

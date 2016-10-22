@@ -82,14 +82,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Group Name"
-                            android:textColor="#000"
+                            android:textColor="#fff"
                             android:background="?attr/colorPrimary"
                             android:textAppearance="@android:style/TextAppearance.Large"
                             android:padding="10dp"/>
 
                         <TextView
                             android:id="@+id/desc_club"
-
+                            android:layout_margin="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/grup_name"

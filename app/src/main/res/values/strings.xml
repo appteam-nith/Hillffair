@@ -74,13 +74,16 @@
     <string name="title_activity_about_hillffair">aboutHillffairActivity</string>
     <string name="about_hillffair">
 
-It is a name which needs no introduction up here in the hills; it is the reason why most of northern India awaits the month of November; it is the name whose mention alone excites the listener to his core. Hill’ffair is around the corner once again!!! And needless to say, it promises to be more extravagant this year than ever before. In the age where fests are in a perennial quest to provide all who bear witness an unforgettable and worth - cherishing experience, Hill’ffair has become synonymous with exhilarating joy and excitement that knows no bounds.
-
-With its unique theme, “ComiCon” this year, Hill’ffair 2016 promises a journey into the world of fantasy, where imagination knows no bounds and where the intellect gains its ultimate ecstasy. A journey through the animated joys of the world, which is destined to leave you spell bounded; a chance to watch those fantasies come alive and to relish the unreal.
-
-So now you know where you have to be this November!!! NIT Hamirpur and its hospitality awaits you. Come watch the magic unfold at NIT – H!!!
+It is a name which needs no introduction up here in the hills, it is the reason why most of northern India awaits the month of November,
+it is the name whose mention alone excites the listener to his core. \n\nHill’ffair is around the corner once again. And needless to say,
+it promises to be more extravagant this year than ever before. \n\nIn the age where fests are in a perennial quest to provide all who bear witness an unforgettable and worth
+cherishing experience, Hill’ffair has become synonymous with exhilarating joy and excitement that knows no bounds.
+\n\nWith its unique theme, “ComiCon” this year, Hill’ffair 2016 promises a journey into the world of fantasy, where imagination knows no bounds and where the intellect gains
+its ultimate ecstasy. \n\nA journey through the animated joys of the world, which is destined to leave you spell bounded, a chance to watch those fantasies come alive and to
+relish the unreal.\n\n
+So now you know where you have to be this November!!!\n\nNIT Hamirpur and its hospitality awaits you. Come watch the magic unfold at NIT Hamirpur.
 </string>
     <string name="aboutus_text">A Open Source Project by <a href="https://github.com/appteam-nith/">AppTeam NITH</a> for Cultural Festival Hillffair 2k16.\n\nSource code available at
-        <a href="https://github.com/appteam-nith/Hillffair">GitHub</a>.
+        <a href="https://github.com/appteam-nith/Hillffair">GitHub</a> \n\nLink : \nhttps://github.com/appteam-nith/Hillffair\n
     </string>
 </resources>
