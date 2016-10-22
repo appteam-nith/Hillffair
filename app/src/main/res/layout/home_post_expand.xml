@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:elevation="25dp"
                 android:background="#FFF"
+
                 android:layout_margin="6dp"
                 >
                 <ProgressBar

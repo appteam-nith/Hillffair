@@ -130,7 +130,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         return homedetails;
     }
-
+    public boolean checkidrepeated(String id){
+        String query="select id from "+TABLE_HOMEPOST+" where id = '"+id+"'";
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor!=null)
+            return true;
+        return false;
+    }
 
     public Cursor homeposteinnerdata(String id) {
         String query = "select * from " + TABLE_HOMEPOST + "  where  id = '" + id+"'" ;
