@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
@@ -84,6 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
                     password = Password.getText().toString();
                     loadToast.setText("Loading..");
                     loadToast.show();
+
                     if (isnitian && isValidRollNo) {
                         registrationProcessWithRetrofit(email, password, rollno, phoneno, name, true);
                     } else {
@@ -218,7 +220,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 String input = Rollno.getText().toString();
-                String ptr = "((1(4|5|6)MI5((0[1-9])|([1-5][0-9])|60))|(1(4-6)M[1-5]((0[1-9])|([1-5][0-9])|60))|(116((0[1-9])|[1-5][0-9]|60))|(1(5|6)MI4((0[1-9])|([1-5][0-9])|60))|(1[2-6][1-7]((0[1-9])|([1-8][0-9])|90))|(IIITU1(5|6)(1|2)((0[1-9])|([1-2][0-9])|30)))";
+                String ptr = "((1(4|5|6)MI5((0[1-9])|([1-5][0-9])|60))|(1(4-6)M[1-5]((0[1-9])|([1-5][0-9])|60))|(116((0[1-9])|[1-5][0-9]|60))|(1(5|6)MI4((0[1-9])|([1-5][0-9])|60))|(1[2-6][1-7]((0[1-9])|([1-8][0-9])|90))|(IIITU1(4|5|6)(1|2)((0[1-9])|([1-2][0-9])|30)))";
 
                 Pattern p = Pattern.compile(ptr);
                 Matcher m = p.matcher(input.toUpperCase().trim());
@@ -232,6 +234,7 @@ public class SignUpActivity extends AppCompatActivity {
                     rollnoTextInputLayout.setError("Enter Valid RollNo");
 
                 }
+                Log.v("rollisvalid",""+isValidRollNo);
 
             }
         });
@@ -265,6 +268,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (checkBox.isChecked()) {
                     rollnoTextInputLayout.setVisibility(View.VISIBLE);
+                    Log.v("isnitiancheckbox",""+isnitian);
                     isnitian = true;
                 } else {
                     rollnoTextInputLayout.setVisibility(View.GONE);
