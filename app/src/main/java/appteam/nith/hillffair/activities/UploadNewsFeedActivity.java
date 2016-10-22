@@ -24,6 +24,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.view.View.GONE;
+
 public class UploadNewsFeedActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final String TAG = "Upload News Feed";
@@ -57,6 +59,7 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
                 EditorView.AddTopic add = editorView.buildEditData();
                 if(add.title!=null&&add.detail!=null)
                     if (!add.title.isEmpty()&&!add.detail.isEmpty()){
+                        upload_image.setVisibility(GONE);
                         progressBar.setVisibility(View.VISIBLE);
                         upload(add.title,add.detail);}
                 else{
@@ -144,7 +147,7 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
         uploadResponseCall.enqueue(new Callback<UploadResponse>() {
             @Override
             public void onResponse(Call<UploadResponse> call, Response<UploadResponse> response) {
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(GONE);
                 UploadResponse result = response.body();
                 int status_code=response.code();
                 if(result!=null){
@@ -152,11 +155,16 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
                         Toast.makeText(UploadNewsFeedActivity.this, "Post Successfully Uploaded", Toast.LENGTH_LONG).show();
                         finish();
                     } else {
+                        upload_image.setVisibility(View.VISIBLE);
                         Toast.makeText(UploadNewsFeedActivity.this, "Error While Uploading Please Retry", Toast.LENGTH_LONG).show();
                     }}
                 else {
+                    upload_image.setVisibility(View.VISIBLE);
                     if(status_code==503){
                         Toast.makeText(UploadNewsFeedActivity.this,"Server Done",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(UploadNewsFeedActivity.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -164,7 +172,8 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UploadResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
+                upload_image.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(GONE);
                 t.printStackTrace();
             }
         });

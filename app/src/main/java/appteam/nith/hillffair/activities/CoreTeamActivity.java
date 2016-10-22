@@ -34,6 +34,7 @@ public class CoreTeamActivity extends AppCompatActivity {
         array_list.add(new CoreTeamItem("Ajay k. Sharma","Director",BASE_URL+"photos/director.jpg"));
         array_list.add(new CoreTeamItem("Dr. Raman Parti","Dean Student Welfare","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/raman_parti.png"));
         array_list.add(new CoreTeamItem("Dr. Surender Soni","Faculty Coordinator","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/surender_soni.png"));
+
         array_list.add(new CoreTeamItem("Deepak Kumar Jain","Hillffair Secretary",BASE_URL_JSEC+"sec_cultural.jpg"));
         array_list.add(new CoreTeamItem("Rishabh Bhandari","Clubs Secretary",BASE_URL_JSEC+"sec_club.jpg"));
         array_list.add(new CoreTeamItem("Nikhil Gusaiwal","Finance Secretary",BASE_URL_JSEC+"sec_finance.jpg"));
@@ -51,7 +52,6 @@ public class CoreTeamActivity extends AppCompatActivity {
         array_list.add(new CoreTeamItem("Shikhar Shrivastava","Jt. Secretary(Organization)",BASE_URL_JSEC+"jsec_organisation.jpg"));
         array_list.add(new CoreTeamItem("Naveen Banyal","Jt. Secretary(Technical Committee)",BASE_URL_JSEC+"jsec_technical.jpg"));
         array_list.add(new CoreTeamItem("Shubham Dhiman","Jt. Secretary(INS)",BASE_URL_JSEC+"convener_ins.jpg"));
-
 
 
         core_team_adapter=new CoreTeamAdapter(array_list,CoreTeamActivity.this);

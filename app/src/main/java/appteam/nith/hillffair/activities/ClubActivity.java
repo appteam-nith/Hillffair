@@ -63,7 +63,7 @@ public class ClubActivity extends AppCompatActivity {
         Intent i = getIntent();
         if (i != null) {
             if (i.hasExtra(EventActivity.CLUB_NAME)){
-                club_name = i.getStringExtra(EventActivity.CLUB_NAME);
+               club_name = i.getStringExtra(EventActivity.CLUB_NAME);
                 showData(club_name);
 
             }else if(i.hasExtra("battleday")){
@@ -169,7 +169,7 @@ public class ClubActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(club_name);
+                    collapsingToolbar.setTitle("Club");
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");

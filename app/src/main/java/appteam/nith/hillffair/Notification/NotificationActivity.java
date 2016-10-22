@@ -3,13 +3,13 @@ package appteam.nith.hillffair.Notification;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 
 import java.util.List;
@@ -17,13 +17,17 @@ import java.util.List;
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.activities.Home_posts_gns;
 import appteam.nith.hillffair.adapters.Notification;
+import appteam.nith.hillffair.application.SharedPref;
 
 public class NotificationActivity extends AppCompatActivity {
 DbHelper dbHandler;
 
     List<Home_posts_gns> arrayList;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SharedPref pref= new SharedPref(this);
+        setTheme(pref.getThemeId());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_toolbar);
@@ -38,7 +42,7 @@ DbHelper dbHandler;
         final LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(notification);
-        recyclerView.addOnItemTouchListener(new Onitemtouchlistener(NotificationActivity.this, new Onitemtouchlistener.OnItemClickListener() {
+        recyclerView.addOnItemTouchListener(new OnItemTouchListener(NotificationActivity.this, new OnItemTouchListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int db_position) {
                 //  int  position = db_position+1;

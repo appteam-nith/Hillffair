@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/loginbox"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:orientation="vertical"
                 android:padding="10dp"
                 android:paddingLeft="20dp"
@@ -143,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:textSize="16dp"
-                android:text="Remember to Verify your Email after Signup"/>
+                android:text="**Remember to verify your email after Signup"/>
         </LinearLayout>
 
 
