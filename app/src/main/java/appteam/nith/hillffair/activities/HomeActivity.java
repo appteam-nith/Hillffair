@@ -22,10 +22,10 @@ import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.Manifest;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import appteam.nith.hillffair.Manifest;
 import appteam.nith.hillffair.Notification.NotificationActivity;
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.adapters.HomeAdapter;
@@ -46,6 +46,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView recyclerView;
     private HomeAdapter adapter;
     private SharedPref pref;
+    private static final int PERMISSIONS_REQUEST_PHONE_CALL = 100;
+    private static String[] PERMISSIONS_PHONECALL = {Manifest.permission.CALL_PHONE};
+    final String number[] = {"9882654141", "9882852966"};
+    int a=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,23 +172,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             CharSequence name[] = {"Deepak Kumar Jain\n(Hillffair Secretary)\n9882654141\n",
                     "Rishabh Bhandari\n(Clubs Secretary)\n9882852966\n"};
 
-            final CharSequence number[] = {"9882654141", "9882852966"};
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setIcon(android.R.drawable.ic_menu_call);
             builder.setTitle("Emergency Contact");
             builder.setItems(name, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    if(android.os.Build.VERSION.SDK_INT < 23) {
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
-                        startActivity(intent);
-                    }
-                    else {
-                        if(ContextCompat.checkSelfPermission(HomeActivity.this, android.Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_GRANTED){
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
-                            startActivity(intent);
-                        }
-                    }
+                    a=i;
+                    call(a);
                 }
             });
             AlertDialog alertDialog = builder.create();
@@ -311,5 +308,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
+    }
+    private void call(int i) {
+        // Check the SDK version and whether the permission is already granted or not.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, PERMISSIONS_REQUEST_PHONE_CALL);
+        } else {
+            //Open call function
+            String phone = number[i];
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:+91" + phone));
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        if (requestCode == PERMISSIONS_REQUEST_PHONE_CALL) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted
+                call(a);
+            } else {
+                Toast.makeText(this, "Sorry!!! Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
