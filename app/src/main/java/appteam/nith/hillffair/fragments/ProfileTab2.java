@@ -12,14 +12,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.google.gson.annotations.SerializedName;
 
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.application.SharedPref;
 import appteam.nith.hillffair.models.ProfileDataModel;
 import appteam.nith.hillffair.utilities.APIINTERFACE;
 import appteam.nith.hillffair.utilities.Utils;
-import com.google.gson.annotations.SerializedName;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -270,6 +269,7 @@ public class ProfileTab2 extends Fragment {
                         else {
                             progress.setVisibility(View.GONE);
                             Toast.makeText(getActivity(), "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 }
