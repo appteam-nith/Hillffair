@@ -1,0 +1,978 @@
+From 360eaf33297054855c99ba6564cb9c6c8feeb3c7 Mon Sep 17 00:00:00 2001
+From: Anishka Gupta <Anishka Gupta>
+Date: Sun, 28 Aug 2016 11:10:19 +0530
+Subject: [PATCH 1/4] introduction slider
+
+---
+ app/src/main/java/com/appteamnith/hillffair/StartupShow.java     | 0
+ app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java | 0
+ app/src/main/res/layout/activity_welcome.xml                     | 0
+ app/src/main/res/layout/welcome1.xml                             | 0
+ app/src/main/res/layout/welcome2.xml                             | 0
+ app/src/main/res/layout/welcome3.xml                             | 0
+ app/src/main/res/layout/welcome4.xml                             | 0
+ 7 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 app/src/main/java/com/appteamnith/hillffair/StartupShow.java
+ create mode 100644 app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java
+ create mode 100644 app/src/main/res/layout/activity_welcome.xml
+ create mode 100644 app/src/main/res/layout/welcome1.xml
+ create mode 100644 app/src/main/res/layout/welcome2.xml
+ create mode 100644 app/src/main/res/layout/welcome3.xml
+ create mode 100644 app/src/main/res/layout/welcome4.xml
+
+diff --git a/app/src/main/java/com/appteamnith/hillffair/StartupShow.java b/app/src/main/java/com/appteamnith/hillffair/StartupShow.java
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java b/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/res/layout/activity_welcome.xml b/app/src/main/res/layout/activity_welcome.xml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/res/layout/welcome1.xml b/app/src/main/res/layout/welcome1.xml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/res/layout/welcome2.xml b/app/src/main/res/layout/welcome2.xml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/res/layout/welcome3.xml b/app/src/main/res/layout/welcome3.xml
+new file mode 100644
+index 0000000..e69de29
+diff --git a/app/src/main/res/layout/welcome4.xml b/app/src/main/res/layout/welcome4.xml
+new file mode 100644
+index 0000000..e69de29
+
+From ff792b7a60cf2ca57b9d44d1d4f76fef9da7c4f6 Mon Sep 17 00:00:00 2001
+From: Anishka Gupta <Anishka Gupta>
+Date: Sun, 28 Aug 2016 13:27:47 +0530
+Subject: [PATCH 2/4] intro2
+
+---
+ app/build.gradle                                   |  10 +-
+ app/src/main/AndroidManifest.xml                   |   7 +-
+ .../com/appteamnith/hillffair/StartupShow.java     |  26 ++++
+ .../com/appteamnith/hillffair/WelcomeActivity.java | 170 +++++++++++++++++++++
+ app/src/main/res/drawable/img1.png                 | Bin 0 -> 2898 bytes
+ app/src/main/res/drawable/img2.png                 | Bin 0 -> 2898 bytes
+ app/src/main/res/drawable/img3.png                 | Bin 0 -> 2898 bytes
+ app/src/main/res/drawable/img4.png                 | Bin 0 -> 2898 bytes
+ app/src/main/res/layout/activity_welcome.xml       |  38 +++++
+ app/src/main/res/layout/welcome1.xml               |  40 +++++
+ app/src/main/res/layout/welcome2.xml               |  40 +++++
+ app/src/main/res/layout/welcome3.xml               |  40 +++++
+ app/src/main/res/layout/welcome4.xml               |  40 +++++
+ app/src/main/res/values/colors.xml                 |  31 ++++
+ app/src/main/res/values/dimens.xml                 |   7 +
+ app/src/main/res/values/strings.xml                |  16 +-
+ app/src/main/res/values/styles.xml                 |   5 +
+ gradle.properties                                  |  19 +--
+ 18 files changed, 470 insertions(+), 19 deletions(-)
+ create mode 100644 app/src/main/res/drawable/img1.png
+ create mode 100644 app/src/main/res/drawable/img2.png
+ create mode 100644 app/src/main/res/drawable/img3.png
+ create mode 100644 app/src/main/res/drawable/img4.png
+
+diff --git a/app/build.gradle b/app/build.gradle
+index d29dc3c..43f439c 100644
+--- a/app/build.gradle
++++ b/app/build.gradle
+@@ -1,13 +1,13 @@
+ apply plugin: 'com.android.application'
+ 
+ android {
+-    compileSdkVersion 24
+-    buildToolsVersion "24.0.2"
++    compileSdkVersion 23
++    buildToolsVersion '23.0.3'
+ 
+     defaultConfig {
+         applicationId "com.appteamnith.hillffair"
+         minSdkVersion 16
+-        targetSdkVersion 24
++        targetSdkVersion 23
+         versionCode 1
+         versionName "1.0"
+     }
+@@ -20,7 +20,5 @@ android {
+ }
+ 
+ dependencies {
+-    compile fileTree(dir: 'libs', include: ['*.jar'])
+-    testCompile 'junit:junit:4.12'
+-    compile 'com.android.support:appcompat-v7:24.2.0'
++    compile 'com.android.support:appcompat-v7:24.0.0-alpha2'
+ }
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+index da32ed5..1c70e73 100644
+--- a/app/src/main/AndroidManifest.xml
++++ b/app/src/main/AndroidManifest.xml
+@@ -1,20 +1,21 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.appteamnith.hillffair">
+-
+     <application
+         android:allowBackup="true"
+         android:icon="@mipmap/ic_launcher"
+         android:label="@string/app_name"
+         android:supportsRtl="true"
+         android:theme="@style/AppTheme">
+-        <activity android:name=".MainActivity">
++        <activity android:name=".WelcomeActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+ 
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++        <activity
++            android:name=".MainActivity"
++            android:label="@string/main" ></activity>
+     </application>
+-
+ </manifest>
+\ No newline at end of file
+diff --git a/app/src/main/java/com/appteamnith/hillffair/StartupShow.java b/app/src/main/java/com/appteamnith/hillffair/StartupShow.java
+index e69de29..204d604 100644
+--- a/app/src/main/java/com/appteamnith/hillffair/StartupShow.java
++++ b/app/src/main/java/com/appteamnith/hillffair/StartupShow.java
+@@ -0,0 +1,26 @@
++package com.appteamnith.hillffair;
++
++import android.content.Context;
++import android.content.SharedPreferences;
++
++public class StartupShow {
++    SharedPreferences pref;
++    SharedPreferences.Editor edits;
++    Context c;
++    int PRIVATE_MODE = 0;
++    private static final String PREF_NAME = "hillffair-welcome";
++    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
++    public StartupShow(Context con){
++        this.c=con;
++        pref=c.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
++        edits=pref.edit();
++}
++    public void setFirstTimeLaunch(boolean firsts){
++        edits.putBoolean(IS_FIRST_TIME_LAUNCH,firsts);
++        edits.commit();
++    }
++
++    public boolean isFirstTimeLaunch(){
++        return pref.getBoolean(IS_FIRST_TIME_LAUNCH,true);
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java b/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java
+index e69de29..1f33d9c 100644
+--- a/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java
++++ b/app/src/main/java/com/appteamnith/hillffair/WelcomeActivity.java
+@@ -0,0 +1,170 @@
++package com.appteamnith.hillffair;
++
++import android.content.Context;
++import android.content.Intent;
++import android.graphics.Color;
++import android.os.Build;
++import android.os.Bundle;
++import android.support.v4.view.PagerAdapter;
++import android.support.v4.view.ViewPager;
++import android.support.v7.app.AppCompatActivity;
++import android.text.Html;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.view.Window;
++import android.view.WindowManager;
++import android.widget.Button;
++import android.widget.LinearLayout;
++import android.widget.TextView;
++
++
++public class WelcomeActivity extends AppCompatActivity {
++
++    private ViewPager viewPager;
++    private MyViewPagerAdapter myViewPagerAdapter;
++    private LinearLayout dotsLayout;
++    private TextView[] dots;
++    private int[] layouts;
++    private Button btnSkip;
++    private StartupShow prefManager;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        prefManager = new StartupShow(this);
++        if (!prefManager.isFirstTimeLaunch()) {
++            launchHomeScreen();
++            finish();
++        }
++
++        if (Build.VERSION.SDK_INT >= 21) {
++            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
++        }
++
++        setContentView(R.layout.activity_welcome);
++
++        viewPager = (ViewPager) findViewById(R.id.view_pager);
++        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
++        btnSkip = (Button) findViewById(R.id.btn_skip);
++
++
++        layouts = new int[]{
++                R.layout.welcome1,
++                R.layout.welcome2,
++                R.layout.welcome3,
++                R.layout.welcome4};
++
++        addBottomDots(0);
++
++        changeStatusBarColor();
++
++        myViewPagerAdapter = new MyViewPagerAdapter();
++        viewPager.setAdapter(myViewPagerAdapter);
++        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
++
++        btnSkip.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                launchHomeScreen();
++            }
++        });
++
++    }
++
++    private void addBottomDots(int currentPage) {
++        dots = new TextView[layouts.length];
++
++        int[] colorsActive = getResources().getIntArray(R.array.active);
++        int[] colorsInactive = getResources().getIntArray(R.array.inactive);
++
++        dotsLayout.removeAllViews();
++        for (int i = 0; i < dots.length; i++) {
++            dots[i] = new TextView(this);
++            dots[i].setText(Html.fromHtml("&#8226;"));
++            dots[i].setTextSize(35);
++            dots[i].setTextColor(colorsInactive[currentPage]);
++            dotsLayout.addView(dots[i]);
++        }
++
++        if (dots.length > 0)
++            dots[currentPage].setTextColor(colorsActive[currentPage]);
++    }
++
++    private int getItem(int i) {
++        return viewPager.getCurrentItem() + i;
++    }
++
++    private void launchHomeScreen() {
++        prefManager.setFirstTimeLaunch(false);
++        startActivity(new Intent(this, MainActivity.class));
++        finish();
++    }
++
++    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
++
++        @Override
++        public void onPageSelected(int position) {
++            addBottomDots(position);
++
++            if (position == layouts.length - 1) {
++                btnSkip.setText(getString(R.string.gotit));
++            } else {
++                btnSkip.setText(getString(R.string.skip));
++            }
++        }
++
++        @Override
++        public void onPageScrolled(int arg0, float arg1, int arg2) {
++
++        }
++
++        @Override
++        public void onPageScrollStateChanged(int arg0) {
++
++        }
++    };
++
++    private void changeStatusBarColor() {
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++            Window window = getWindow();
++            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
++            window.setStatusBarColor(Color.TRANSPARENT);
++        }
++    }
++
++    public class MyViewPagerAdapter extends PagerAdapter {
++        private LayoutInflater layoutInflater;
++
++        public MyViewPagerAdapter() {
++        }
++
++        @Override
++        public Object instantiateItem(ViewGroup container, int position) {
++            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
++
++            View view = layoutInflater.inflate(layouts[position], container, false);
++            container.addView(view);
++
++            return view;
++        }
++
++        @Override
++        public int getCount() {
++            return layouts.length;
++        }
++
++        @Override
++        public boolean isViewFromObject(View view, Object obj) {
++            return view == obj;
++        }
++
++
++        @Override
++        public void destroyItem(ViewGroup container, int position, Object object) {
++            View view = (View) object;
++            container.removeView(view);
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable/img1.png b/app/src/main/res/drawable/img1.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..3139fc1d369f5ec085308fd627662b374da86a86
+GIT binary patch
+literal 2898
+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
+b<@6Upe~lSCL;#xd$FH%e5$asIp-c4dGOG^Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/app/src/main/res/drawable/img2.png b/app/src/main/res/drawable/img2.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..3139fc1d369f5ec085308fd627662b374da86a86
+GIT binary patch
+literal 2898
+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
+b<@6Upe~lSCL;#xd$FH%e5$asIp-c4dGOG^Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/app/src/main/res/drawable/img3.png b/app/src/main/res/drawable/img3.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..3139fc1d369f5ec085308fd627662b374da86a86
+GIT binary patch
+literal 2898
+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
+b<@6Upe~lSCL;#xd$FH%e5$asIp-c4dGOG^Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/app/src/main/res/drawable/img4.png b/app/src/main/res/drawable/img4.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..3139fc1d369f5ec085308fd627662b374da86a86
+GIT binary patch
+literal 2898
+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
+b<@6Upe~lSCL;#xd$FH%e5$asIp-c4dGOG^Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/app/src/main/res/layout/activity_welcome.xml b/app/src/main/res/layout/activity_welcome.xml
+index e69de29..343850f 100644
+--- a/app/src/main/res/layout/activity_welcome.xml
++++ b/app/src/main/res/layout/activity_welcome.xml
+@@ -0,0 +1,38 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++
++    <android.support.v4.view.ViewPager
++        android:id="@+id/view_pager"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent" />
++
++    <LinearLayout
++        android:id="@+id/layoutDots"
++        android:layout_width="match_parent"
++        android:layout_height="@dimen/dots_height"
++        android:layout_alignParentBottom="true"
++        android:layout_marginBottom="@dimen/dots_margin_bottom"
++        android:gravity="center"
++        android:orientation="horizontal"></LinearLayout>
++
++    <View
++        android:layout_width="match_parent"
++        android:layout_height="1dp"
++        android:alpha=".5"
++        android:layout_above="@id/layoutDots"
++        android:background="@android:color/white" />
++
++    <Button
++        android:id="@+id/btn_skip"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_alignParentBottom="true"
++        android:layout_alignParentRight="true"
++        android:background="@null"
++        android:text="@string/skip"
++        android:textColor="@android:color/white" />
++
++</RelativeLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/welcome1.xml b/app/src/main/res/layout/welcome1.xml
+index e69de29..c14a4ae 100644
+--- a/app/src/main/res/layout/welcome1.xml
++++ b/app/src/main/res/layout/welcome1.xml
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/screen1">
++
++    <LinearLayout
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:gravity="center_horizontal"
++        android:orientation="vertical">
++
++        <ImageView
++            android:layout_width="@dimen/image_dimens"
++            android:layout_height="@dimen/image_dimens"
++            android:src="@drawable/img1" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/screen1_head"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_title"
++            android:layout_marginTop="10dp"
++            android:textStyle="bold" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="20dp"
++            android:paddingLeft="@dimen/desc_padding"
++            android:paddingRight="@dimen/desc_padding"
++            android:text="@string/screen1_body"
++            android:textAlignment="center"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_desc" />
++
++    </LinearLayout>
++</RelativeLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/welcome2.xml b/app/src/main/res/layout/welcome2.xml
+index e69de29..22de0b8 100644
+--- a/app/src/main/res/layout/welcome2.xml
++++ b/app/src/main/res/layout/welcome2.xml
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/screen2">
++
++    <LinearLayout
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:gravity="center_horizontal"
++        android:orientation="vertical">
++
++        <ImageView
++            android:layout_width="@dimen/image_dimens"
++            android:layout_height="@dimen/image_dimens"
++            android:src="@drawable/img2" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/screen2_head"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_title"
++            android:layout_marginTop="10dp"
++            android:textStyle="bold" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="20dp"
++            android:paddingLeft="@dimen/desc_padding"
++            android:paddingRight="@dimen/desc_padding"
++            android:text="@string/screen2_body"
++            android:textAlignment="center"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_desc" />
++
++    </LinearLayout>
++</RelativeLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/welcome3.xml b/app/src/main/res/layout/welcome3.xml
+index e69de29..96775ff 100644
+--- a/app/src/main/res/layout/welcome3.xml
++++ b/app/src/main/res/layout/welcome3.xml
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/screen3">
++
++    <LinearLayout
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:gravity="center_horizontal"
++        android:orientation="vertical">
++
++        <ImageView
++            android:layout_width="@dimen/image_dimens"
++            android:layout_height="@dimen/image_dimens"
++            android:src="@drawable/img3" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/screen3_head"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_title"
++            android:layout_marginTop="10dp"
++            android:textStyle="bold" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="20dp"
++            android:paddingLeft="@dimen/desc_padding"
++            android:paddingRight="@dimen/desc_padding"
++            android:text="@string/screen3_body"
++            android:textAlignment="center"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_desc" />
++
++    </LinearLayout>
++</RelativeLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/welcome4.xml b/app/src/main/res/layout/welcome4.xml
+index e69de29..41a8fc1 100644
+--- a/app/src/main/res/layout/welcome4.xml
++++ b/app/src/main/res/layout/welcome4.xml
+@@ -0,0 +1,40 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/screen4">
++
++    <LinearLayout
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_centerInParent="true"
++        android:gravity="center_horizontal"
++        android:orientation="vertical">
++
++        <ImageView
++            android:layout_width="@dimen/image_dimens"
++            android:layout_height="@dimen/image_dimens"
++            android:src="@drawable/img4" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="@string/screen4_head"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_title"
++            android:layout_marginTop="10dp"
++            android:textStyle="bold" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="20dp"
++            android:paddingLeft="@dimen/desc_padding"
++            android:paddingRight="@dimen/desc_padding"
++            android:text="@string/screen4_body"
++            android:textAlignment="center"
++            android:textColor="@android:color/white"
++            android:textSize="@dimen/slide_desc" />
++
++    </LinearLayout>
++</RelativeLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+index 3ab3e9c..40009d3 100644
+--- a/app/src/main/res/values/colors.xml
++++ b/app/src/main/res/values/colors.xml
+@@ -3,4 +3,35 @@
+     <color name="colorPrimary">#3F51B5</color>
+     <color name="colorPrimaryDark">#303F9F</color>
+     <color name="colorAccent">#FF4081</color>
++
++    <color name="screen1">#52c6d7</color>
++    <color name="screen2">#00ff7f</color>
++    <color name="screen3">#ffff00</color>
++    <color name="screen4">#ff7f50</color>
++
++    <!--for the dark inactive dots-->
++    <color name="ddscreen1">#9ac0cd</color>
++    <color name="ddscreen2">#7ccd7c</color>
++    <color name="ddscreen3">#eedc82</color>
++    <color name="ddscreen4">#cd8162</color>
++
++    <!--for the light active dots-->
++    <color name="dlscreen1">#b0e2ff</color>
++    <color name="dlscreen2">#bdfcc9</color>
++    <color name="dlscreen3">#fafad2</color>
++    <color name="dlscreen4">#ffe7ba</color>
++
++    <array name="inactive">
++        <item>@color/ddscreen1</item>
++        <item>@color/ddscreen2</item>
++        <item>@color/ddscreen3</item>
++        <item>@color/ddscreen4</item>
++    </array>
++
++    <array name="active">
++        <item>@color/dlscreen1</item>
++        <item>@color/dlscreen2</item>
++        <item>@color/dlscreen3</item>
++        <item>@color/dlscreen4</item>
++    </array>
+ </resources>
+diff --git a/app/src/main/res/values/dimens.xml b/app/src/main/res/values/dimens.xml
+index 47c8224..8905da0 100644
+--- a/app/src/main/res/values/dimens.xml
++++ b/app/src/main/res/values/dimens.xml
+@@ -2,4 +2,11 @@
+     <!-- Default screen margins, per the Android Design guidelines. -->
+     <dimen name="activity_horizontal_margin">16dp</dimen>
+     <dimen name="activity_vertical_margin">16dp</dimen>
++    <dimen name="fab_margin">16dp</dimen>
++    <dimen name="dots_height">35dp</dimen>
++    <dimen name="dots_margin_bottom">20dp</dimen>
++    <dimen name="image_dimens">140dp</dimen>
++    <dimen name="slide_title">30dp</dimen>
++    <dimen name="slide_desc">16dp</dimen>
++    <dimen name="desc_padding">40dp</dimen>
+ </resources>
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+index 1093d9d..2cba1a7 100644
+--- a/app/src/main/res/values/strings.xml
++++ b/app/src/main/res/values/strings.xml
+@@ -1,3 +1,17 @@
+ <resources>
+     <string name="app_name">Hillffair</string>
+-</resources>
++    <string name="main">Home Page</string>
++
++    <string name="skip">SKIP</string>
++    <string name="gotit">GOT IT</string>
++
++    <string name="screen1_head">Hillffair 2k16</string>
++    <string name="screen2_head">Enjoy</string>
++    <string name="screen3_head">Party</string>
++    <string name="screen4_head">Fun</string>
++
++    <string name="screen1_body">Cultural fest oh nith 2016</string>
++    <string name="screen2_body">Thousands of events</string>
++    <string name="screen3_body">abcd efgh ijhl mnop qrst</string>
++    <string name="screen4_body">great great great</string>
++</resources>
+\ No newline at end of file
+diff --git a/app/src/main/res/values/styles.xml b/app/src/main/res/values/styles.xml
+index 5885930..b793243 100644
+--- a/app/src/main/res/values/styles.xml
++++ b/app/src/main/res/values/styles.xml
+@@ -6,6 +6,11 @@
+         <item name="colorPrimary">@color/colorPrimary</item>
+         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+         <item name="colorAccent">@color/colorAccent</item>
++        <item name="windowActionBar">false</item>
++        <item name="windowNoTitle">true</item>
+     </style>
+ 
++    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
++
++    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+ </resources>
+diff --git a/gradle.properties b/gradle.properties
+index 1d3591c..f0b9974 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -1,18 +1,19 @@
+-# Project-wide Gradle settings.
+-
+-# IDE (e.g. Android Studio) users:
+-# Gradle settings configured through the IDE *will override*
+-# any settings specified in this file.
+-
++## Project-wide Gradle settings.
++#
+ # For more details on how to configure your build environment visit
+ # http://www.gradle.org/docs/current/userguide/build_environment.html
+-
++#
+ # Specifies the JVM arguments used for the daemon process.
+ # The setting is particularly useful for tweaking memory settings.
+ # Default value: -Xmx10248m -XX:MaxPermSize=256m
+ # org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+-
++#
+ # When configured, Gradle will run in incubating parallel mode.
+ # This option should only be used with decoupled projects. More details, visit
+ # http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+-# org.gradle.parallel=true
+\ No newline at end of file
++# org.gradle.parallel=true
++#Sun Aug 28 02:31:33 IST 2016
++systemProp.https.proxyPort=3128
++systemProp.http.proxyHost=172.16.32.2
++systemProp.https.proxyHost=172.16.32.2
++systemProp.http.proxyPort=3128
+
+From 2c39b8cd0ca1c098c384b0d34c5b89d810c2a126 Mon Sep 17 00:00:00 2001
+From: Anishka Gupta <Anishka Gupta>
+Date: Sun, 28 Aug 2016 13:32:31 +0530
+Subject: [PATCH 3/4] introduction slider
+
+---
+ app/src/main/res/values/colors.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+index 40009d3..59f6aec 100644
+--- a/app/src/main/res/values/colors.xml
++++ b/app/src/main/res/values/colors.xml
+@@ -6,7 +6,7 @@
+ 
+     <color name="screen1">#52c6d7</color>
+     <color name="screen2">#00ff7f</color>
+-    <color name="screen3">#ffff00</color>
++    <color name="screen3">#ffb90f</color>
+     <color name="screen4">#ff7f50</color>
+ 
+     <!--for the dark inactive dots-->
+
+From 28b702f814a6c68f04fee0322db75c9c41d48e5a Mon Sep 17 00:00:00 2001
+From: Anishka Gupta <Anishka Gupta>
+Date: Sun, 28 Aug 2016 13:56:50 +0530
+Subject: [PATCH 4/4] intro
+
+---
+ app/build.gradle | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/app/build.gradle b/app/build.gradle
+index 43f439c..b9b5545 100644
+--- a/app/build.gradle
++++ b/app/build.gradle
+@@ -1,13 +1,13 @@
+ apply plugin: 'com.android.application'
+ 
+ android {
+-    compileSdkVersion 23
+-    buildToolsVersion '23.0.3'
++    compileSdkVersion 24
++    buildToolsVersion '24.0.2'
+ 
+     defaultConfig {
+         applicationId "com.appteamnith.hillffair"
+         minSdkVersion 16
+-        targetSdkVersion 23
++        targetSdkVersion 24
+         versionCode 1
+         versionName "1.0"
+     }

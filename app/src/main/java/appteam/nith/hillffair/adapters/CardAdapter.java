@@ -11,14 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import appteam.nith.hillffair.R;
-import appteam.nith.hillffair.application.MyApplication;
-import appteam.nith.hillffair.application.SharedPref;
-import appteam.nith.hillffair.models.Dislike;
-import appteam.nith.hillffair.models.Likecount;
-import appteam.nith.hillffair.models.NewsfeedModel2;
-import appteam.nith.hillffair.utilities.APIINTERFACE;
-import appteam.nith.hillffair.utilities.Utils;
 import com.bumptech.glide.Glide;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
@@ -29,12 +21,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import appteam.nith.hillffair.R;
+import appteam.nith.hillffair.application.MyApplication;
+import appteam.nith.hillffair.application.SharedPref;
+import appteam.nith.hillffair.models.Likecount;
+import appteam.nith.hillffair.models.NewsfeedModel2;
+import appteam.nith.hillffair.utilities.APIINTERFACE;
+import appteam.nith.hillffair.utilities.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static appteam.nith.hillffair.R.id.lyk_status;
-import static appteam.nith.hillffair.R.id.no_of_likes;
 
 
 /**
@@ -136,8 +132,10 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
                                 Likecount likes = response.body();
                                 if (likes != null && response.isSuccess()) {
                                     if (likes.isSuccess()) {
+                                        card.setStatus(true);
                                         Log.d("id",card.get_id());
                                         Toast.makeText(mContext, "Post Liked", Toast.LENGTH_SHORT).show();
+                                        card.setLikes(likes.getLikes());
                                         h.no_of_likes.setText("" + likes.getLikes());
                                     } else {
                                         Toast.makeText(mContext, "Internal Error", Toast.LENGTH_SHORT).show();
@@ -156,20 +154,20 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
                     @Override
                     public void unLiked(LikeButton likeButton) {
-
                         APIINTERFACE mApiService = Utils.getRetrofitService();
-                        Call<Dislike> mservice = mApiService.dislike(card.get_id(),new SharedPref(MyApplication.getAppContext()).getUserId());
+                        Call<Likecount> mservice = mApiService.likecount(card.get_id(),new SharedPref(MyApplication.getAppContext()).getUserId());
 
-                        mservice.enqueue(new Callback<Dislike>() {
+                        mservice.enqueue(new Callback<Likecount>() {
                             @Override
-                            public void onResponse(Call<Dislike> call, Response<Dislike> response) {
-                                Dislike likes1 = response.body();
-                                if (likes1 != null && response.isSuccess()) {
-                                    if (likes1.isSuccess()) {
-
+                            public void onResponse(Call<Likecount> call, Response<Likecount> response) {
+                                Likecount likes = response.body();
+                                if (likes != null && response.isSuccess()) {
+                                    if (likes.isSuccess()) {
+                                        card.setStatus(false);
                                         Log.d("id",card.get_id());
                                         Toast.makeText(mContext, "Post Disliked", Toast.LENGTH_SHORT).show();
-                                        h.no_of_likes.setText("" + likes1.getDisLikes());
+                                        card.setLikes(likes.getLikes());
+                                        h.no_of_likes.setText("" + likes.getLikes());
                                     } else {
                                         Toast.makeText(mContext, "Internal Error", Toast.LENGTH_SHORT).show();
 
@@ -178,7 +176,7 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
                             }
 
                             @Override
-                            public void onFailure(Call<Dislike> call, Throwable t) {
+                            public void onFailure(Call<Likecount> call, Throwable t) {
 
                                 Toast.makeText(mContext, "Check Your Internet Connectivity and Permissions", Toast.LENGTH_SHORT).show();
                             }

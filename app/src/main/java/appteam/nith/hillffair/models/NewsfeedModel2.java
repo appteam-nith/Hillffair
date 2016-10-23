@@ -150,4 +150,8 @@ public class NewsfeedModel2 implements  Parcelable{
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 }
