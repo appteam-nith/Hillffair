@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -30,12 +31,13 @@ import retrofit2.Response;
 
 public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
+    private static final String FEED_LIST ="list" ;
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean loading = true;
-    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=0;
+    private int  pastVisiblesItems, visibleItemCount, totalItemCount, previousTotal = 0, visibleThreshold = 0,feedNo=1;
     private ArrayList<NewsfeedModel2> list=new ArrayList<>();
     private SharedPref pref;
 
@@ -78,10 +80,8 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                     }
                     if (!loading && (totalItemCount - visibleItemCount)
                             <= (pastVisiblesItems + visibleThreshold)) {
-
-                        list.add(null);
                         adapter.notifyItemInserted(list.size() + 1);
-                        feedNo+=11;
+                        feedNo+=10;
                         showData(feedNo);
                         loading = true;
                     }
@@ -89,7 +89,22 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
             }
         });
 
+
+      if(savedInstanceState==null)
         showData(1);
+      else {
+
+          list=savedInstanceState.getParcelableArrayList(FEED_LIST);
+          if(list!=null){
+              recyclerView.setVisibility(View.VISIBLE);
+              progressBar.setVisibility(View.GONE);
+              adapter.refresh(list);
+          }
+          else {
+              showData(1);
+          }
+      }
+
         // Button to upload the NewsFeed
 
         FloatingActionButton upload= (FloatingActionButton) findViewById(R.id.upload_btn);
@@ -102,17 +117,9 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
 
     }
 
-
-
-    /**
-     * Adding few albums for testing
-     */
-
     private void  showData(int from){
-        if(from>1){
-            adapter.removeItem(null);
-        }
-        else if(from==1) {
+
+        if(from==1) {
             list.clear();
             adapter.refresh(list);
             recyclerView.setVisibility(View.GONE);
@@ -125,27 +132,45 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                 if(swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(false);
                 }
-
-
                 recyclerView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 if(response!=null&&response.isSuccess()){
                     if(response.body().getFeed()!=null){
                         if(response.body().getFeed().size()>0){
-                            list.addAll(response.body().getFeed());
 
-                            adapter.refresh(list);}
-                        else {
-                            adapter.removeItem(null);
+                            if(list.size()!=0){
+                                list.remove(list.size()-1);
+                                adapter.refresh(list);
+                            }
+
+                            list.addAll(response.body().getFeed());
+                            list.add(null);
+
+                            adapter.refresh(list);
                         }
+
+                        Log.d("rr","check");
+
                     }
                     else {
-                        adapter.removeItem(null);
+                        Log.d("sa","check");
+
+                        if(list.size()!=0){
+                            list.remove(list.size()-1);
+                            adapter.refresh(list);
+                        }
+
                     }
 
                 }
                 else {
-                    adapter.removeItem(null);
+
+                    if(list.size()!=0){
+                        list.remove(list.size()-1);
+                        adapter.refresh(list);
+                    }
+
+
                     Toast.makeText(NewsfeedActivity.this,"Unable to fetch Data",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -155,7 +180,12 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
                 if(swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(false);
                 }
-                adapter.removeItem(null);
+
+                if(list.size()!=0){
+                    list.remove(list.size()-1);
+                    adapter.refresh(list);
+                }
+
                 t.printStackTrace();
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(NewsfeedActivity.this, "Please check your network connection and internet permission", Toast.LENGTH_LONG).show();
@@ -167,5 +197,12 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
     public void onRefresh()
     {
         showData(1);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(list!=null)
+        outState.putParcelableArrayList(FEED_LIST,list);
     }
 }

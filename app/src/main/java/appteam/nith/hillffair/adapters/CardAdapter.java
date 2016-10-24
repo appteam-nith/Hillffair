@@ -196,12 +196,7 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
     @Override
     public int getItemCount() {
 
-        if(list_card.size()==0)
-            return 0;
-        else if(list_card.size()<=9)
-            return list_card.size();
-        else
-        return list_card.size()+1;
+        return list_card.size();
     }
 
 
@@ -227,19 +222,13 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
 
         }
-        //     @Override
-        //   public void onClick(View v) {
-        //     NewsfeedModel2 card = list_card.get(position);
-        //   APIINTERFACE mApiService = Utils.getRetrofitService();
-        // Call<Likecount> mService = mApiService.likecount();
-        //}
     }
 
 
 
     @Override
     public int getItemViewType(int position) {
-        return position>=list_card.size()?FOOTER_VIEW:NORMAL_VIEW;
+        return list_card.get(position)==null?FOOTER_VIEW:NORMAL_VIEW;
     }
 
     public static class footerView extends RecyclerView.ViewHolder {
@@ -248,11 +237,4 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
         }
     }
 
-    public void removeItem(NewsfeedModel2 item) {
-        int indexOfItem = list_card.indexOf(item);
-        if (indexOfItem != -1) {
-            list_card.remove(indexOfItem);
-            notifyItemRemoved(indexOfItem);
-        }
-    }
 }
