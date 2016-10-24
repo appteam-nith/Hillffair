@@ -51,6 +51,10 @@ public class MyApplication extends Application {
             DbHelper dbHelper = new DbHelper(getApplicationContext());
             if(dbHelper.insert_2_homeposts(id,small_icon,title,description,image,large_icon,launch_url)){
                 Log.v("","inserted Successfully");
+                Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
             }
             if (data != null) {
 
