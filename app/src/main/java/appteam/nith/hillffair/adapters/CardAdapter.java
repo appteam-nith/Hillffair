@@ -146,7 +146,6 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
 
                             @Override
                             public void onFailure(Call<Likecount> call, Throwable t) {
-
                                 Toast.makeText(mContext, "Check Your Internet Connectivity and Permissions", Toast.LENGTH_SHORT).show();
                             }
                         });
