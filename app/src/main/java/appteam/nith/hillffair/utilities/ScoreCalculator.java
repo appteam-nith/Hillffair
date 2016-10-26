@@ -11,6 +11,16 @@ public class ScoreCalculator {
     private static ScoreCalculator obj;
     private String answers[],selectedChoices[];
     private int totalScore=0;
+    private int special;
+
+    public int getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(int special) {
+        this.special = special;
+    }
+
     private int question_type[];    // 1 => single   2 => multiple
 
     private ScoreCalculator(){

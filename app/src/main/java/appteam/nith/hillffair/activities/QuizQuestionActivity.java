@@ -22,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.application.SharedPref;
 import appteam.nith.hillffair.fragments.QuizFragment;
@@ -32,9 +34,6 @@ import appteam.nith.hillffair.utilities.APIINTERFACE;
 import appteam.nith.hillffair.utilities.Connection;
 import appteam.nith.hillffair.utilities.ScoreCalculator;
 import appteam.nith.hillffair.utilities.Utils;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,6 +48,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
     private TextView message,time_left;
     private FragmentManager manager;
     private static timer t;
+    private ScoreCalculator scoreCalculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
         progressBar=(ProgressBar)findViewById(R.id.progress);
         message=(TextView)findViewById(R.id.message);
         time_left=(TextView)findViewById(R.id.time_left);
+        scoreCalculator=ScoreCalculator.getInstance();
 
         back2home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,11 +98,15 @@ public class QuizQuestionActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
 
                 QuizQuestionsModel model=response.body();
+
                 int status=response.code();
 
                 if(model!=null && response.isSuccess()){
                     if(model.isSuccess()){
                         // set viewpager
+
+                        ScoreCalculator sc=ScoreCalculator.getInstance();
+                        sc.setSpecial(1);
 
                         final List<SingleQuestionModel> questions=model.getQuestions();
 
@@ -115,7 +120,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
                             t.execute();
 
                             //initialize scoreCalculator
-                            ScoreCalculator sc=ScoreCalculator.getInstance();
+                            //ScoreCalculator sc=ScoreCalculator.getInstance();
 
                             String answers[]=new String[questions.size()];
                             String selectedChoices[]=new String[questions.size()];
@@ -257,6 +262,7 @@ public class QuizQuestionActivity extends AppCompatActivity {
 
                 if(model!=null && response.isSuccess()){
                     if(model.isSuccess()){
+                        scoreCalculator.setSpecial(0);
                         Toast.makeText(QuizQuestionActivity.this,model.getMsg() ,Toast.LENGTH_SHORT);
 
                         finish();
@@ -379,9 +385,13 @@ public class QuizQuestionActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+
             if(new Connection(context).isInternet()){
                 Log.v("internet","available");
 
+                ScoreCalculator sc=ScoreCalculator.getInstance();
+
+                if(sc.getSpecial()==1)
                 ((QuizQuestionActivity)context).submitScore();
 
             }else{

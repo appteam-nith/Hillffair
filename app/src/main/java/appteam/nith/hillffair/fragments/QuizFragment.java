@@ -155,17 +155,26 @@ public class QuizFragment extends Fragment {
                 finish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        progressBar.setVisibility(View.VISIBLE);
+
                         finish.setEnabled(false);
 
-                        SharedPref pref=new SharedPref(getContext());
+                        ScoreCalculator sc=ScoreCalculator.getInstance();
 
-                        int score_calculated=sc.calculateScore();
-                        Log.v("calculated_score is ",score_calculated+"");
+                        if(sc.getSpecial()==1){
+                            progressBar.setVisibility(View.VISIBLE);
 
-                        sc.resetInstance();     //Important
+                            SharedPref pref=new SharedPref(getContext());
 
-                        ((QuizQuestionActivity)getActivity()).finishAndUpdateScore(pref.getUserId(),score_calculated);
+                            int score_calculated=sc.calculateScore();
+                            Log.v("calculated_score is ",score_calculated+"");
+
+                            sc.resetInstance();     //Important
+
+                            ((QuizQuestionActivity)getActivity()).finishAndUpdateScore(pref.getUserId(),score_calculated);
+
+                        }
+
+
                     }
                 });
 
