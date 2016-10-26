@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.annotations.SerializedName;
+
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.application.MyApplication;
 import appteam.nith.hillffair.application.SharedPref;
@@ -21,10 +25,6 @@ import appteam.nith.hillffair.models.BattleEventResponse;
 import appteam.nith.hillffair.models.ClubModel;
 import appteam.nith.hillffair.models.ClubModel2;
 import appteam.nith.hillffair.utilities.Utils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.gson.annotations.SerializedName;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -95,7 +95,7 @@ public class ClubActivity extends AppCompatActivity {
                         ClubModel clubdata=data.getProfile();
                         clubName.setText(clubdata.getName());
                         description.setText(clubdata.getDescription());
-                        Glide.with(ClubActivity.this).load(clubdata.getPhoto()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(grup_img);
+                        Glide.with(MyApplication.getAppContext()).load(clubdata.getPhoto()).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.person_icon).into(grup_img);
                     }
                     else {
                         progressBar.setVisibility(View.INVISIBLE);

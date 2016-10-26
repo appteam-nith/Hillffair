@@ -6,12 +6,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import java.util.ArrayList;
+
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.adapters.CoreTeamAdapter;
 import appteam.nith.hillffair.application.SharedPref;
 import appteam.nith.hillffair.models.CoreTeamItem;
-
-import java.util.ArrayList;
 
 public class CoreTeamActivity extends AppCompatActivity {
 
@@ -32,7 +32,7 @@ public class CoreTeamActivity extends AppCompatActivity {
         recycler_view=(RecyclerView)findViewById(R.id.core_team_list);
         array_list=new ArrayList<>();
         array_list.add(new CoreTeamItem("Ajay k. Sharma","Director",BASE_URL+"photos/director.jpg"));
-        array_list.add(new CoreTeamItem("Dr. Raman Parti","Dean Student Welfare","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/raman_parti.png"));
+        array_list.add(new CoreTeamItem("Dr. A.S. Singha","Dean Student Welfare",BASE_URL+"photos/as.jpg"));
         array_list.add(new CoreTeamItem("Dr. Surender Soni","Faculty Coordinator","https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimbusteam/surender_soni.png"));
 
         array_list.add(new CoreTeamItem("Deepak Kumar Jain","Hillffair Secretary",BASE_URL_JSEC+"sec_cultural.jpg"));
