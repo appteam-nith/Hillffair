@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.adapters.SponsorAdapter;
@@ -26,6 +28,8 @@ public class SponsorActivity extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sponsor);
+        setupWindowAnimations();
+
         String BASE_URL="https://s3.ap-south-1.amazonaws.com/hillffair2016/images/";
         rvSponsor = (RecyclerView)findViewById(R.id.rvSponsor);
 
@@ -52,5 +56,12 @@ public class SponsorActivity extends AppCompatActivity {
         LinearLayoutManager lvmanager = new LinearLayoutManager(this);
         lvmanager.setOrientation(LinearLayoutManager.VERTICAL);
         rvSponsor.setLayoutManager(lvmanager);
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 }
