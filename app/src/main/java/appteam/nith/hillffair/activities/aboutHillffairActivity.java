@@ -5,6 +5,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.application.SharedPref;
@@ -18,6 +20,7 @@ private Toolbar toolbar;
         SharedPref pref= new SharedPref(this);
         setTheme(pref.getThemeId());
         setContentView(R.layout.activity_about_hillffair);
+        setupWindowAnimations();
         initCollapsingToolbar();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +53,13 @@ private Toolbar toolbar;
                 }
             }
         });
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 
 }

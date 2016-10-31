@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 
 import appteam.nith.hillffair.R;
 import appteam.nith.hillffair.adapters.contributorsAdapter;
@@ -26,6 +28,9 @@ public class ContributorsActivity extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contributors);
+
+        setupWindowAnimations();
+
         String BASE_URL = "https://github.com/";
         rvContributors = (RecyclerView) findViewById(R.id.contributors_view);
 
@@ -66,5 +71,12 @@ public class ContributorsActivity extends AppCompatActivity {
         lvmanager.setOrientation(LinearLayoutManager.VERTICAL);
         rvContributors.setLayoutManager(lvmanager);
 
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 }

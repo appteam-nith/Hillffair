@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -39,6 +41,8 @@ public class BattleDayActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+        setupWindowAnimations();
+        /* we, can add new here, more*/
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -99,6 +103,13 @@ public class BattleDayActivity extends AppCompatActivity {
                 Toast.makeText(BattleDayActivity.this,"Some error occurred!!",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 
 }

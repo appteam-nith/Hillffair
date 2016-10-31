@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class CoreTeamActivity extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coreteam);
+        setupWindowAnimations();
 
         recycler_view=(RecyclerView)findViewById(R.id.core_team_list);
         array_list=new ArrayList<>();
@@ -65,5 +68,12 @@ public class CoreTeamActivity extends AppCompatActivity {
         setSupportActionBar(core_team_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 }
