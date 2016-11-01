@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +20,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -100,31 +103,64 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(View view, int position) {
                 if (position == 6) {
-                    startActivity(new Intent(HomeActivity.this,aboutHillffairActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, aboutHillffairActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);/**For lower api if required
+                    setupWindowAnimations();
                 }
                 else if(position==0){
-                    startActivity(new Intent(HomeActivity.this,BattleDayActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, BattleDayActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
+                    setupWindowAnimations();
                 }
                 else if (position==3){
-                    startActivity(new Intent(HomeActivity.this, NewsfeedActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, NewsfeedActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
                 }
                 else if (position==1){
-                    startActivity(new Intent(HomeActivity.this,QuizActivity.class));
+
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+
+                    startActivity(new Intent(HomeActivity.this, QuizActivity.class), compat.toBundle());
+                    // overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
+                   // setupWindowAnimations();
                 }
                 else if(position==2){
-                    startActivity(new Intent(HomeActivity.this,SponsorActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, SponsorActivity.class),compat.toBundle());
+                    // overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
                 }
                 else if(position==4){
-                    startActivity(new Intent(HomeActivity.this,CoreTeamActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, CoreTeamActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
                 }
                 else if(position==5){
-                    startActivity(new Intent(HomeActivity.this, EventActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, EventActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
                 }
                 else if(position==7){
-                    startActivity(new Intent(HomeActivity.this, ContributorsActivity.class));
+                    ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,null);
+                    startActivity(new Intent(HomeActivity.this, ContributorsActivity.class),compat.toBundle());
+                    //overridePendingTransition(R.animator.slide_in_left, R.animator.slide_in_right);
+
                 }
             }
         }));
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        if(Build.VERSION.SDK_INT >=21){
+        Slide slideTransition = new Slide();
+        slideTransition.setSlideEdge(Gravity.LEFT);
+        slideTransition.setDuration(800);
+        getWindow().setReenterTransition(slideTransition);
+        getWindow().setExitTransition(slideTransition);
+        }
+
     }
 
     @Override

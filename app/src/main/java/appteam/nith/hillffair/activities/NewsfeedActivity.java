@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -48,6 +50,8 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.newsfeed);
+        setupWindowAnimations();
+
         swipeRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
         swipeRefreshLayout.setOnRefreshListener(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -204,5 +208,12 @@ public class NewsfeedActivity extends AppCompatActivity implements SwipeRefreshL
         super.onSaveInstanceState(outState);
         if(list!=null)
         outState.putParcelableArrayList(FEED_LIST,list);
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ public class QuizActivity extends AppCompatActivity {
         setTheme(pref.getThemeId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz_home);
+        setupWindowAnimations();
 
         final SharedPref sp=new SharedPref(this);
 
@@ -54,5 +57,12 @@ public class QuizActivity extends AppCompatActivity {
                 startActivity(new Intent(QuizActivity.this,LeaderBoardActivity.class));
             }
         });
+    }
+    private void setupWindowAnimations() {
+        // Re-enter transition is executed when returning to this activity
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.transition1);
+        //Fade fade = new Fade();
+        //fade.setDuration(100000);
+        getWindow().setEnterTransition(slide);
     }
 }
