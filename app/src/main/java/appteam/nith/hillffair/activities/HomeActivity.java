@@ -153,11 +153,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     private void setupWindowAnimations() {
         // Re-enter transition is executed when returning to this activity
+        if(Build.VERSION.SDK_INT >=21){
         Slide slideTransition = new Slide();
         slideTransition.setSlideEdge(Gravity.LEFT);
         slideTransition.setDuration(800);
         getWindow().setReenterTransition(slideTransition);
         getWindow().setExitTransition(slideTransition);
+        }
+
     }
 
     @Override
