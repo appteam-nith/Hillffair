@@ -5,10 +5,10 @@ android {
     buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "appteam.nith.hillffair"
-        minSdkVersion 17
+        minSdkVersion 15
         targetSdkVersion 24
-        versionCode 5
-        versionName "1.0"
+        versionCode 7
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [manifestApplicationId: "${applicationId}",
