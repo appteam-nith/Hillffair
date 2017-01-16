@@ -68,7 +68,7 @@ public interface APIINTERFACE {
     Call<UserScoreResponse> getUserScore(@Field("id") String id);
 
     @FormUrlEncoded
-    @POST("quiz/questions_new")
+    @POST("quiz/questions_new123")
     Call<QuizQuestionsModel> getQuiz(@Field("id") String id);
 
     @FormUrlEncoded
