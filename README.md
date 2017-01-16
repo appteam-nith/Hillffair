@@ -4,6 +4,8 @@
 
 This is the official Android Application of the Cultural Fest of NIT Hamirpur **Hillffair** made by YOU :smile:.
 
+The App is currently on Playstore under link: https://play.google.com/store/apps/details?id=appteam.nith.hillffair
+
 ### How to setup this project in Android Studio :-
 
 1. Firstly, fork this repo from the main repository **appteam-nith/Hillffair** by clicking on the **Fork** button.
