@@ -8,7 +8,7 @@ The App is currently on Playstore under link: https://play.google.com/store/apps
 
 ### How to setup this project in Android Studio :-
 
-1. Firstly, fork this repo from the main repository **appteam-nith/Hillffair** by clicking on the **Fork** button.
+1. Firstly, fork this repository from the main repository **appteam-nith/Hillffair** by clicking on the **Fork** button.
 
 2. Now **clone** the forked repo in your PC. For this first copy the url of your forked repo (use terminal or git bash):
 
