@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         if (mCancel) {
             focusView.requestFocus();
         } else {
-            loadToast.setText("LOADING");
+            loadToast.setText("LOADING...");
             loadToast.show();
             loginProcessWithRetrofit(email, password);
         }
@@ -175,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(LoginActivity.this, "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 }
 

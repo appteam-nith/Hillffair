@@ -161,7 +161,7 @@ public class UploadNewsFeedActivity extends AppCompatActivity {
                 else {
                     upload_image.setVisibility(View.VISIBLE);
                     if(status_code==503){
-                        Toast.makeText(UploadNewsFeedActivity.this,"Server Done",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadNewsFeedActivity.this,"Server Down",Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Toast.makeText(UploadNewsFeedActivity.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
