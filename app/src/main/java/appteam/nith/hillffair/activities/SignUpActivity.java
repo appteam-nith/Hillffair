@@ -174,7 +174,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 } else {
                     passwordTextInputLayout.setErrorEnabled(true);
-                    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
+                    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTERS");
 
                 }
             }
@@ -198,7 +198,7 @@ public class SignUpActivity extends AppCompatActivity {
                     phonenoTextInputLayout.setErrorEnabled(false);
                     isphone = true;
                 } else {
-                    phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+                    phonenoTextInputLayout.setError("NOT A VALID PHONE NUMBER");
                     isphone = false;
                 }
             }
@@ -307,7 +307,7 @@ public class SignUpActivity extends AppCompatActivity {
                 int status_code=response.code();
                if(register!=null&&response.isSuccess()){
                    if (register.isSuccess()){
-                       Toast.makeText(SignUpActivity.this,"SuccessFully Register Please verify your Email.",Toast.LENGTH_LONG).show();
+                       Toast.makeText(SignUpActivity.this,"SuccessFully Registered. Please verify your Email.",Toast.LENGTH_LONG).show();
                        loadToast.success();
                        startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
                        finish();
@@ -327,7 +327,7 @@ public class SignUpActivity extends AppCompatActivity {
                   }
                    else
                   {
-                      Toast.makeText(SignUpActivity.this, "Check your internet Connection", Toast.LENGTH_SHORT).show();
+                      Toast.makeText(SignUpActivity.this, "Please check your internet Connection", Toast.LENGTH_SHORT).show();
                   }
 
                }

@@ -113,7 +113,7 @@ public class ForgetPassword extends AppCompatActivity {
                     pwdTextInput.setErrorEnabled(false);
                 } else {
                     pwdTextInput.setErrorEnabled(true);
-                    pwdTextInput.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
+                    pwdTextInput.setError("PLEASE ENTER MORE THAN 8 CHARACTERS");
             }
         }
 
