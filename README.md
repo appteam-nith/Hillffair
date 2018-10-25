@@ -30,6 +30,8 @@ The App is currently on Playstore under link: https://play.google.com/store/apps
 
 2. View the issues put up in the repo and try to fix them. You may send us a pull request after that.
 
+we got it
+
 3. **IMPORTANT** :- Before sending a **Pull Request** make sure that your forked repository is in sync with the base repository [Click Here](https://github.com/appteam-nith/festnimbus/wiki/Stay-in-Sync-with-Base-Repository) .
 
 Note: Also while sending Pull Request make sure all naming conventions are followed, files must be present in corresponding package.
